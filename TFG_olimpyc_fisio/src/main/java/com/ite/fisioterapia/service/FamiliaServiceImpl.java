@@ -3,11 +3,12 @@ package com.ite.fisioterapia.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ite.fisioterapia.entities.Familia;
 import com.ite.fisioterapia.repository.FamiliaRepository;
-import com.ite.fisioterapia.repository.RolRepository;
 
+@Service
 public class FamiliaServiceImpl implements FamiliaService{
 	
 	@Autowired
