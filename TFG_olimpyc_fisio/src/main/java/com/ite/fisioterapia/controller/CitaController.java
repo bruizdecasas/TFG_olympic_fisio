@@ -17,7 +17,7 @@ import com.ite.fisioterapia.service.CitaService;
 
 @Controller
 @RequestMapping("/citas")
-public class CitaControler {
+public class CitaController {
 	
 	@Autowired CitaService citaserv;
 	
