@@ -39,7 +39,7 @@ public class UsuarioController {
 		System.out.println("usuario : " + aut.getName());
 		Usuario usuario = usuarioServ.findByEmail(aut.getName());
         model.addAttribute("usuario", usuario);
-        return "/usuario/misdatos";
+        return "/usuario/misDatos";
     }
 	@PostMapping("/misDatos")
 	public String mostrardatos() {
@@ -49,7 +49,7 @@ public class UsuarioController {
 	@GetMapping("/alta")
 	public String registrar(Model model) {
 	    model.addAttribute("usuario", new Usuario());
-	    return "/altausuario";
+	    return "/altaUsuario";
 	}
 	
 	@PostMapping("/alta")
