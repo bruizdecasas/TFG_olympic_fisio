@@ -28,7 +28,7 @@ public class ProductoController {
 	public String altaProducto (Model model) {
 		 List<Familia> familia = familiaServ.findAll();
 		 model.addAttribute("listaFamilia", familia);
-	    return "/admin/altaProducto";
+	    return "/producto/altaProducto";
 			}
 	
 	@PostMapping("/alta")
@@ -37,10 +37,10 @@ public class ProductoController {
 		Familia familia = familiaServ.findById(idFamilia);
 		producto.setFamilia(familia);				
 		if (productoServ.altaProducto(producto) == 1) 		
-			model.addAttribute("mensajeExito", "Producto dado de alta correctamente");
+			attr.addFlashAttribute("mensajeExito", "Producto dado de alta correctamente");
 		else 
-			model.addAttribute("mensajeError", "No se ha podido realizar el alta del producto");	
-		return "/comunes/mensaje";
+			attr.addFlashAttribute("mensajeError", "No se ha podido realizar el alta del producto");	
+		return "redirect:/producto/listaProducto";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -49,7 +49,7 @@ public class ProductoController {
 		model.addAttribute("producto", producto); 
 		List<Familia> familia = familiaServ.findAll();
 		model.addAttribute("listaFamilia", familia);
-	    return "/productos/editar";
+	    return "/producto/editarProducto";
 			}	
 	
 	@PostMapping("/editar")
@@ -58,19 +58,19 @@ public class ProductoController {
 		Familia familia = familiaServ.findById(idFamilia);
 		producto.setFamilia(familia);
 		if (productoServ.altaProducto(producto) == 1) 	
-			model.addAttribute("mensajeExito", "Producto editado correctamente");
+			attr.addFlashAttribute("mensajeExito", "Producto editado correctamente");
 		else 
-			model.addAttribute("mensajeError", "No se ha podido editar el producto");		
-		return "/comunes/mensaje";
+			attr.addFlashAttribute("mensajeError", "No se ha podido editar el producto");		
+		return "redirect:/producto/listaProducto";
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminar(Model model, @PathVariable(name="id") int  codigo) {
+	public String eliminar(Model model, @PathVariable(name="id") int  codigo, RedirectAttributes attr) {
 		
 		if (productoServ.eliminarProducto(codigo) == 1)
-			model.addAttribute("mensaje", "producto eliminado");
+			attr.addFlashAttribute("mensajeExito", "producto eliminado");
 		else
-			model.addAttribute("mensaje", "producto no eliminado");
+			attr.addFlashAttribute("mensajeError", "producto no eliminado");
 		return "forward:/";
 	}
 	
@@ -78,21 +78,21 @@ public class ProductoController {
 	public String verUno(Model model, @PathVariable(name="id") int  codigo) {
 		Producto producto = productoServ.findById(codigo);
 		model.addAttribute("producto", producto);		
-		return "/productos/detalleProducto";	 		
+		return "/producto/detalleProducto";	 		
 	}
 	
 	@GetMapping("/todos")
 	public String mostrarProductos(Model model) {
 		List<Producto> producto = productoServ.findAll();
 		model.addAttribute("listaProductos", producto);
-		return "/productos/listaProducto";
+		return "/producto/listaProducto";
 	}
 	
 	@GetMapping("/productosFamilia/{id}")
 	public String mostrarProductosFamilia(Model model,@PathVariable(name="id") int  codigo) {
 		List<Producto> producto = productoServ.findPorFamilia(codigo);
 		model.addAttribute("listaProductos", producto);
-		return "/comunes/listaProducto";
+		return "/producto/listaProducto";
 	}
 
 }
