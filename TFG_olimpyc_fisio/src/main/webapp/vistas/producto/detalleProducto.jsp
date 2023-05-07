@@ -21,9 +21,9 @@
 			<thead>
 				<tr class="default">
 					<th>Id Producto</th>
+					<th>Nombre</th>
 					<th>Descripcion del producto</th>
 					<th>Precio</th>
-					<th>Stock</th>
 				</tr>
 			</thead>
 			<tbody>

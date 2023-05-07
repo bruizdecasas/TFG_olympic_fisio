@@ -18,14 +18,14 @@
 		<sec:csrfInput />
 		<h1>Editar el producto: ${ producto.idProducto }</h1>
 		<a class="btn-link" href="/">Volver</a>
-		<form action="/admin/editarProducto" method="post">
+		<form action="/producto/editar" method="post">
 			
 			<fieldset class="full-form">
 				<legend>Introduce los datos del nuevo producto</legend>
 			<fieldset class="default">
 					<fieldset class="default">
 						<label for="id_producto">Id del producto</label>
-						<input type="number" name="idProducto" id="id_producto" required placeholder="${ producto.idProducto }"/>		
+						<input type="number" name="idProducto" id="id_producto" required value="${ producto.idProducto }"/>		
 				</fieldset>
 				<fieldset class="default">
 					<label for="nombreProducto">Nombre</label>
@@ -36,8 +36,6 @@
 				<fieldset class="default">
 					<label for="precioProducto">Precio</label>
 					<input type="number" step="0.5" min="0" name="precioProducto" id="precio_producto" required placeholder="${ producto.precioProducto}"/>
-					<label for="stock_producto">Stock</label>
-					<input type="number" min="0" name="stockProducto" id="stock_producto" required placeholder="${ producto.stockProducto}"/>
 					<select name="idFamilia" id="id_familia" required>
 						<c:forEach var="ele" items="${ listaFamilia }">
 							<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
