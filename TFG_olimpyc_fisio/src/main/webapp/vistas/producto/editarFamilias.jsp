@@ -16,15 +16,14 @@
 		<jsp:include page="../menu.jsp"></jsp:include>
 		<main>
 		<sec:csrfInput />
-		<h1>Editar Familia</h1>
+		<h1>Editar la Familia: ${ familia.idFamilia } - ${ familia.nombreFamilia }</h1>
 		<a class="btn-link" href="/familia/todas">Volver</a>
 		<form action="/familia/editar" method="post">	
 			<fieldset class="full-form">
 				<legend>Introduce los datos para editar la familia con id: ${ familia.idFamilia }</legend>
 			<fieldset class="default">
 				<fieldset class="default">
-					<label for="id_familia">Id de la Familia</label>
-					<input type="number" name="idFamilia" id="id_familia" required value="${ familia.idFamilia }"/>		
+					<input type="hidden" name="idFamilia" id="id_familia" required value="${ familia.idFamilia }"/>		
 				</fieldset>
 				<fieldset class="default">
 						<label for="nombre_familia">Nombre de la Familia</label>
