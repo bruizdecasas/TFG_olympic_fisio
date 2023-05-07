@@ -2,6 +2,8 @@ package com.ite.fisioterapia.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import com.ite.fisioterapia.entities.Cita;
 import com.ite.fisioterapia.service.CitaService;
 
 @Controller
-@RequestMapping("/citas")
+@RequestMapping("/cita")
 public class CitaController {
 	
 	@Autowired CitaService citaserv;
@@ -25,21 +27,21 @@ public class CitaController {
 	public String mostrarCitas (Model model) {
 		List<Cita> cita = citaserv.findAll();
 		model.addAttribute("listacitas", cita);
-		return "/admin/listaUsuarios";
+		return "/reservas/listaCitas";
 	}
 	
 	@GetMapping("/detalle/{id}")
 	public String detalleCita(Model model, @PathVariable(name="id") int codigo) {
 		Cita cita = citaserv.findById(codigo);
 		model.addAttribute("cita", cita);
-		return "/admin/detalleUsuarios";
+		return "/reservas/detalleCita";
 	}	
 	
 	@GetMapping("/editar/{id}")
 	public String editarCita (Model model, @PathVariable(name="id") int  codigo) {
 		Cita cita = citaserv.findById(codigo);
 		model.addAttribute("cita", cita);
-		return "/admin/editarFamilias";
+		return "/reservas/editarCita";
 	}
 
 	@PostMapping("/editar")
@@ -50,30 +52,38 @@ public class CitaController {
 			model.addAttribute("mensajeError", "Cita no encontrada");
 		else
 			model.addAttribute("mensajeError", "error al editar la cita");
-		return "/comunes/mensaje";
+		return "redirect:/";
 	}
 	
 	@GetMapping ("/alta")
 	public String altaCita() {
-	
-		return "/admin/altaFamilia";
+		return "/reservas/altaCita";
 	}
 	
 	@PostMapping("/alta")
-	public String altaCita (Cita cita, RedirectAttributes attr, Model model) {
+	public String altaCita (Cita cita, RedirectAttributes attr, Model model, HttpSession session) {
 		if (citaserv.altaCita(cita) == 1) 
 			model.addAttribute("mensajeExito", "Cita dada de alta correctamente");
 		else 
 			model.addAttribute("mensajeError", "Error al dar de alta la cita");
-		return "/comunes/mensaje";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/reserva/{id}")
-	public String reservarCita (Model model, @PathVariable(name="id") int codigo) {
-		Cita cita = citaserv.findById(codigo);
-		cita.setDisponible(0);
-		model.addAttribute("cita", cita);
-		return "/comunes/mensaje";
+	public String reservarCita(@PathVariable(name="id") int codigo, RedirectAttributes attr) {
+	    Cita cita = citaserv.findById(codigo);
+	    if (cita == null) {
+	        attr.addFlashAttribute("mensajeError", "La cita no existe");
+	        return "redirect:/";
+	    } else if (cita.getDisponible() == 0) {
+	        attr.addFlashAttribute("mensajeError", "La cita ya ha sido reservada");
+	        return "redirect:/";
+	    } else {
+	        cita.setDisponible(0);
+	        citaserv.editarCita(cita);
+	        attr.addFlashAttribute("mensajeExito", "Cita reservada con éxito");
+	        return "redirect:/";
+	    }
 	}
 	
 	@GetMapping("/eliminar/{id}")
@@ -82,7 +92,7 @@ public class CitaController {
 			model.addAttribute("mensajeExito", "producto eliminado");
 		else
 			model.addAttribute("mensajeError", "producto no eliminado");
-		return "forward:/";	 
+		return "redirect:/";	 
 	}
 
 }

@@ -40,7 +40,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "Producto dado de alta correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido realizar el alta del producto");	
-		return "redirect:/producto/listaProducto";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -61,7 +61,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "Producto editado correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido editar el producto");		
-		return "redirect:/producto/listaProducto";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/eliminar/{id}")
@@ -71,7 +71,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "producto eliminado");
 		else
 			attr.addFlashAttribute("mensajeError", "producto no eliminado");
-		return "forward:/";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/detalle/{id}")

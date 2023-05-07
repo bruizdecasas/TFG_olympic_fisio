@@ -31,7 +31,7 @@ public class FamiliaController {
 			model.addAttribute("mensajeExito", "Familia dada de alta correctamente");
 		else 
 			model.addAttribute("mensajeError", "Error al dar de alta la familia");
-		return "redirect:/producto/listaFamilias";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -49,7 +49,7 @@ public class FamiliaController {
 			model.addAttribute("mensajeError", "familia no encontrada");
 		else
 			model.addAttribute("mensajeError", "error al eliminar la familia");
-		return "redirect:/familia/todas";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/eliminar/{id}")
@@ -60,7 +60,7 @@ public class FamiliaController {
 			model.addAttribute("mensaje", "familia no encontrada");
 		else 
 			model.addAttribute("mensaje", "error al eliminar la familia");		
-		return "redirect:/producto/listaFamilias";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/todas")
