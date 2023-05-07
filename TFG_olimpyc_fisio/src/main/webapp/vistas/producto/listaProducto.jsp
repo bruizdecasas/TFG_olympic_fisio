@@ -14,7 +14,7 @@
 	<jsp:include page="../menu.jsp"></jsp:include>
 		<table>
 			<thead>
-				<tr><th>Nombre Producto</th><th>Descripción producto</th><th>Precio</th><th class="buffer-cell"></th>
+				<tr><th>Nombre Producto</th><th>Precio</th><th class="buffer-cell"></th>
 				<th colspan="10">Opciones</th></tr>
 				
 			</thead>
@@ -23,14 +23,13 @@
 					<tr>
 						
 						<td>${ ele.nombreProducto }</td>
-						<td>${ ele.descripcionProducto }</td>
 						<td>${ ele.precioProducto }</td>						
 						<td class="buffer-cell"></td>
 							<td><a href="/producto/detalle/${ ele.idProducto }">Ver detalle</a></td>
 						
 								
-						<sec:authorize access="hasAuthority('ROLE_USUARIO')">
-							<td><a href="/carrito/anadir/${ ele.idProducto }">Añadir al carrito</a></td>
+						<sec:authorize access="hasAuthority('ROLE_USUARIO', 'ROLE_ADMIN')">
+							<td><a href="/producto/detalle/${ ele.idProducto }">Detalle</a></td>
 						</sec:authorize>
 						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
 							<td><a href="/producto/editar/${ ele.idProducto }">Editar</a></td>
