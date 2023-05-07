@@ -16,7 +16,7 @@
 		<jsp:include page="../menu.jsp"></jsp:include>
 		<main>
 		<sec:csrfInput />
-		<h1>Editar el producto: ${ producto.idProducto }</h1>
+		<h1>Editar el producto: ${ producto.idProducto } - ${ producto.nombreProducto } </h1>
 		<a class="btn-link" href="/">Volver</a>
 		<form action="/producto/editar" method="post">
 			
@@ -24,8 +24,7 @@
 				<legend>Introduce los datos del nuevo producto</legend>
 			<fieldset class="default">
 					<fieldset class="default">
-						<label for="id_producto">Id del producto</label>
-						<input type="number" name="idProducto" id="id_producto" required value="${ producto.idProducto }"/>		
+						<input type="hidden" name="idProducto" id="id_producto" required value="${ producto.idProducto }"/>		
 				</fieldset>
 				<fieldset class="default">
 					<label for="nombreProducto">Nombre</label>
