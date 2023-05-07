@@ -7,9 +7,20 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<style>
+.main-nav__items li{
+   list-style-type: none;
+   display: inline;
+   padding-right: 5px;
+}
+</style>
 <body>
-	<sec:authorize access="hasAuthority('ROLE_USUARIO')">Eres un CLIENTE</sec:authorize>
-	<sec:authorize access="hasAuthority('ROLE_ADMIN')">Eres un ADMINISTRADOR</sec:authorize>
+	<button type="button">
+		<sec:authorize access="hasAuthority('Especialista')">Eres el fisioterapeuta:</sec:authorize>
+		<sec:authorize access="hasAuthority('Administrador')">Eres el administrador:</sec:authorize>
+		<sec:authorize access="hasAuthority('Cliente')">Eres el cliente:</sec:authorize>
+		<sec:authentication property="name"/>
+	</button>
 	<sec:csrfInput />
 		<header>
 			<nav class="main-nav">
@@ -17,16 +28,16 @@
 					<sec:authorize access="!isAuthenticated()">
 						<li class="main-nav__item"><a href="/" class="btn-link">Inicio</a></li>				
 					</sec:authorize>
-					<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+					<sec:authorize access="isAuthenticated()">
 						<li class="main-nav__item"><a class="btn-link" href="/admin/roles">Roles</a></li>
 						<li class="main-nav__item"><a class="btn-link" href="/admin/usuarios">Clientes</a></li>
 						<li class="main-nav__item"><a class="btn-link" href="/admin/pedidos">Pedidos</a></li>
 						<li class="main-nav__item"><a class="btn-link" href="/user/familias">Familias</a></li>
 					</sec:authorize>	
-					<sec:authorize access="hasAnyAuthority('ROLE_ADMIN','ROLE_USUARIO')">						
+					<sec:authorize access="isAuthenticated()">						
 						<li class="main-nav__item"><a class="btn-link" href="/user/productos">Lista de productos</a></li>
 					</sec:authorize>
-					<sec:authorize access="hasAuthority('ROLE_USUARIO')">
+					<sec:authorize access="isAuthenticated()">
 						<li class="main-nav__item"><a class="btn-link" href="/user/misDatos">Mis Datos</a></li>
 						<li class="main-nav__item"><a class="btn-link" href="/carrito/miCarrito">Carrito</a></li>		
 					</sec:authorize>	
