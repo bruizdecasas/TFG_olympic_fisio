@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ite.fisioterapia.entities.Familia;
 import com.ite.fisioterapia.service.FamiliaService;
 
-@RequestMapping("/Familia")
+@RequestMapping("/familia")
 @Controller
 public class FamiliaController {
 	
@@ -22,7 +22,7 @@ public class FamiliaController {
 
 	@GetMapping ("/alta")
 	public String altaFamilia() {	
-		return "/admin/altaFamilia";
+		return "/producto/altaFamilia";
 	}
 	
 	@PostMapping("/alta")
@@ -30,8 +30,8 @@ public class FamiliaController {
 		if (familiaServ.altaFamilia(familia) == 1) 
 			model.addAttribute("mensajeExito", "Familia dada de alta correctamente");
 		else 
-			model.addAttribute("mensajeExito", "Familia dada de alta correctamente");
-		return "/comunes/mensaje";
+			model.addAttribute("mensajeError", "Error al dar de alta la familia");
+		return "redirect:/producto/listaFamilias";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -46,10 +46,10 @@ public class FamiliaController {
 		if (familiaServ.editarFamilia(familia) == 1) 
 			model.addAttribute("mensajeExito", "Familia editada correctamente");
 		else if (familiaServ.editarFamilia(familia) == 2) 
-			model.addAttribute("mensaje", "familia no encontrada");
+			model.addAttribute("mensajeError", "familia no encontrada");
 		else
-			model.addAttribute("mensaje", "error al eliminar la familia");
-		return "/comunes/mensaje";
+			model.addAttribute("mensajeError", "error al eliminar la familia");
+		return "redirect:/familia/todas";
 	}
 	
 	@GetMapping("/eliminar/{id}")
@@ -60,13 +60,13 @@ public class FamiliaController {
 			model.addAttribute("mensaje", "familia no encontrada");
 		else 
 			model.addAttribute("mensaje", "error al eliminar la familia");		
-		return "forward:/user/familias";
+		return "redirect:/producto/listaFamilias";
 	}
 	
 	@GetMapping("/todas")
 	public String mostrarFamilias(Model model) {
 		List<Familia> familia = familiaServ.findAll();
 		model.addAttribute("listaFamilias", familia);
-		return "/comunes/listaFamilias";
+		return "/producto/listaFamilias";
 	}
 }
