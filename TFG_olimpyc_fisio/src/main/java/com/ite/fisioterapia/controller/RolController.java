@@ -23,7 +23,7 @@ public class RolController {
 	
 	@GetMapping ("/alta")
 	public String altaRol() {	
-		return "/admin/altaRol";
+		return "/usuarios/altaRol";
 	}
 	
 	@PostMapping("/alta")
@@ -33,14 +33,14 @@ public class RolController {
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido realizar el alta del rol");
 		
-		return "forward:/admin/listaRoles";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String editarrRol (Model model, @PathVariable(name="id") int  codigo) {
 		Rol rol = rolServ.findById(codigo);
 		model.addAttribute("rol", rol);
-		return "forward:/admin/editarRol";
+		return "/usuarios/editarRol";
 	}
 
 	@PostMapping("/editar")
@@ -49,26 +49,27 @@ public class RolController {
 			attr.addFlashAttribute("mensajeExito", "Rol editado correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido editar el rol");
-		return "redirect:/admin/detalleRoles";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminarRol (Model model, @PathVariable(name="id") int  codigo) {
+	public String eliminarRol (Model model,@PathVariable(name="id") int  codigo, RedirectAttributes attr) {
 		if (rolServ.eliminarRol(codigo) == 1)
-			model.addAttribute("mensaje", "rol eliminado");
+			attr.addFlashAttribute("mensajeExito", "Rol eliminado correctamente");
 		else
-			model.addAttribute("mensaje", "rol no eliminado");
+			attr.addFlashAttribute("mensajeError", "No se ha podido eliminar el rol");
 		
-		return "forward:/admin/roles";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/todos")
 	public String mostrarRoles(Model model) {
 		List<Rol> rol = rolServ.findAll();
 		model.addAttribute("listaRoles", rol);
-		return "/admin/listaRoles";
+		return "/usuarios/listaRoles";
 	}
 	
+	//este realmente no creo que lo vayamos a usar
 	@GetMapping("/detalle/{id}")
 	public String detalleRoles(Model model, @PathVariable(name="id") int codigo) {
 		Rol rol = rolServ.findById(codigo);

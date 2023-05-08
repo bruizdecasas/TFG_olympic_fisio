@@ -38,7 +38,7 @@ public class FamiliaController {
 	public String editarFamilia (Model model, @PathVariable(name="id") int  codigo) {
 		Familia familia = familiaServ.findById(codigo);
 		model.addAttribute("familia", familia);
-		return "/admin/editarFamilias";
+		return "/producto/editarFamilias";
 	}
 
 	@PostMapping("/editar")
