@@ -23,18 +23,15 @@
 					<tr>
 						
 						<td>${ ele.nombreProducto }</td>
-						<td>${ ele.precioProducto }</td>						
+						<td>${ ele.precio }</td>						
 						<td class="buffer-cell"></td>
-							<td><a href="/producto/detalle/${ ele.idProducto }">Ver detalle</a></td>
-						
-								
-						<sec:authorize access="hasAuthority('ROLE_USUARIO', 'ROLE_ADMIN')">
+						<sec:authorize access="hasAnyAuthority ('Cliente', 'Administrador')">
 							<td><a href="/producto/detalle/${ ele.idProducto }">Detalle</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAuthority('Administrador')">
 							<td><a href="/producto/editar/${ ele.idProducto }">Editar</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAuthority('Administrador')">
 							<td><a href="/producto/eliminar/${ ele.idProducto }">Eliminar</a></td>
 						</sec:authorize>
 					</tr>
@@ -42,7 +39,7 @@
 			</tbody>
 		</table>
 		<table class="default">
-					<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+					<sec:authorize access="hasAuthority('Administrador')">
 						<a class="btn-link" href="/producto/alta">Crear Producto</a>
 					</sec:authorize>
 			</table>

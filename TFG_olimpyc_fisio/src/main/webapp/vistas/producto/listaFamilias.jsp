@@ -28,13 +28,13 @@
 						<td>${ ele.nombreFamilia }</td>
 						<td>${ ele.descripcionFamilia }</td>
 						
-						<sec:authorize access="hasAnyAuthority('ROLE_ADMIN','ROLE_USUARIO')">
+						<sec:authorize access="hasAnyAuthority('Administrador','Cliente')">
 							<td><a href="/producto/productosFamilia/${ ele.idFamilia }">Ver productos</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAuthority('Administrador')">
 							<td><a href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAuthority('Administrador')">
 							<td><a href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
 						</sec:authorize>
 					</tr>
@@ -42,7 +42,7 @@
 			</tbody>
 			</table>
 			<table class="default">
-					<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+					<sec:authorize access="hasAuthority('Administrador')">
 						<a class="btn-link" href="/familia/alta">Crear Familia</a>
 					</sec:authorize>
 			</table>		
