@@ -23,29 +23,51 @@
 	</button>
 	<sec:csrfInput />
 		<header>
-			<nav class="main-nav">
-				<ul class="main-nav__items">
-						<li class="main-nav__item"><a href="/" class="btn-link">Inicio</a></li>				
-					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-						<li class="main-nav__item"><a class="btn-link" href="/rol/todos">Roles</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/usuario/todos">Lista de usuarios</a></li>						
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li class="main-nav__item"><a class="btn-link" href="/cita/todas">Citas</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/familia/todas">Familias</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/producto/todos">Lista de productos</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/usuario/misDatos">Mis Datos</a></li>		
-					</sec:authorize>	
-					<sec:authorize access="!isAuthenticated()">
-						<li class="main-nav__item"><a href="/entrar" class="btn-link">Entrar</a></li>	
-						<li class="main-nav__item"><a href="/altausuario" class="btn-link">Registro</a></li>		
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">	
-						<li class="main-nav__item"><a class="btn-link danger" href="/logout">Salir</a></li> 
-					</sec:authorize>
-					
-				</ul>
-			</nav>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<ul class="container-fluid">
+				<a class="navbar-brand" href="../resources/img/logo.png">OlympicFisio</a>
+    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      				<span class="navbar-toggler-icon"></span>
+    			</button>
+    			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    				<div class="navbar-nav">
+					  <ul class="navbar-nav flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link" aria-current="page" href="#">Inicio</a></li> 	
+						<li class="nav-item dropdown">
+                    		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       			Tratamientos y Servicios
+                    		</a>
+                      		<ul class="dropdown-menu">
+                         		<li><a class="dropdown-item" href="#">Fisioterapia</a></li>
+                         		<li> <hr class="dropdown-divider"> </li>
+                         		<li><a class="dropdown-item" href="#">Acupuntura</a></li>
+                         		<li><hr class="dropdown-divider"></li>
+                         		<li><a class="dropdown-item" href="#">Técnicas especiales</a></li>
+                       		</ul>
+                       	 </li>					
+        				 <li class="nav-item">  <a class="nav-link" href="#">Contacto</a>
+        				 <sec:authorize access="!isAuthenticated()">
+						  <li class="main-nav__item"><a href="/entrar" class="nav-link">Entrar</a></li>	
+						  <li class="main-nav__item"><a href="/altausuario" class="nav-link">Registro</a></li>		
+					     </sec:authorize>
+						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
+							<li class="main-nav__item"><a class="nav-link" href="/usuarios/detalleRoles">Roles</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/usuarios/detalleUsuarios">Lista de usuarios</a></li>						
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li class="main-nav__item"><a class="nav-link" href="/cita/todas">Citas</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/familia/todas">Familias</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/producto/todos">Lista de productos</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>		
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">	
+							<li class="main-nav__item"><a class="nav-link" href="/logout">Salir</a></li> 
+						</sec:authorize>
+					</ul>	
+				</div>
+			</div>
+			</ul>
+		</nav>
 		</header>		
 		<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
