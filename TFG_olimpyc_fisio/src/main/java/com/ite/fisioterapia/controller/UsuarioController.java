@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.ite.fisioterapia.entities.Rol;
 import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.RolService;
 import com.ite.fisioterapia.service.UsuarioService;
@@ -34,83 +34,98 @@ public class UsuarioController {
 	@Autowired private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/misDatos")
-	public String mostrardatos(Authentication aut, Model model, HttpSession misesion) {
-		
+	public String mostrardatos(Authentication aut, Model model, HttpSession misesion) {	
 		System.out.println("usuario : " + aut.getName());
 		Usuario usuario = usuarioServ.findByEmail(aut.getName());
         model.addAttribute("usuario", usuario);
-        return "/usuario/misDatos";
+        return "/usuarios/detalleUsuarios";
     }
-	@PostMapping("/misDatos")
-	public String mostrardatos() {
-		
-		return "usuario";
-	}
+
 	@GetMapping("/alta")
 	public String registrar(Model model) {
-	    model.addAttribute("usuario", new Usuario());
-	    return "/altaUsuario";
+		List<Rol> rol = roleServe.findAll();
+	    model.addAttribute("listaRol", rol);
+	    return "/usuarios/altaUsuario";
 	}
 	
 	@PostMapping("/alta")
-	public String registrarse(Usuario usuario, RedirectAttributes attr) {
+	public String registrarse(Usuario usuario, RedirectAttributes attr, int idRol) {
 		System.out.println(usuario);
+		
 		if (usuarioServ.findByEmail(usuario.getEmailUsuario()) != null) {
 			attr.addFlashAttribute("mensajeError", "Nombre de usuario ya existe");
-			return "/altausuario";
+			return "/usuarios/altaUsuario";
 		}
 	
 		usuario.setEnabled(1);
 		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+		Rol rol = roleServe.findById(idRol);
+		usuario.setRol(rol);
 		
-	
 		if (usuarioServ.altaUsuario(usuario) == 1) {
-			attr.addFlashAttribute("mensajeExito", "Registro completo con &eacute;xito");
-			return "redirect:/login";
+			attr.addFlashAttribute("mensajeExito", "Usuario creado correctamente");
+			return "redirect:/";
 		} else {
 			attr.addFlashAttribute("mensajeError", "Error al procesar el alta");
-			return "redirect:/altausuario";
+			return "redirect:/";
 		}
 
 	}
+	
+	@GetMapping ("/password/{id}")
+	public String cambiarPassword (Model model, @PathVariable(name="id") int  codigo) {
+		return "/usuarios/password";
+	}
+	
+	@PostMapping ("/password")
+	public String cambiarPassword (Model model) {
+		return "redirect:/";
+	}
+		
 	
 	@GetMapping("/editar/{id}")
 	public String editarUsuario (Model model, @PathVariable(name="id") int  codigo) {
 		Usuario usuario = usuarioServ.findById(codigo);
 		model.addAttribute("usuario", usuario);
-		return "forward:/admin/editarUsuario";
+		List<Rol> rol = roleServe.findAll();
+	    model.addAttribute("listaRol", rol);
+		return "/usuarios/editarUsuario";
 	}
 	
 	
 	@PostMapping("/editar")
-	public String editarUsuario(Usuario usuario, RedirectAttributes attr, Model model) {
+	public String editarUsuario(Usuario usuario, RedirectAttributes attr, Model model, int idRol) {
+		Rol rol = roleServe.findById(idRol);
+		usuario.setRol(rol);
 		if (usuarioServ.editarUsuario(usuario) == 1) 
-			model.addAttribute("mensajeExito", "Usuario editado correctamente");
+			attr.addFlashAttribute("mensajeExito", "Usuario editado correctamente");
 		else 
-			model.addAttribute("mensajeError", "No se ha podido editar el usuario");
-		return "/comunes/mensaje";
+			attr.addFlashAttribute("mensajeError", "Error al editar el usuario");;
+		return "redirect:/";
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminarUsuario (Model model, @PathVariable(name="id") int  codigo) {	
+	public String eliminarUsuario (Model model, @PathVariable(name="id") int  codigo, RedirectAttributes attr) {	
 		if (usuarioServ.eliminarUsuario(codigo) == 1)
-			model.addAttribute("mensaje", "usuario eliminado");
+			attr.addFlashAttribute("mensajeExito", "usuario eliminado");
 		else
-			model.addAttribute("mensaje", "usuario NO eliminado");
+			attr.addFlashAttribute("mensajeError", "usuario NO eliminado");
 		
-		return "forward:/admin/usuarios";	 
+		return "redirect:/";	 
 	}
 	
 	@GetMapping("/todos")
 	public String mostrarUsuarios(Model model) {
 		List<Usuario> usuario = usuarioServ.findAll();
 		model.addAttribute("listaUsuarios", usuario);
-		return "/admin/listaUsuarios";
+		return "/usuarios/listaUsuarios";
 	}
 	
 	@GetMapping("/detalle/{id}")
-	public String detalleUsuario() {		
-		return "/admin/detalleUsuarios";
+	public String detalleUsuario(Model model, @PathVariable(name="id") int  codigo) {
+		Usuario usuario = usuarioServ.findById(codigo);
+        model.addAttribute("usuario", usuario);
+		return "/usuarios/detalleUsuarios";
 	}
 	
 	@InitBinder
