@@ -16,30 +16,25 @@
 </style>
 <body>
 	<button type="button">
-		<sec:authorize access="hasAuthority('Especialista')">Eres el fisioterapeuta:</sec:authorize>
-		<sec:authorize access="hasAuthority('Administrador')">Eres el administrador:</sec:authorize>
-		<sec:authorize access="hasAuthority('Cliente')">Eres el cliente:</sec:authorize>
+		<sec:authorize access="hasAuthority('Especialista')">Fisioterapeuta: </sec:authorize>
+		<sec:authorize access="hasAuthority('Administrador')">Administrador: </sec:authorize>
+		<sec:authorize access="hasAuthority('Cliente')">Cliente: </sec:authorize>
 		<sec:authentication property="name"/>
 	</button>
 	<sec:csrfInput />
 		<header>
 			<nav class="main-nav">
 				<ul class="main-nav__items">
-					<sec:authorize access="!isAuthenticated()">
 						<li class="main-nav__item"><a href="/" class="btn-link">Inicio</a></li>				
+					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
+						<li class="main-nav__item"><a class="btn-link" href="/rol/todos">Roles</a></li>
+						<li class="main-nav__item"><a class="btn-link" href="/usuario/todos">Lista de usuarios</a></li>						
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<li class="main-nav__item"><a class="btn-link" href="/admin/roles">Roles</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/admin/usuarios">Clientes</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/admin/pedidos">Pedidos</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/user/familias">Familias</a></li>
-					</sec:authorize>	
-					<sec:authorize access="isAuthenticated()">						
-						<li class="main-nav__item"><a class="btn-link" href="/user/productos">Lista de productos</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li class="main-nav__item"><a class="btn-link" href="/user/misDatos">Mis Datos</a></li>
-						<li class="main-nav__item"><a class="btn-link" href="/carrito/miCarrito">Carrito</a></li>		
+						<li class="main-nav__item"><a class="btn-link" href="/cita/todas">Citas</a></li>
+						<li class="main-nav__item"><a class="btn-link" href="/familia/todas">Familias</a></li>
+						<li class="main-nav__item"><a class="btn-link" href="/producto/todos">Lista de productos</a></li>
+						<li class="main-nav__item"><a class="btn-link" href="/usuario/misDatos">Mis Datos</a></li>		
 					</sec:authorize>	
 					<sec:authorize access="!isAuthenticated()">
 						<li class="main-nav__item"><a href="/entrar" class="btn-link">Entrar</a></li>	
@@ -48,8 +43,13 @@
 					<sec:authorize access="isAuthenticated()">	
 						<li class="main-nav__item"><a class="btn-link danger" href="/logout">Salir</a></li> 
 					</sec:authorize>
+					
 				</ul>
 			</nav>
-		</header>
+		</header>		
+		<footer>
+				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
+				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>
+		</footer>
 </body>
 </html>
