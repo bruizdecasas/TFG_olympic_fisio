@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" data-crossorigin="anonymous">
 </head>
 <style>
 .main-nav__items li{
@@ -15,12 +17,13 @@
 }
 </style>
 <body>
-	<button type="button">
+	<!--<button type="button">
 		<sec:authorize access="hasAuthority('Especialista')">Fisioterapeuta: </sec:authorize>
 		<sec:authorize access="hasAuthority('Administrador')">Administrador: </sec:authorize>
 		<sec:authorize access="hasAuthority('Cliente')">Cliente: </sec:authorize>
 		<sec:authentication property="name"/>
-	</button>
+	</button>-->
+	<p>Bienvenido <sec:authentication property="name"/></p>
 	<sec:csrfInput />
 		<header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,8 +54,8 @@
 						  <li class="main-nav__item"><a href="/altausuario" class="nav-link">Registro</a></li>		
 					     </sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-							<li class="main-nav__item"><a class="nav-link" href="/usuarios/detalleRoles">Roles</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/usuarios/detalleUsuarios">Lista de usuarios</a></li>						
+							<li class="main-nav__item"><a class="nav-link" href="/rol/todos">Roles</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/usuario/todos">Lista de usuarios</a></li>						
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
 							<li class="main-nav__item"><a class="nav-link" href="/cita/todas">Citas</a></li>
@@ -73,5 +76,8 @@
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
 				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>
 		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+		data-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" data-crossorigin="anonymous"></script>
 </body>
 </html>
+
