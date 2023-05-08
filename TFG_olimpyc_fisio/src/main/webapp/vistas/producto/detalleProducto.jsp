@@ -24,6 +24,7 @@
 					<th>Nombre</th>
 					<th>Descripcion del producto</th>
 					<th>Precio</th>
+					<th>Familia</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,10 +33,12 @@
 					System.out.println (producto.idProducto);
 					<td>${ producto.nombreProducto }</td>
 					System.out.println (producto.nombreProducto);
+					<td>${ producto.descripcion }</td>
 					<td>${ producto.precio }&euro;</td>
 					System.out.println (producto.precio);
-					<td>${ producto.Familia.nombreFamilia }</td>
-					System.out.println (producto.Familia.nombreFamilia);
+					<td>${ producto.familia.nombreFamilia }</td>
+					
+			
 				</tr>
 			</tbody>
 		</table>

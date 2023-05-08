@@ -25,13 +25,13 @@
 			<fieldset class="default">
 				<fieldset class="default">
 					<label for="nombreProducto">Nombre</label>
-					<input type="text" name="nombreProducto" id="nombre_producto" required />
-					<label for="descripcionProducto">Descripcion</label>
-					<input type="text" name="descripcionProducto" id="descripcion_producto" required />		
+					<input type="text" name="nombreProducto" id="nombreProducto" required />
+					<label for="descripcion">Descripción</label>
+					<input type="text" name="descripcion" id="descripcion" required />		
 				</fieldset>		
 				<fieldset class="default">
-					<label for="precioProducto">Precio</label>
-					<input type="number" step="0.5" min="0" name="precioProducto" id="precio_producto" required />
+					<label for="precio">Precio</label>
+					<input type="number" step="0.5" min="0" name="precio" id="precio" required />
 					<select name="idFamilia" id="id_familia" required>
 						<c:forEach var="ele" items="${ listaFamilia }">
 							<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
