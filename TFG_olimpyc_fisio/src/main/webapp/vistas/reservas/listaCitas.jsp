@@ -24,16 +24,16 @@
 						
 						<td>${ ele.fechaCita }</td>
 						<td>${ ele.horaCita }</td>	
-						<td>${ ele.especialista.getNombre }</td>					
+						<td>${ ele.usuario.nombreUsuario }</td>					
 						<td class="buffer-cell"></td>		
 								
-						<sec:authorize access="hasAuthority('ROLE_USUARIO', 'ROLE_ADMIN')">
+						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista', 'Cliente')">
 							<td><a href="/cita/detalle/${ ele.idCita }">Detalle</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
 							<td><a href="/cita/editar/${ ele.idCita }">Editar</a></td>
 						</sec:authorize>
-						<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
 							<td><a href="/cita/eliminar/${ ele.idCita }">Eliminar</a></td>
 						</sec:authorize>
 					</tr>
