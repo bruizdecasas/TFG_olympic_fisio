@@ -35,17 +35,17 @@ data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuC
     			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     				<div class="navbar-nav">
 					  <ul class="navbar-nav flex-grow-1 pe-3">
-						<li class="nav-item"><a class="nav-link" aria-current="page" href="#">Inicio</a></li> 	
+						<li class="nav-item"><a class="nav-link" aria-current="page" href="/">Inicio</a></li> 	
 						<li class="nav-item dropdown">
                     		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                        			Tratamientos y Servicios
                     		</a>
                       		<ul class="dropdown-menu">
-                         		<li><a class="dropdown-item" href="#">Fisioterapia</a></li>
+                         		<li><a class="dropdown-item" href="/producto/productosFamilia/1">Fisioterapia</a></li>
                          		<li> <hr class="dropdown-divider"> </li>
-                         		<li><a class="dropdown-item" href="#">Acupuntura</a></li>
+                         		<li><a class="dropdown-item" href="/producto/productosFamilia/2">Acupuntura</a></li>
                          		<li><hr class="dropdown-divider"></li>
-                         		<li><a class="dropdown-item" href="#">Técnicas especiales</a></li>
+                         		<li><a class="dropdown-item" href="/producto/productosFamilia/3">Técnicas especiales</a></li>
                        		</ul>
                        	 </li>					
         				 <li class="nav-item">  <a class="nav-link" href="#">Contacto</a>
@@ -80,4 +80,3 @@ data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuC
 		data-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" data-crossorigin="anonymous"></script>
 </body>
 </html>
-

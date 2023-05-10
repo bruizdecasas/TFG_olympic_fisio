@@ -14,7 +14,7 @@
 	<jsp:include page="../menu.jsp"></jsp:include>
 		<table>
 			<thead>
-				<tr><th>Fecha</th><th>hora</th><th>Especialista</th></th><th class="buffer-cell"></th>
+				<tr><th>Fecha</th><th>hora</th><th>Especialista</th><th>Observaciones</th><th class="buffer-cell"></th>
 				<th colspan="10">Opciones</th></tr>
 				
 			</thead>
@@ -23,11 +23,13 @@
 					<tr>
 						
 						<td>${ ele.fechaCita }</td>
-						<td>${ ele.horaCita }</td>	
-						<td>${ ele.usuario.nombreUsuario }</td>					
+						<td>${ ele.horaCita }</td>
+						<td>${ ele.usuario.nombreUsuario }</td>	
+								
 						<td class="buffer-cell"></td>		
 								
-						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista', 'Cliente')">
+						<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
+							<td><a href="/cita/reserva/${ ele.idCita }">Reservar</a></td>
 							<td><a href="/cita/detalle/${ ele.idCita }">Detalle</a></td>
 						</sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
@@ -41,7 +43,7 @@
 			</tbody>
 		</table>
 		<table class="default">
-					<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
 						<a class="btn-link" href="/cita/alta">Crear Cita</a>
 					</sec:authorize>
 			</table>

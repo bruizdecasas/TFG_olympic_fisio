@@ -25,7 +25,7 @@
 				<table class="table table-striped table-sm" >
 				<c:forEach var="ele" items="${listaProductos}" >
 					<tr>
-						<td>${ele.nombre }</td>
+						<td>${ele.nombreProducto }</td>
 					</tr>
 				</c:forEach>
 				</table>

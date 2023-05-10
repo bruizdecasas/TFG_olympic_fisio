@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import com.ite.fisioterapia.entities.Cita;
+import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.CitaService;
+import com.ite.fisioterapia.service.UsuarioService;
 
+/*
+ * This is the controller relative to all operations performed around Citas
+ */
 @Controller
 @RequestMapping("/cita")
 public class CitaController {
 	
-	@Autowired CitaService citaserv;
+	@Autowired private CitaService citaserv;
+	@Autowired private UsuarioService usuarioServ;
 	
+	/*
+	 * Returns a list of all the Citas in the database.
+	 * @author: Benjamín Ruiz
+	 * @param model the Model object to be populated with the list of Citas
+	 * @return the name of the view for displaying the list of Citas
+	 */
 	@GetMapping("/todas")
 	public String mostrarCitas (Model model) {
 		List<Cita> cita = citaserv.findAll();
@@ -30,6 +43,13 @@ public class CitaController {
 		return "/reservas/listaCitas";
 	}
 	
+	/*
+	 * Retrieves the details of a specific Cita using a GET request.
+	 * @author: Benjamín Ruiz
+	 * @param model the Model object to which the Cita attribute will be added.
+	 * @param codigo the ID of the Cita to retrieve.
+	 * @return the name of the view that displays the Cita details.
+	 */	
 	@GetMapping("/detalle/{id}")
 	public String detalleCita(Model model, @PathVariable(name="id") int codigo) {
 		Cita cita = citaserv.findById(codigo);
@@ -37,6 +57,13 @@ public class CitaController {
 		return "/reservas/detalleCita";
 	}	
 	
+	/*
+	 * Retrieves the Cita data to be edited in the form.
+	 * @author: Benjamín Ruiz
+	 * @param model the model to be used to add the Cita to be displayed in the form
+	 * @param codigo the ID of the Cita to be edited
+	 * @return the path of the view to display the form for editing the Cita data
+	 */
 	@GetMapping("/editar/{id}")
 	public String editarCita (Model model, @PathVariable(name="id") int  codigo) {
 		Cita cita = citaserv.findById(codigo);
@@ -44,6 +71,15 @@ public class CitaController {
 		return "/reservas/editarCita";
 	}
 
+
+	/*
+	 * Handles the POST request to edit an existing Cita.
+	 * @author: Benjamín Ruiz
+	 * @param cita The Cita to be edited.
+	 * @param model Object that holds the attributes to be used in the view.
+	 * @param attr Object that contains attributes for the redirect page.
+	 * @return A String representing the redirect page URL.
+	 */
 	@PostMapping("/editar")
 	public String editarCita (Cita cita, RedirectAttributes attr, Model model) {
 		if (citaserv.editarCita(cita) == 1) 
@@ -55,20 +91,60 @@ public class CitaController {
 		return "redirect:/";
 	}
 	
+	/*
+	 * Displays the registration form for a new Cita, It retrieves the logged in user's information and adds it to the model.
+	 * @author: Benjamín Ruiz
+	 * @param aut the authentication object containing the Usuario´s credentials
+	 * @param model the model object to be used in the view
+	 * @param misesion the HttpSession object for the current user session
+	 * @return the name of the view to display the Cita creation form
+	 */	
 	@GetMapping ("/alta")
-	public String altaCita() {
+	public String altaCita(Authentication aut, Model model, HttpSession misesion) {
+		Usuario usuario = usuarioServ.findByEmail(aut.getName());
+		model.addAttribute("usuario", usuario);
 		return "/reservas/altaCita";
 	}
-	
+		
+	/*
+	 * This method handles the HTTP POST request for creating a new Cita.It receives a Cita object from the request's body, 
+	 * tries to add it to the database via the citaserv service,and returns a redirect to the homepage with a success or error message.
+	 * @author: Benjamín Ruiz
+	 * @param cita the Cita object representing the new Cita to be added
+	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
+	 * @param model the Model object used to add attributes to the view
+	 * @return a String representing the URL to be redirected to after the POST request is processed
+	 */	
 	@PostMapping("/alta")
 	public String altaCita (Cita cita, RedirectAttributes attr, Model model, HttpSession session) {
 		if (citaserv.altaCita(cita) == 1) 
-			model.addAttribute("mensajeExito", "Cita dada de alta correctamente");
+			attr.addFlashAttribute("mensajeExito", "Cita dada de alta correctamente");
 		else 
-			model.addAttribute("mensajeError", "Error al dar de alta la cita");
+			attr.addFlashAttribute("mensajeError", "Error al dar de alta la cita");
 		return "redirect:/";
 	}
 	
+	/**
+	 * Handles a GET request to reserve a specific appointment identified by the given "id" parameter.
+	 * If the appointment does not exist or has already been reserved, a message is added to the redirect
+	 * attributes and the user is redirected to the main page. Otherwise, the appointment is marked as reserved
+	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
+	 *
+	 * @param codigo The ID of the appointment to be reserved.
+	 * @param attr The redirect attributes used to add success or error messages.
+	 * @return A redirect to the main page.
+	 */
+	/*
+	 * Handles a GET request to reserve a specific Cita identified by the given "id" parameter.
+	 * If the Cita does not exist or has already been reserved, a message is added to the redirect
+	 * attributes and the user is redirected to the main page. Otherwise, the Cita is marked as reserved
+	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
+	 * @author: Benjamín Ruiz
+	 * @param cita the Cita object representing the new Cita to be reserved
+	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
+	 * @param model the Model object used to add attributes to the view
+	 * @return a String representing the URL to be redirected
+	 */	
 	@GetMapping("/reserva/{id}")
 	public String reservarCita(@PathVariable(name="id") int codigo, RedirectAttributes attr) {
 	    Cita cita = citaserv.findById(codigo);
@@ -86,12 +162,20 @@ public class CitaController {
 	    }
 	}
 	
+	/*
+	 * Handles a GET requests to delete a Cita with the given ID.
+	 * @author: Benjamín Ruiz
+	 * @param codigo the ID of the Cita to be deleted.
+	 * @param model Object that holds the attributes to be used in the view.
+	 * @param attr Object that contains attributes for the redirect page.
+	 * @return A String representing the redirect page URL.
+	 */
 	@GetMapping("/eliminar/{id}")
-	public String eliminar(Model model, @PathVariable(name="id") int  codigo) {
+	public String eliminar(Model model, @PathVariable(name="id") int  codigo, RedirectAttributes attr) {
 		if (citaserv.eliminarCita(codigo) == 1)
-			model.addAttribute("mensajeExito", "producto eliminado");
+			attr.addFlashAttribute("mensajeExito", "producto eliminado");
 		else
-			model.addAttribute("mensajeError", "producto no eliminado");
+			attr.addFlashAttribute("mensajeError", "producto no eliminado");
 		return "redirect:/";	 
 	}
 

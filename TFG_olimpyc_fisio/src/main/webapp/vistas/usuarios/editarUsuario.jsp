@@ -19,7 +19,6 @@
 		<h1>Editar al usuario ${usuario.nombreUsuario } ${usuario.apellidosUsuario }</h1>
 		<a class="btn-link" href="/">Volver</a>
 		<form action="/" method="post">
-			
 			<fieldset class="full-form">
 				<legend>Introduzca los nuevos datos</legend>
 			<fieldset class="default">
@@ -59,7 +58,7 @@
 					</select>	
 					</sec:authorize>
 				</fieldset>
-				<button type="submit" class="btn-link">Alta de usuario</button>
+				<button type="submit" class="btn-link">Editar usuario</button>
 			</fieldset>
 		</fieldset>
 		</form>

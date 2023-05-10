@@ -25,8 +25,8 @@
 				<legend>Introduce los datos de la cita</legend>
 			<fieldset class="default">
 				<fieldset class="default">
-					<label for="fecha">Fecha</label>
-					<input type="date" name="fecha" id="fechaCita" required />
+					<label for="fechaCita">Fecha</label>
+					<input type="date" name="fechaCita" id="fechaCita" required />
 					<label for="hora">Hora</label>
 					<input type="number" step="0.5" min="0" name="hora" id="horaCita" required />		
 				</fieldset>		
