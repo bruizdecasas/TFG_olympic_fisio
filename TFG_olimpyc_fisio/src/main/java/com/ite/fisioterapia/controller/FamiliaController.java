@@ -15,7 +15,7 @@ import com.ite.fisioterapia.entities.Familia;
 import com.ite.fisioterapia.service.FamiliaService;
 
 
-/*
+/**
  * This is the controller relative to all operations performed around Familia
  */
 @RequestMapping("/familia")
@@ -24,7 +24,7 @@ public class FamiliaController {
 	
 	@Autowired private FamiliaService familiaServ;
 
-	/*
+	/**
 	 * Displays the registration form for a new Familia
 	 * @author: Benjamín Ruiz
 	 * @return the name of the view for registering a new Familia .
@@ -34,7 +34,7 @@ public class FamiliaController {
 		return "/producto/altaFamilia";
 	}
 	
-	/*
+	/**
 	 * This method handles the HTTP POST request for creating a new Familia.It receives a Familia object from the request's body, 
 	 * tries to add it to the database via the familiaServ service,and returns a redirect to the homepage with a success or error message.
 	 * @author: Benjamín Ruiz
@@ -52,7 +52,7 @@ public class FamiliaController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Retrieves the Familia data to be edited in the form.
 	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Familia to be displayed in the form
@@ -66,7 +66,7 @@ public class FamiliaController {
 		return "/producto/editarFamilias";
 	}
 
-	/*
+	/**
 	 * Handles the POST request to edit an existing Cita.
 	 * @author: Benjamín Ruiz
 	 * @param familia The Familia to be edited.
@@ -85,7 +85,7 @@ public class FamiliaController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Handles a GET requests to delete a Familia with the given ID.
 	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Familia to be deleted.
@@ -104,7 +104,7 @@ public class FamiliaController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Returns a list of all the Familias in the database.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of families

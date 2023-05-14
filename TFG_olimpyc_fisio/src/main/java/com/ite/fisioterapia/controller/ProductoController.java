@@ -17,7 +17,7 @@ import com.ite.fisioterapia.service.FamiliaService;
 import com.ite.fisioterapia.service.ProductoService;
 
 
-/*
+/**
  * This is the controller relative to all operations performed around Productos
  */
 @RequestMapping ("/producto")
@@ -27,7 +27,7 @@ public class ProductoController {
 	@Autowired private ProductoService productoServ;
 	@Autowired private FamiliaService familiaServ;
 	
-	/*
+	/**
 	 * Displays the registration form for a new Producto and adds a list of Familias to the model.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Familia attribute will be added.
@@ -40,7 +40,7 @@ public class ProductoController {
 	    return "/producto/altaProducto";
 			}
 	
-	/*
+	/**
 	 * This method handles the HTTP POST request for creating a new Producto.It receives a Producto object from the request's body, 
 	 * tries to add it to the database via the productoServ service,and returns a redirect to the homepage with a success or error message.
 	 * @author: Benjamín Ruiz
@@ -61,7 +61,7 @@ public class ProductoController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Retrieves the Producto data to be edited and the list of available Familias to be displayed in the form.
 	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Producto and Familia attributes to be displayed in the form
@@ -77,7 +77,7 @@ public class ProductoController {
 	    return "/producto/editarProducto";
 			}	
 	
-	/*
+	/**
 	 * Handles the POST request to edit an existing Producto.
 	 * @author: Benjamín Ruiz
 	 * @param producto The Producto to be edited.
@@ -97,7 +97,7 @@ public class ProductoController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Handles a GET requests to delete a Producto with the given ID.
 	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Producto to be deleted.
@@ -115,7 +115,7 @@ public class ProductoController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Retrieves the details of a specific Producto using a GET request.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Producto attribute will be added.
@@ -129,7 +129,7 @@ public class ProductoController {
 		return "/producto/detalleProducto";	 		
 	}
 	
-	/*
+	/**
 	 * Returns a list of all the Productos in the database.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Productos
@@ -142,7 +142,7 @@ public class ProductoController {
 		return "/producto/listaProducto";
 	}
 	
-	/*
+	/**
 	 * Returns a list of all the Productos in the database that belong to a certain family, determined by the codigo.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Productos

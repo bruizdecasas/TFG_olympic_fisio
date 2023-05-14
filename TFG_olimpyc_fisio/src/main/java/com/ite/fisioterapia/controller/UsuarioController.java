@@ -25,7 +25,7 @@ import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.RolService;
 import com.ite.fisioterapia.service.UsuarioService;
 
-/*
+/**
  * This is the controller relative to all operations performed around Usuarios
  */
 @RequestMapping("/usuario")
@@ -36,7 +36,7 @@ public class UsuarioController {
 	@Autowired private RolService roleServe;
 	@Autowired private PasswordEncoder passwordEncoder;
 	
-	/*
+	/**
 	 * Retrieves the details of a specific Usuario using a GET request.
 	 * @author: Benjamín Ruiz
 	 * @param aut the Authentication represents the authenticated user
@@ -53,7 +53,7 @@ public class UsuarioController {
     }
 
 
-	/*
+	/**
 	 * Displays the registration form for a new Usuario and adds a list of Roles to the model.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Rol List attribute will be added.
@@ -66,7 +66,7 @@ public class UsuarioController {
 	    return "/usuarios/altaUsuario";
 	}
 	
-	/*
+	/**
 	 * This method handles the HTTP POST request for creating a new Usuario.It receives a Usuario object from the request's body, 
 	 * tries to add it to the database via the usuarioServ service,and returns a redirect to the homepage with a success or error message.
 	 * @author: Benjamín Ruiz
@@ -105,7 +105,7 @@ public class UsuarioController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Retrieves the Usuario data to be edited and the list of available Roles to be displayed in the form.
 	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Usuario and Rol attributes to be displayed in the form
@@ -121,7 +121,7 @@ public class UsuarioController {
 		return "/usuarios/editarUsuario";
 	}
 	
-	/*
+	/**
 	 * Handles the POST request to edit an existing Usuario.
 	 * @author: Benjamín Ruiz
 	 * @param usuario The Usuario to be edited.
@@ -141,7 +141,7 @@ public class UsuarioController {
 		return "redirect:/";
 	}
 
-	/*
+	/**
 	 * Handles a GET requests to delete a Usuario with the given ID.
 	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Usuario to be deleted.
@@ -159,7 +159,7 @@ public class UsuarioController {
 		return "redirect:/";	 
 	}
 	
-	/*
+	/**
 	 * Returns a list of all the Usuarios in the database.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Usuarios
@@ -172,7 +172,7 @@ public class UsuarioController {
 		return "/usuarios/listaUsuarios";
 	}
 	
-	/*
+	/**
 	 * Retrieves the details of a specific Usuario using a GET request.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Usuario attribute will be added.
@@ -186,7 +186,7 @@ public class UsuarioController {
 		return "/usuarios/detalleUsuarios";
 	}
 	
-	/*
+	/**
 	 * This custom editor will parse incoming date strings into Date objects and format Date objects into strings in the specified format..
 	 * @param webDataBinder the WebDataBinder allow binding of dates in the specified format.
 	 */	

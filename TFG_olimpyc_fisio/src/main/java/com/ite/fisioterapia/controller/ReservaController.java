@@ -15,7 +15,7 @@ import com.ite.fisioterapia.entities.Cita;
 import com.ite.fisioterapia.entities.Reserva;
 import com.ite.fisioterapia.service.ReservaService;
 
-/*
+/**
  * This is the controller relative to all operations performed around Reservas
  */
 @Controller
@@ -24,7 +24,7 @@ public class ReservaController {
 	
 	@Autowired ReservaService reserserv;
 	
-	/*
+	/**
 	 * Returns a list of all the Reservas in the database.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Reservas
@@ -37,7 +37,7 @@ public class ReservaController {
 		return "/admin/listaUsuarios";
 	}
 	
-	/*
+	/**
 	 * Retrieves the details of a specific Reserva using a GET request.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Reserva attribute will be added.
@@ -51,7 +51,7 @@ public class ReservaController {
 		return "/admin/detalleUsuarios";
 	}	
 	
-	/*
+	/**
 	 * Retrieves the Reserva data to be edited in the form.
 	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Reserva to be displayed in the form
@@ -65,7 +65,7 @@ public class ReservaController {
 		return "/admin/editarFamilias";
 	}
 
-	/*
+	/**
 	 * Handles the POST request to edit an existing Reserva.
 	 * @author: Benjamín Ruiz
 	 * @param reserva The Reserva to be edited.
@@ -84,7 +84,7 @@ public class ReservaController {
 		return "/comunes/mensaje";
 	}
 	
-	/*
+	/**
 	 * Displays the registration form for a new Reserva 
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Reserva attribute will be added.
@@ -95,7 +95,7 @@ public class ReservaController {
 		return "/admin/altaFamilia";
 	}
 	
-	/*
+	/**
 	 * This method handles the HTTP POST request for creating a new Reserva.It receives a Reserva object from the request's body, 
 	 * tries to add it to the database via the reserserv service,and returns a redirect to the homepage with a success or error message.
 	 * @author: Benjamín Ruiz
@@ -124,7 +124,7 @@ public class ReservaController {
 		return "/comunes/mensaje";
 	}
 	
-	/*
+	/**
 	 * Handles a GET requests to delete a Reserva with the given ID.
 	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Reserva to be deleted.

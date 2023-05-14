@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ite.fisioterapia.entities.Rol;
 import com.ite.fisioterapia.service.RolService;
 
-/*
+/**
  * This is the controller relative to all operations performed around Roles
  */
 @RequestMapping("/rol")
@@ -24,7 +24,7 @@ public class RolController {
 	
 	@Autowired private RolService rolServ;
 	
-	/*
+	/**
 	 * Displays the registration form for a new Rol
 	 * @author: Benjamín Ruiz
 	 * @return the name of the view for registering a new Rol .
@@ -34,7 +34,7 @@ public class RolController {
 		return "/usuarios/altaRol";
 	}
 	
-	/*
+	/**
 	 * This method handles the HTTP POST request for creating a new Rol.It receives a Rol object from the request's body, 
 	 * tries to add it to the database via the rolServ service,and returns a redirect to the homepage with a success or error message.
 	 * @author: Benjamín Ruiz
@@ -51,7 +51,7 @@ public class RolController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Retrieves the Rol data to be edited in the form.
 	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Rol to be displayed in the form
@@ -65,7 +65,7 @@ public class RolController {
 		return "/usuarios/editarRol";
 	}
 
-	/*
+	/**
 	 * Handles the POST request to edit an existing Rol.
 	 * @author: Benjamín Ruiz
 	 * @param rol The Rol to be edited.
@@ -82,7 +82,7 @@ public class RolController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Handles a GET requests to delete a Rol with the given ID.
 	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Rol to be deleted.
@@ -100,7 +100,7 @@ public class RolController {
 		return "redirect:/";
 	}
 	
-	/*
+	/**
 	 * Returns a list of all the Roles in the database.
 	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Roles
