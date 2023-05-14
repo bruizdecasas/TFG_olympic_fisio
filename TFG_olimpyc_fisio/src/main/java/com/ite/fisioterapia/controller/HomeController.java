@@ -3,22 +3,20 @@ package com.ite.fisioterapia.controller;
 import java.util.List;
 
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ite.fisioterapia.entities.Producto;
-import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.ProductoService;
 import com.ite.fisioterapia.service.RolService;
 import com.ite.fisioterapia.service.UsuarioService;
 
 
-
+/**
+ * This is the controller to redirect to the home or index page.
+ */
 @Controller
 public class HomeController {
 	@Autowired
@@ -28,21 +26,16 @@ public class HomeController {
 	@Autowired
 	RolService rolServe;
 	
+/**
+ * Method to navigate to the home page whether the user is logged in or not.	
+ * @param model Object that holds the attributes to be used in the view.
+ * @return A String representing the redirect page URL.
+ */
 	@GetMapping("/")
 	public String home(Model model) {			
 		List<Producto> lista = prodServe.findAll();		
 		model.addAttribute("listaProductos", lista);		
 		return "/index";		 		
 	}
-	
-	@GetMapping("/registrado")
-	public String procesarLogin(Authentication aut, Model model, HttpSession misesion) {	
-		Usuario usuario = userServe.findByEmail(aut.getName());
-		System.out.println("LOGIN ID ====== "+usuario.getIdUsuario());
-		misesion.setAttribute("IDusuario", usuario.getIdUsuario());
-		return "/index";
-	}
-
-
 	
 }
