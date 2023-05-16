@@ -15,9 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ite.fisioterapia.entities.Rol;
@@ -25,7 +27,7 @@ import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.RolService;
 import com.ite.fisioterapia.service.UsuarioService;
 
-/**
+/*
  * This is the controller relative to all operations performed around Usuarios
  */
 @RequestMapping("/usuario")
@@ -76,33 +78,44 @@ public class UsuarioController {
 	 * @return a String representing the URL to be redirected to after the POST request is processed
 	 */	
 	@PostMapping("/alta")
-	public String registrarse(Usuario usuario, RedirectAttributes attr, int idRol) {
-		System.out.println(usuario);		
-		if (usuarioServ.findByEmail(usuario.getEmailUsuario()) != null) {
-			attr.addFlashAttribute("mensajeError", "Nombre de usuario ya existe");
-			return "/usuarios/altaUsuario";
-		}	
-		usuario.setEnabled(1);
-		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-		Rol rol = roleServe.findById(idRol);
-		usuario.setRol(rol);		
-		if (usuarioServ.altaUsuario(usuario) == 1) {
-			attr.addFlashAttribute("mensajeExito", "Usuario creado correctamente");
-			return "redirect:/";
-		} else {
-			attr.addFlashAttribute("mensajeError", "Error al procesar el alta");
-			return "redirect:/";
-		}
+	public String registrarse(Usuario usuario, RedirectAttributes attr, Integer idRol) {
+	    if (usuarioServ.findByEmail(usuario.getEmailUsuario()) != null) {
+	        attr.addFlashAttribute("mensajeError", "Nombre de usuario ya existe");
+	        return "redirect:/usuarios/altaUsuario";
+	    }
+	    if (idRol != null) {
+	        Rol rol = roleServe.findById(idRol);
+	        usuario.setRol(rol);
+	    } else {
+	    	usuario.setRol(roleServe.findById(3));
+	    }
+	    usuario.setEnabled(1);
+	    usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+	    if (usuarioServ.altaUsuario(usuario) == 1) {
+	        attr.addFlashAttribute("mensajeExito", "Usuario creado correctamente");
+	        return "redirect:/";
+	    } else {
+	        attr.addFlashAttribute("mensajeError", "Error al procesar el alta");
+	        return "redirect:/";
+	    }
 	}
 	//TO DO
 	@GetMapping ("/password/{id}")
 	public String cambiarPassword (Model model, @PathVariable(name="id") int  codigo) {
+		Usuario usuario = usuarioServ.findById(codigo);
+		model.addAttribute("usuario", usuario);
 		return "/usuarios/password";
 	}
 	//TO DO
 	@PostMapping ("/password")
-	public String cambiarPassword (Model model) {
-		return "redirect:/";
+	public String cambiarPassword (@ModelAttribute("usuario") Usuario usuario,@RequestParam("nuevaPassword") String nuevaPassword, RedirectAttributes attr) {
+	    usuario.setPassword(passwordEncoder.encode(nuevaPassword));	    
+	    if (usuarioServ.editarUsuario(usuario) == 1) {
+	        attr.addFlashAttribute("mensajeExito", "Contraseña cambiada correctamente");
+	    } else {
+	        attr.addFlashAttribute("mensajeError", "Error al cambiar la contraseña");
+	    }	    
+	    return "redirect:/";
 	}
 	
 	/**
@@ -132,8 +145,8 @@ public class UsuarioController {
 	 */
 	@PostMapping("/editar")
 	public String editarUsuario(Usuario usuario, RedirectAttributes attr, Model model, int idRol) {
-		//Rol rol = roleServe.findById(idRol);
-		//usuario.setRol(rol);
+		Rol rol = roleServe.findById(idRol);
+		usuario.setRol(rol);
 		if (usuarioServ.editarUsuario(usuario) == 1) 
 			attr.addFlashAttribute("mensajeExito", "Usuario editado correctamente");
 		else 
@@ -170,6 +183,19 @@ public class UsuarioController {
 		List<Usuario> usuario = usuarioServ.findAll();
 		model.addAttribute("listaUsuarios", usuario);
 		return "/usuarios/listaUsuarios";
+	}
+	
+	/**
+	 * Returns a list of all the Usuarios in the database filtered by a certain role.
+	 * @author: Benjamín Ruiz
+	 * @param model the Model object to be populated with the list of Usuarios
+	 * @return the name of the view for displaying the list of Usuarios
+	 */
+	@GetMapping("/rol/{id}")
+	public String mostrarUsuariosPorRol(Model model, @PathVariable(name = "id") int codigo) {
+	    List<Usuario> usuario = usuarioServ.findByRol(codigo);
+	    model.addAttribute("listaUsuarios", usuario);
+	    return "/usuarios/listaUsuarios";
 	}
 	
 	/**
