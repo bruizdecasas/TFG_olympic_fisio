@@ -7,43 +7,43 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Alta Producto</title>
 		<link href="<c:url value='/css/style.css' />" rel="stylesheet">
 		<link href="<c:url value='/css/table.css' />" rel="stylesheet">
-		<link href="<c:url value='/css/form.css' />" rel="stylesheet">
 	</head>
 	<body>
-		<jsp:include page="../menu.jsp"></jsp:include>
-		<main>
-		<sec:csrfInput />
-		<h1>Dar de alta un nuevo producto</h1>
-		<a class="btn-link" href="/">Volver</a>
-		<form action="/producto/alta/" method="post">
-			
-			<fieldset class="full-form">
-				<legend>Introduce los datos del nuevo producto</legend>
-			<fieldset class="default">
-				<fieldset class="default">
-					<label for="nombreProducto">Nombre</label>
-					<input type="text" name="nombreProducto" id="nombreProducto" required />
-					<label for="descripcion">Descripción</label>
-					<input type="text" name="descripcion" id="descripcion" required />		
-				</fieldset>		
-				<fieldset class="default">
-					<label for="precio">Precio</label>
-					<input type="number" step="0.5" min="0" name="precio" id="precio" required />
-					<select name="idFamilia" id="id_familia" required>
-						<c:forEach var="ele" items="${ listaFamilia }">
-							<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
-						</c:forEach>
-					</select>
-				</fieldset>	
-				<button type="submit" class="btn-link">Alta Producto</button>
-			</fieldset>
-		</fieldset>
-		</form>
-		<p class="mensaje-exito">${ mensajeExito }</p>
-		<p class="mensaje-error">${ mensajeError }</p>
-		</main>
+	<jsp:include page="../menu.jsp"></jsp:include>
+		<table>
+			<thead>
+				<tr><th>Nombre Producto</th><th>Precio</th><th class="buffer-cell"></th>
+				<th colspan="10">Opciones</th></tr>
+				
+			</thead>
+			<tbody>
+				<c:forEach var="ele" items="${ listaProductos }">
+					<tr>
+						
+						<td>${ ele.nombreProducto }</td>
+						<td>${ ele.precio }</td>						
+						<td class="buffer-cell"></td>
+						<sec:authorize access="hasAnyAuthority ('Cliente', 'Administrador')">
+							<td><a href="/producto/detalle/${ ele.idProducto }">Detalle</a></td>
+						</sec:authorize>
+						<sec:authorize access="hasAuthority('Administrador')">
+							<td><a href="/producto/editar/${ ele.idProducto }">Editar</a></td>
+						</sec:authorize>
+						<sec:authorize access="hasAuthority('Administrador')">
+							<td><a href="/producto/eliminar/${ ele.idProducto }">Eliminar</a></td>
+						</sec:authorize>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<table class="default">
+					<sec:authorize access="hasAuthority('Administrador')">
+						<a class="btn-link" href="/producto/alta">Crear Producto</a>
+					</sec:authorize>
+			</table>
+		
+		
 	</body>
 </html>
