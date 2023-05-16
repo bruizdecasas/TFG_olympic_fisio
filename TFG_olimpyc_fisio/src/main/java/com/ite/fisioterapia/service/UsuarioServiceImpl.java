@@ -88,13 +88,23 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	/**
-	 * Method to search for a user by their email.
+	 * Method to search for a user by its email.
 	 * @param email Represents the email object to be found.
 	 * @return  The user object whose email matches
 	 */	
 	@Override
 	public Usuario findByEmail(String email) {
 		return urepo.findByEmail(email);
+	}
+	
+	/**
+	 * Method to search all users with the same rol.
+	 *@param idRol The ID of the role to filter the users by 
+	 * @return  The user object whose email matches
+	 */
+	@Override
+	public List<Usuario> findByRol(int idRol) {
+		return this.urepo.findByRol(idRol);
 	}
 
 }
