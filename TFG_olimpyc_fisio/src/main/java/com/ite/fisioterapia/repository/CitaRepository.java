@@ -12,7 +12,10 @@ import com.ite.fisioterapia.entities.Cita;
 
 @Repository
 public interface CitaRepository extends JpaRepository <Cita,Integer>{
-    //No sé quien ha hecho esta consulta pero creo que está mal.
+    
 	@Query(nativeQuery = true, value = "select * from citas where especialista=?")
-				List<Cita> findByEspecialista(int idEspecialista);
+				List<Cita> findByEspecialista(int idUsuario);
+	
+	@Query(nativeQuery = true, value = "select * from citas where disponible=?")
+				List<Cita> findByDisponible(int disponible);
 }
