@@ -30,12 +30,9 @@
 			<tbody>
 				<tr class="default">
 					<td>${ producto.idProducto }</td> 
-					System.out.println (producto.idProducto);
-					<td>${ producto.nombreProducto }</td>
-					System.out.println (producto.nombreProducto);
+					<td>${ producto.nombreProducto }</td>					
 					<td>${ producto.descripcion }</td>
 					<td>${ producto.precio }&euro;</td>
-					System.out.println (producto.precio);
 					<td>${ producto.familia.nombreFamilia }</td>
 					
 			
