@@ -51,21 +51,23 @@ data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuC
         				 <li class="nav-item">  <a class="nav-link" href="#">Contacto</a>
         				 <sec:authorize access="!isAuthenticated()">
 						  <li class="main-nav__item"><a href="/entrar" class="nav-link">Entrar</a></li>	
-						  <li class="main-nav__item"><a href="/altausuario" class="nav-link">Registro</a></li>		
+						  <li class="main-nav__item"><a href="/usuario/alta" class="nav-link">Registro</a></li>		
 					     </sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-							<li class="main-nav__item"><a class="nav-link" href="/rol/todos">Roles</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/usuario/todos">Lista de usuarios</a></li>						
+							<li class="main-nav__item"><a class="nav-link" href="/usuario/todos">Lista de usuarios</a></li>	
+							<li class="main-nav__item"><a class="nav-link" href="/reserva/todas">Reservas</a></li>					
+						</sec:authorize>
+						<sec:authorize access="hasAnyAuthority('Cliente')">
+							<li class="main-nav__item"><a class="nav-link" href="/reserva/misResevas">Reservas</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<li class="main-nav__item"><a class="nav-link" href="/cita/todas">Citas</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/cita/todas">Citas</a></li>							
 							<li class="main-nav__item"><a class="nav-link" href="/familia/todas">Familias</a></li>
 							<li class="main-nav__item"><a class="nav-link" href="/producto/todos">Lista de productos</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>		
+							<li class="main-nav__item"><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>
+							<li class="main-nav__item"><a class="nav-link" href="/logout">Salir</a></li>		
 						</sec:authorize>
-						<sec:authorize access="isAuthenticated()">	
-							<li class="main-nav__item"><a class="nav-link" href="/logout">Salir</a></li> 
-						</sec:authorize>
+
 					</ul>	
 				</div>
 			</div>
