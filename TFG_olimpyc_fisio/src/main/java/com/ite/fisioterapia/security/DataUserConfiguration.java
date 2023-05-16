@@ -23,7 +23,6 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
 		auth
 			.jdbcAuthentication().dataSource(dataSource)
 			.usersByUsernameQuery("select email_usuario, Password , enabled from Usuarios where email_usuario=?")
@@ -41,19 +40,27 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter{
 			// Las vistas públicas no requieren autenticación
 			.antMatchers("/").permitAll()
 			.antMatchers("/index").permitAll() 
-			.antMatchers("/productos/todos").permitAll()
-			.antMatchers("/productos/detalle/**").permitAll()
-			.antMatchers("/usuarios/registro/cliente").permitAll()
-			.antMatchers("/usuarios/alta/cliente").permitAll()
-			.antMatchers("/pedidos/addCarrito/**").permitAll()
-			.antMatchers("/usuarios/registro/direccion").hasAnyAuthority("Cliente")
-			.antMatchers("/usuarios/registro/tarjeta").hasAnyAuthority("Cliente")
-			.antMatchers("/usuarios/registro/administrador").hasAnyAuthority("Administrador")
+			.antMatchers("/producto/detalleProducto/**").permitAll()
+			.antMatchers("/producto/todos/").permitAll()
 			
-			.antMatchers("/usuarios/clientes**").hasAnyAuthority("Administrador")
-			.antMatchers("/productos/eliminar/**").hasAnyAuthority("Administrador")
-			.antMatchers("/productos/modificar/**").hasAnyAuthority("Administrador")
-			.antMatchers("/logout").hasAnyAuthority("Administrador","Cliente")
+			//.antMatchers("/usuarios/registro/cliente").permitAll()
+			.antMatchers("/usuario/alta").permitAll()
+			.antMatchers("/producto/listaFamilias/**").permitAll()
+			.antMatchers("/producto/productosFamilia/**").permitAll()
+			.antMatchers("/producto/todos/**").permitAll()
+			
+			.antMatchers("/usuario/detalleUsuarios").hasAnyAuthority("Administrador", "Especialista", "Cliente")
+			.antMatchers("/usuario/editarUsuario").hasAnyAuthority("Administrador")
+			.antMatchers("/usuario/eliminarUsuario").hasAnyAuthority("Administrador")
+			.antMatchers("/usuario/listaUsuarios").hasAnyAuthority("Administrador", "Especialista")
+			.antMatchers("/usuario/editarRol").hasAnyAuthority("Administrador")
+			.antMatchers("/usuario/listaRoles").hasAnyAuthority("Administrador")
+			.antMatchers("/usuarios/altaRol").hasAnyAuthority("Administrador")
+			.antMatchers("/producto/altaFamilia").hasAnyAuthority("Administrador")
+			.antMatchers("/producto/altaProducto").hasAnyAuthority("Administrador")
+			.antMatchers("/producto/eliminar/**").hasAnyAuthority("Administrador")
+			.antMatchers("/producto/editar/**").hasAnyAuthority("Administrador")
+			.antMatchers("/logout").hasAnyAuthority("Administrador","Cliente", "Especialista")
 			
 			// Todas las demás URLs de la Aplicación requieren autenticación
 			.anyRequest().authenticated()
@@ -70,8 +77,6 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 
-	
-	
 
 }
 
