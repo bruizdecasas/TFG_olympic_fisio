@@ -27,7 +27,7 @@ import com.ite.fisioterapia.entities.Usuario;
 import com.ite.fisioterapia.service.RolService;
 import com.ite.fisioterapia.service.UsuarioService;
 
-/*
+/**
  * This is the controller relative to all operations performed around Usuarios
  */
 @RequestMapping("/usuario")
