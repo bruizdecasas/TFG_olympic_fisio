@@ -111,14 +111,6 @@ public class RolController {
 		List<Rol> rol = rolServ.findAll();
 		model.addAttribute("listaRoles", rol);
 		return "/usuarios/listaRoles";
-	}
-	
-	/*este realmente no creo que lo vayamos a usar
-	 * @GetMapping("/detalle/{id}")
-	 * public String detalleRoles(Model model, @PathVariable(name="id") int codigo) {
-	 * Rol rol = rolServ.findById(codigo);
-	 * model.addAttribute("rol", rol);
-	 * return "/admin/detalleRoles";
-	 * }
-	 */
+	}	
 }
+
