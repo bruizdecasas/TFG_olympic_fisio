@@ -89,13 +89,23 @@ public class CitaServiceImpl implements CitaService{
 	
 	/**
 	 * Method to search for the list of appointments for a specialist.
-	 * @param idCita Represents the ID of the specialist to be found.
+	 * @param idUsuario Represents the ID of the specialist to be found.
 	 * @return  A list with all the appointments of the specialist in the repository.
 	 */
 	@Override
-	public List<Cita> findByEspecialista(int idEspecialista) {
+	public List<Cita> findByEspecialista(int idUsuario) {
 		//revisar la query de esta consulta en el respository
-		return repositorioCitas.findByEspecialista(idEspecialista);
+		return repositorioCitas.findByEspecialista(idUsuario);
+	}
+	
+	/**
+	 * Method to search for the list of available Citas.
+	 * @param disponible int indicating availability (1 for available and 0 for not available)
+	 * @return  A list with all the available Citas.
+	 */
+	@Override
+	public List<Cita> findByDisponible(int disponible) {
+		return repositorioCitas.findByDisponible(disponible);
 	}
 
 }
