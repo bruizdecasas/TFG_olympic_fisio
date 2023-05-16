@@ -7,43 +7,36 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<title>Alta Familia</title>
 		<link href="<c:url value='/css/style.css' />" rel="stylesheet">
 		<link href="<c:url value='/css/table.css' />" rel="stylesheet">
+		<link href="<c:url value='/css/form.css' />" rel="stylesheet">
 	</head>
 	<body>
-	<jsp:include page="../menu.jsp"></jsp:include>
-		<table>
-			<thead>
-				<tr><th>Nombre Producto</th><th>Precio</th><th class="buffer-cell"></th>
-				<th colspan="10">Opciones</th></tr>
-				
-			</thead>
-			<tbody>
-				<c:forEach var="ele" items="${ listaProductos }">
-					<tr>
-						
-						<td>${ ele.nombreProducto }</td>
-						<td>${ ele.precio }</td>						
-						<td class="buffer-cell"></td>
-						<sec:authorize access="hasAnyAuthority ('Cliente', 'Administrador')">
-							<td><a href="/producto/detalle/${ ele.idProducto }">Detalle</a></td>
-						</sec:authorize>
-						<sec:authorize access="hasAuthority('Administrador')">
-							<td><a href="/producto/editar/${ ele.idProducto }">Editar</a></td>
-						</sec:authorize>
-						<sec:authorize access="hasAuthority('Administrador')">
-							<td><a href="/producto/eliminar/${ ele.idProducto }">Eliminar</a></td>
-						</sec:authorize>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<table class="default">
-					<sec:authorize access="hasAuthority('Administrador')">
-						<a class="btn-link" href="/producto/alta">Crear Producto</a>
-					</sec:authorize>
-			</table>
-		
-		
+		<jsp:include page="../menu.jsp"></jsp:include>
+		<main>
+		<sec:csrfInput />
+		<h1>Crear una nueva familia</h1>
+		<a class="btn-link" href="/familia/todas">Volver</a>
+		<form action="/familia/alta" method="post">
+			
+			<fieldset class="full-form">
+				<legend>Introduce los datos para la nueva familia</legend>
+			<fieldset class="default">
+				<fieldset class="default">
+						<label for="nombre_familia">Nombre de la Familia</label>
+					<input type="text" name="nombreFamilia" id="nombre_familia" required />		
+				</fieldset>	
+					<fieldset class="default">
+						<label for="descripcion_familia">Descripción de la Familia</label>
+					<input type="text" name="descripcionFamilia" id="descripcion_familia" required />		
+				</fieldset>		
+				<a href="/familia/todas"><button type="submit" class="btn-link">Dar de alta</button></a>
+			</fieldset>
+		</fieldset>
+		</form>
+		<p class="mensaje-exito">${ mensajeExito }</p>
+		<p class="mensaje-error">${ mensajeError }</p>
+		</main>
 	</body>
 </html>
