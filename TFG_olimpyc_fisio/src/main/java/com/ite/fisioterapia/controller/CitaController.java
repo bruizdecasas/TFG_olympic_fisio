@@ -27,6 +27,9 @@ import com.ite.fisioterapia.service.UsuarioService;
 
 /**
  * This is the controller relative to all operations performed around Citas
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @Controller
 @RequestMapping("/cita")
@@ -37,7 +40,6 @@ public class CitaController {
 	
 	/**
 	 * Returns a list of all the Citas in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Citas
 	 * @return the name of the view for displaying the list of Citas
 	 */
@@ -67,7 +69,6 @@ public class CitaController {
 	
 	/**
 	 * Returns a list of all available Citas in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of available Citas 
 	 * @return the name of the view for displaying the list of available Citas 
 	 */
@@ -80,7 +81,6 @@ public class CitaController {
 	
 	/**
 	 * Retrieves the details of a specific Cita using a GET request.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Cita attribute will be added.
 	 * @param codigo the ID of the Cita to retrieve.
 	 * @return the name of the view that displays the Cita details.
@@ -94,7 +94,6 @@ public class CitaController {
 	
 	/**
 	 * Retrieves the Cita data to be edited in the form.
-	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Cita to be displayed in the form
 	 * @param codigo the ID of the Cita to be edited
 	 * @return the path of the view to display the form for editing the Cita data
@@ -109,7 +108,6 @@ public class CitaController {
 
 	/**
 	 * Handles the POST request to edit an existing Cita.
-	 * @author: Benjamín Ruiz
 	 * @param aut: an Authentication object that represents the authentication information of the user making the request.
 	 * @param cita The Cita to be edited.
 	 * @param model Object that holds the attributes to be used in the view.
@@ -132,7 +130,6 @@ public class CitaController {
 	
 	/**
 	 * Displays the registration form for a new Cita, It retrieves the logged in user's information and adds it to the model.
-	 * @author: Benjamín Ruiz
 	 * @param aut the authentication object containing the Usuario´s credentials
 	 * @param model the model object to be used in the view
 	 * @param misesion the HttpSession object for the current user session
@@ -148,7 +145,6 @@ public class CitaController {
 	/**
 	 * This method handles the HTTP POST request for creating a new Cita.It receives a Cita object from the request's body, 
 	 * tries to add it to the database via the citaserv service,and returns a redirect to the homepage with a success or error message.
-	 * @author: Benjamín Ruiz
 	 * @param aut: an Authentication object that represents the authentication information of the user making the request.
 	 * @param cita the Cita object representing the new Cita to be added
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
@@ -173,7 +169,6 @@ public class CitaController {
 	 * If the Cita does not exist or has already been reserved, a message is added to the redirect
 	 * attributes and the user is redirected to the main page. Otherwise, the Cita is marked as reserved
 	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
-	 * @author: Benjamín Ruiz
 	 * @param cita the Cita object representing the new Cita to be reserved
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
 	 * @param model the Model object used to add attributes to the view
@@ -201,7 +196,6 @@ public class CitaController {
 	 * If the Cita does not exist or has already been reserved, a message is added to the redirect
 	 * attributes and the user is redirected to the main page. Otherwise, the Cita is marked as reserved
 	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
-	 * @author: Benjamín Ruiz
 	 * @param cita the Cita object representing the new Cita to be reserved
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
 	 * @param model the Model object used to add attributes to the view
