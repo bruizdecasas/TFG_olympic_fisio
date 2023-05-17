@@ -17,6 +17,9 @@ import com.ite.fisioterapia.service.RolService;
 
 /**
  * This is the controller relative to all operations performed around Roles
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @RequestMapping("/rol")
 @Controller
@@ -26,7 +29,6 @@ public class RolController {
 	
 	/**
 	 * Displays the registration form for a new Rol
-	 * @author: Benjamín Ruiz
 	 * @return the name of the view for registering a new Rol .
 	 */	
 	@GetMapping ("/alta")
@@ -37,7 +39,6 @@ public class RolController {
 	/**
 	 * This method handles the HTTP POST request for creating a new Rol.It receives a Rol object from the request's body, 
 	 * tries to add it to the database via the rolServ service,and returns a redirect to the homepage with a success or error message.
-	 * @author: Benjamín Ruiz
 	 * @param rol the Rol object representing the new Rol to be added
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
 	 * @return a String representing the URL to be redirected to after the POST request is processed
@@ -53,7 +54,6 @@ public class RolController {
 	
 	/**
 	 * Retrieves the Rol data to be edited in the form.
-	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Rol to be displayed in the form
 	 * @param codigo the ID of the Rol to be edited
 	 * @return the path of the view to display the form for editing the Rol data
@@ -67,7 +67,6 @@ public class RolController {
 
 	/**
 	 * Handles the POST request to edit an existing Rol.
-	 * @author: Benjamín Ruiz
 	 * @param rol The Rol to be edited.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -84,7 +83,6 @@ public class RolController {
 	
 	/**
 	 * Handles a GET requests to delete a Rol with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Rol to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -102,7 +100,6 @@ public class RolController {
 	
 	/**
 	 * Returns a list of all the Roles in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Roles
 	 * @return the name of the view for displaying the list of Roles
 	 */
