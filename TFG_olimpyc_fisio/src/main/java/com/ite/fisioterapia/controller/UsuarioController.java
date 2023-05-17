@@ -29,6 +29,9 @@ import com.ite.fisioterapia.service.UsuarioService;
 
 /**
  * This is the controller relative to all operations performed around Usuarios
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @RequestMapping("/usuario")
 @Controller
@@ -40,7 +43,6 @@ public class UsuarioController {
 	
 	/**
 	 * Retrieves the details of a specific Usuario using a GET request.
-	 * @author: Benjamín Ruiz
 	 * @param aut the Authentication represents the authenticated user
 	 * @param model the Model object to which the Usuario attribute will be added.
 	 * @param misesion the HttpSession represents the HTTP session that allows data to be stored and retrieved during a user's session.
@@ -57,7 +59,6 @@ public class UsuarioController {
 
 	/**
 	 * Displays the registration form for a new Usuario and adds a list of Roles to the model.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Rol List attribute will be added.
 	 * @return the name of the view for registering a new Usuario .
 	 */	
@@ -71,7 +72,6 @@ public class UsuarioController {
 	/**
 	 * This method handles the HTTP POST request for creating a new Usuario.It receives a Usuario object from the request's body, 
 	 * tries to add it to the database via the usuarioServ service,and returns a redirect to the homepage with a success or error message.
-	 * @author: Benjamín Ruiz
 	 * @param usuario the Usuario object representing the new Usuario to be added
 	 * @param idRol the ID of the rol to which the usuario belongs
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
@@ -120,7 +120,6 @@ public class UsuarioController {
 	
 	/**
 	 * Retrieves the Usuario data to be edited and the list of available Roles to be displayed in the form.
-	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Usuario and Rol attributes to be displayed in the form
 	 * @param codigo the ID of the Usuario to be edited
 	 * @return the path of the view to display the form for editing the Usuario data
@@ -136,7 +135,6 @@ public class UsuarioController {
 	
 	/**
 	 * Handles the POST request to edit an existing Usuario.
-	 * @author: Benjamín Ruiz
 	 * @param usuario The Usuario to be edited.
 	 * @param idFamilia the ID of the usuario´s Rol.
 	 * @param model Object that holds the attributes to be used in the view.
@@ -156,7 +154,6 @@ public class UsuarioController {
 
 	/**
 	 * Handles a GET requests to delete a Usuario with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Usuario to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -174,7 +171,6 @@ public class UsuarioController {
 	
 	/**
 	 * Returns a list of all the Usuarios in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Usuarios
 	 * @return the name of the view for displaying the list of Usuarios
 	 */
@@ -187,7 +183,6 @@ public class UsuarioController {
 	
 	/**
 	 * Returns a list of all the Usuarios in the database filtered by a certain role.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Usuarios
 	 * @return the name of the view for displaying the list of Usuarios
 	 */
@@ -200,7 +195,6 @@ public class UsuarioController {
 	
 	/**
 	 * Retrieves the details of a specific Usuario using a GET request.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Usuario attribute will be added.
 	 * @param codigo the ID of the Usuario to retrieve.
 	 * @return the name of the view that displays the Usuario details.
