@@ -29,6 +29,9 @@ import com.ite.fisioterapia.service.UsuarioService;
 
 /**
  * This is the controller relative to all operations performed around Reservas
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @Controller
 @RequestMapping("/reserva")
@@ -40,7 +43,6 @@ public class ReservaController {
 	
 	/**
 	 * Returns a list of all the Reservas in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Reservas
 	 * @return the name of the view for displaying the list of Reservas
 	 */
@@ -53,7 +55,6 @@ public class ReservaController {
 	
 	/**
 	 * Returns a list of all the Reservas in the database relative to the user who is connected.
-	 * @author: Benjamín Ruiz
 	 * @param aut the Authentication represents the authenticated user
 	 * @param model the Model object to be populated with the list of Reservas
 	 * @return the name of the view for displaying the list of Reservas
@@ -68,7 +69,6 @@ public class ReservaController {
 	
 	/**
 	 * Retrieves the details of a specific Reserva using a GET request.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Reserva attribute will be added.
 	 * @param codigo the ID of the Reserva to retrieve.
 	 * @return the name of the view that displays the Reserva details.
@@ -82,7 +82,6 @@ public class ReservaController {
 	
 	/**
 	 * Displays the registration form for a new Reserva 
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Reserva attribute will be added.
 	 * @return the name of the view for registering a new Reserva .
 	 */	
@@ -96,7 +95,6 @@ public class ReservaController {
 	/**
 	 * This method handles the HTTP POST request for creating a new Reserva.It receives a Reserva object from the request's body, 
 	 * tries to add it to the database via the reserserv service,and returns a redirect to the homepage with a success or error message.
-	 * @author: Benjamín Ruiz
 	 * @param reserva the Reserva object representing the new Reserva to be added
 	 * @param idCita The ID of the associated Cita.
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
@@ -123,7 +121,6 @@ public class ReservaController {
 	/**
 	 * Handles a GET requests to cancell a Reserva with the given ID. 
 	 * This method deletes the Reserva and makes the associated Cita available again.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Reserva to be cancelled.
 	 * @param attr Object that contains attributes for the redirect page.
 	 * @return A String representing the redirect page URL.
@@ -140,7 +137,6 @@ public class ReservaController {
 	
 	/**
 	 * Handles a GET requests to delete a Reserva with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Reserva to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
