@@ -19,6 +19,9 @@ import com.ite.fisioterapia.service.ProductoService;
 
 /**
  * This is the controller relative to all operations performed around Productos
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @RequestMapping ("/producto")
 @Controller
@@ -29,7 +32,6 @@ public class ProductoController {
 	
 	/**
 	 * Displays the registration form for a new Producto and adds a list of Familias to the model.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Familia attribute will be added.
 	 * @return the name of the view for registering a new Producto .
 	 */	
@@ -63,7 +65,6 @@ public class ProductoController {
 	
 	/**
 	 * Retrieves the Producto data to be edited and the list of available Familias to be displayed in the form.
-	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Producto and Familia attributes to be displayed in the form
 	 * @param codigo the ID of the Producto to be edited
 	 * @return the path of the view to display the form for editing the Producto data
@@ -79,7 +80,6 @@ public class ProductoController {
 	
 	/**
 	 * Handles the POST request to edit an existing Producto.
-	 * @author: Benjamín Ruiz
 	 * @param producto The Producto to be edited.
 	 * @param idFamilia the ID of the producto´s Familia.
 	 * @param model Object that holds the attributes to be used in the view.
@@ -99,7 +99,6 @@ public class ProductoController {
 	
 	/**
 	 * Handles a GET requests to delete a Producto with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Producto to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -117,7 +116,6 @@ public class ProductoController {
 	
 	/**
 	 * Retrieves the details of a specific Producto using a GET request.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to which the Producto attribute will be added.
 	 * @param codigo the ID of the Producto to retrieve.
 	 * @return the name of the view that displays the Producto details.
@@ -131,7 +129,6 @@ public class ProductoController {
 	
 	/**
 	 * Returns a list of all the Productos in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Productos
 	 * @return the name of the view for displaying the list of Productos
 	 */
@@ -144,7 +141,6 @@ public class ProductoController {
 	
 	/**
 	 * Returns a list of all the Productos in the database that belong to a certain family, determined by the codigo.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Productos
 	 * @param codigo the ID of the Familia whose Productos we are going to show
 	 * @return the name of the view that displays the list of Producto
