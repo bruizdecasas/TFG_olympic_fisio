@@ -17,6 +17,9 @@ import com.ite.fisioterapia.service.FamiliaService;
 
 /**
  * This is the controller relative to all operations performed around Familia
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @RequestMapping("/familia")
 @Controller
@@ -26,7 +29,6 @@ public class FamiliaController {
 
 	/**
 	 * Displays the registration form for a new Familia
-	 * @author: Benjamín Ruiz
 	 * @return the name of the view for registering a new Familia .
 	 */	
 	@GetMapping ("/alta")
@@ -37,7 +39,6 @@ public class FamiliaController {
 	/**
 	 * This method handles the HTTP POST request for creating a new Familia.It receives a Familia object from the request's body, 
 	 * tries to add it to the database via the familiaServ service,and returns a redirect to the homepage with a success or error message.
-	 * @author: Benjamín Ruiz
 	 * @param familia the Familia object representing the new Familia to be added
 	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
 	 * @param model the Model object used to add attributes to the view
@@ -54,7 +55,6 @@ public class FamiliaController {
 	
 	/**
 	 * Retrieves the Familia data to be edited in the form.
-	 * @author: Benjamín Ruiz
 	 * @param model the model to be used to add the Familia to be displayed in the form
 	 * @param codigo the ID of the Familia to be edited
 	 * @return the path of the view to display the form for editing the Familia data
@@ -68,7 +68,6 @@ public class FamiliaController {
 
 	/**
 	 * Handles the POST request to edit an existing Cita.
-	 * @author: Benjamín Ruiz
 	 * @param familia The Familia to be edited.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -87,7 +86,6 @@ public class FamiliaController {
 	
 	/**
 	 * Handles a GET requests to delete a Familia with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Familia to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
@@ -106,7 +104,6 @@ public class FamiliaController {
 	
 	/**
 	 * Returns a list of all the Familias in the database.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of families
 	 * @return the name of the view for displaying the list of families
 	 */
