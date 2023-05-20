@@ -54,7 +54,6 @@ public class CitaController {
 	
 	/**
 	 * Returns a list of all the Citas in the database relative to the user who created them.
-	 * @author: Benjamín Ruiz
 	 * @param model the Model object to be populated with the list of Citas
 	 * @return the name of the view for displaying the list of Citas
 	 */
@@ -220,7 +219,6 @@ public class CitaController {
 	
 	/**
 	 * Handles a GET requests to delete a Cita with the given ID.
-	 * @author: Benjamín Ruiz
 	 * @param codigo the ID of the Cita to be deleted.
 	 * @param model Object that holds the attributes to be used in the view.
 	 * @param attr Object that contains attributes for the redirect page.
