@@ -17,5 +17,5 @@ public interface CitaRepository extends JpaRepository <Cita,Integer>{
 				List<Cita> findByEspecialista(int idUsuario);
 	
 	@Query(nativeQuery = true, value = "select * from citas where disponible=?")
-				List<Cita> findByDisponible(int disponible);
+			List<Cita> findByDisponible(int disponible);
 }

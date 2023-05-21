@@ -9,7 +9,7 @@ public interface CitaService {
 	int eliminarCita (int idCita);
 	int editarCita (Cita cita);
 	Cita findById(int idCita);
-    	List<Cita> findAll();
+    List<Cita> findAll();
    	List<Cita> findByEspecialista(int idUsuario); 
-    	List<Cita> findByDisponible (int disponible);
+    List<Cita> findByDisponible (int disponible);
 }

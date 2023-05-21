@@ -10,7 +10,9 @@ import com.ite.fisioterapia.repository.ReservaRepository;
 
 /**
  * Class that implements the ReservaService interface.
- * @author jesus
+ * @author: Benjamín Ruiz
+ * @author: Jesús Raboso
+ * @author: Silvia Piñel
  */
 @Service
 public class ReservaServiceImpl implements ReservaService{
