@@ -38,11 +38,7 @@
 				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
 					<td><a class="btn-link" href="/reserva/cancelar/${ ele.idReserva }">Cancelar</a></td>
 					<td><a class="btn-link" href="/reserva/detalle/${ ele.idReserva }">Detalle</a></td>
-				</sec:authorize>
-				<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/editar/${ ele.idReserva }">Editar</a></td>
-				</sec:authorize>
-				
+				</sec:authorize>				
 				</tr>
 				</c:forEach>
 			</tbody>
