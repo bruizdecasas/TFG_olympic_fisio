@@ -40,79 +40,69 @@
 	<link rel="stylesheet" type="text/css" href="/css/style3.css">
 
 	<!-- Modernizr JS -->
-	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<script src="/js/modernizr-2.6.2.min.js"></script>
 	
 </head>
 
-
-<body>
-	
-	<sec:csrfInput />
+<sec:csrfInput />
 		<header role="banner" id="fh5co-header">
-		<div class="container">
-			<nav class="navbar navbar-default">
-			<div class="navbar-header">
+			<div class="container">
+				<!-- <div class="row"> -->
+			  <nav class="navbar navbar-default">
+		        <div class="navbar-header">
 		        	<!-- Mobile Toggle Menu Button -->
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		         <a class="navbar-brand" href="/">OLYMPIC FISIO</a> 
 		        </div>
-    			<div class="nav navbar-nav navbar-right" id="navbarNavAltMarkup">
-    				
-					  <ul class="nav navbar-nav navbar-right">
-						<li><a  href="/">Inicio</a></li>
-						<sec:authorize access="!isAuthenticated()">
-						 <li><a  href="#">Tratamientos</a></li>
-						 <li><a  href="#">Nuestros Especialistas</a></li>
-						 <li><a  href="#">Opiniones</a></li>
-						  <li><a href="/entrar" class="nav-link">Entrar</a></li>	
-						  <li><a href="/usuario/alta" class="nav-link">Registro</a></li>		
-					    <li><a  href="#">Contacto</a>
-					    </sec:authorize>
-					    
-						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-							<li><a  href="/usuario/todos">Gestion Usuarios</a></li>	
-							<li><a  href="/reserva/todas"> Gestión Reservas</a></li>					
-						</sec:authorize>
-						<sec:authorize access="hasAnyAuthority('Cliente')">
-							<li><a class="nav-link" href="/reserva/misResevas">Mis Reservas</a></li>
-						</sec:authorize>
-						<sec:authorize access="isAuthenticated()">
-							<li><a class="nav-link" href="/cita/todas">Gestion Citas</a></li>	
-							<li><a class="nav-link" href="/familia/todas">Tecnicas</a></li>
-							<li><a class="nav-link" href="/producto/todos">Tratamientos</a></li>
-							<li><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>
-							<li><a class="nav-link" href="/logout">Salir</a></li>		
-						</sec:authorize>
-						
-
-					</ul>	
-				</div>
-			</div>
-			</ul>
-		</nav>
-		</header>		
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-		data-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" data-crossorigin="anonymous"></script>
-	
-	<!-- jQuery -->
-	<script src="/js/jquery.min.js"></script>
+		        <div id="navbar" class="navbar-collapse collapse">
+		         
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="active"><a href="/"><span>Home</span></a></li>
+		               	<li><a href="/producto/todos"><span>Tratamientos</span></a></li>
+		            	<li><a data-nav-section="opiniones"><span>Opiniones</span></a></li>
+		            	<li><a href="#" data-nav-section="equipo"><span>Equipo</span></a></li>
+		            	<li><a href="#" data-nav-section="contacto"><span>Contacto</span></a></li>
+		            <sec:authorize access="!isAuthenticated()">    	
+		               	<li><a href="/entrar" data-nav-section="entrar"><span>Entrar</span></a></li>
+		            	<li><a href="/usuario/alta"><span>Registrarse</span></a></li>
+					</sec:authorize>
+					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
+						<li><a href="/usuario/todos">Lista de usuarios</a></li>						
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li><a href="/cita/todas">Citas</a></li>
+						<li><a href="/familia/todas">Familias</a></li>
+						<li><a href="/producto/todos">Lista de productos</a></li>
+						<li><a href="/usuario/misDatos">Mis Datos</a></li>		
+						<li class="main-nav__item"><a class="nav-link" href="/logout">Salir</a></li> 
+					</sec:authorize>
+		          </ul>
+		        </div>
+		      </nav>
+		 </div>
+	</header>
+<!-- jQuery -->
+	<script src="../src/main/resources/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="../src/main/resources/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="/js/bootstrap.min.js"></script>
+	<script src="../src/main/resources/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="../src/main/resources/js/jquery.waypoints.min.js"></script>
 	<!-- Stellar Parallax -->
-	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="../src/main/resources/js/jquery.stellar.min.js"></script>
 	<!-- Counter -->
-	<script src="/js/jquery.countTo.js"></script>
+	<script src="../src/main/resources/js/jquery.countTo.js"></script>
 	<!-- Magnific Popup -->
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/magnific-popup-options.js"></script>
+	<script src="../src/main/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../src/main/resources/js/magnific-popup-options.js"></script>
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="/js/google_map.js"></script>
+	<script src="../src/main/resources/js/google_map.js"></script>
+
 	<!-- Main JS (Do not remove) -->
-	<script src="/js/main.js"></script>
-</body>
+	<script src="../src/main/resources/js/main.js"></script>
+	
+
+
 </html>
