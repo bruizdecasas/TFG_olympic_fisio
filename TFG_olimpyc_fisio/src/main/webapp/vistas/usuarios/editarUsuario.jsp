@@ -57,8 +57,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Tratamientos</h1>
-							<h2 class="to-animate">Fisioterapia, suelo pélvico, columna vertebral,acunpuntura y osteopatía </h2>
+							<h1 class="to-animate">Gestion de usuarios</h1>
+							<h2 class="to-animate">Editar los datos de los usuarios </h2>
 						</div>
 					</div>
 				</div>
