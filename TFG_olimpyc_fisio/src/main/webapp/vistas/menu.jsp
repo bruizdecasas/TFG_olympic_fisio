@@ -5,68 +5,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" data-crossorigin="anonymous">
+
+<title>Menú de navegacion</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>OlympicFisio</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+  	<!-- Facebook and Twitter integration -->
+	
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+	data-integrity="sha512-bz/zkQ/xt3LsX+Zx1rWu/4Hh0qNrR2siZn9T2Y0CweMv2LwX5YiLw3tV5uLZdQj2NC1wx8u4Phgz+2QIn9KkDQ==" data-crossorigin="anonymous" data-referrerpolicy="no-referrer" />
+		
+	<!-- Animate.css -->
+	
+	<link rel="stylesheet" type="text/css" href="/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" type="text/css" href="/css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" type="text/css" href="/css/simple-line-icons.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" type="text/css" href="/css/magnific-popup.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style3.css">
+
+	<!-- Modernizr JS -->
+	<script src="../js/modernizr-2.6.2.min.js"></script>
+	
 </head>
-<style>
-.main-nav__items li{
-   list-style-type: none;
-   display: inline;
-   padding-right: 5px;
-}
-</style>
+
+
 <body>
-	<!--<button type="button">
-		<sec:authorize access="hasAuthority('Especialista')">Fisioterapeuta: </sec:authorize>
-		<sec:authorize access="hasAuthority('Administrador')">Administrador: </sec:authorize>
-		<sec:authorize access="hasAuthority('Cliente')">Cliente: </sec:authorize>
-		<sec:authentication property="name"/>
-	</button>-->
-	<p>Bienvenido <sec:authentication property="name"/></p>
+	
 	<sec:csrfInput />
-		<header>
-			<nav class="navbar navbar-expand-lg bg-body-tertiary">
-				<ul class="container-fluid">
-				<a class="navbar-brand" href="../resources/img/logo.png">OlympicFisio</a>
-    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      				<span class="navbar-toggler-icon"></span>
-    			</button>
-    			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    				<div class="navbar-nav">
-					  <ul class="navbar-nav flex-grow-1 pe-3">
-						<li class="nav-item"><a class="nav-link" aria-current="page" href="/">Inicio</a></li> 	
-						<li class="nav-item dropdown">
-                    		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                       			Tratamientos y Servicios
-                    		</a>
-                      		<ul class="dropdown-menu">
-                         		<li><a class="dropdown-item" href="/producto/productosFamilia/1">Fisioterapia</a></li>
-                         		<li> <hr class="dropdown-divider"> </li>
-                         		<li><a class="dropdown-item" href="/producto/productosFamilia/2">Acupuntura</a></li>
-                         		<li><hr class="dropdown-divider"></li>
-                         		<li><a class="dropdown-item" href="/producto/productosFamilia/3">Técnicas especiales</a></li>
-                       		</ul>
-                       	 </li>					
-        				 <li class="nav-item">  <a class="nav-link" href="#">Contacto</a>
-        				 <sec:authorize access="!isAuthenticated()">
-						  <li class="main-nav__item"><a href="/entrar" class="nav-link">Entrar</a></li>	
-						  <li class="main-nav__item"><a href="/usuario/alta" class="nav-link">Registro</a></li>		
-					     </sec:authorize>
+		<header role="banner" id="fh5co-header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+			<div class="navbar-header">
+		        	<!-- Mobile Toggle Menu Button -->
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		         <a class="navbar-brand" href="/">OLYMPIC FISIO</a> 
+		        </div>
+    			<div class="nav navbar-nav navbar-right" id="navbarNavAltMarkup">
+    				
+					  <ul class="nav navbar-nav navbar-right">
+						<li><a  href="/">Inicio</a></li>
+						<sec:authorize access="!isAuthenticated()">
+						 <li><a  href="#">Tratamientos</a></li>
+						 <li><a  href="#">Nuestros Especialistas</a></li>
+						 <li><a  href="#">Opiniones</a></li>
+						  <li><a href="/entrar" class="nav-link">Entrar</a></li>	
+						  <li><a href="/usuario/alta" class="nav-link">Registro</a></li>		
+					    <li><a  href="#">Contacto</a>
+					    </sec:authorize>
+					    
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-							<li class="main-nav__item"><a class="nav-link" href="/usuario/todos">Lista de usuarios</a></li>	
-							<li class="main-nav__item"><a class="nav-link" href="/reserva/todas">Reservas</a></li>					
+							<li><a  href="/usuario/todos">Gestion Usuarios</a></li>	
+							<li><a  href="/reserva/todas"> Gestión Reservas</a></li>					
 						</sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Cliente')">
-							<li class="main-nav__item"><a class="nav-link" href="/reserva/misResevas">Reservas</a></li>
+							<li><a class="nav-link" href="/reserva/misResevas">Mis Reservas</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<li class="main-nav__item"><a class="nav-link" href="/cita/todas">Citas</a></li>							
-							<li class="main-nav__item"><a class="nav-link" href="/familia/todas">Familias</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/producto/todos">Lista de productos</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>
-							<li class="main-nav__item"><a class="nav-link" href="/logout">Salir</a></li>		
+							<li><a class="nav-link" href="/cita/todas">Gestion Citas</a></li>	
+							<li><a class="nav-link" href="/familia/todas">Tecnicas</a></li>
+							<li><a class="nav-link" href="/producto/todos">Tratamientos</a></li>
+							<li><a class="nav-link" href="/usuario/misDatos">Mis Datos</a></li>
+							<li><a class="nav-link" href="/logout">Salir</a></li>		
 						</sec:authorize>
+						
 
 					</ul>	
 				</div>
@@ -74,11 +91,28 @@ data-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuC
 			</ul>
 		</nav>
 		</header>		
-		<footer>
-				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
-				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>
-		</footer>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
 		data-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" data-crossorigin="anonymous"></script>
+	
+	<!-- jQuery -->
+	<script src="/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="/js/jquery.stellar.min.js"></script>
+	<!-- Counter -->
+	<script src="/js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="/js/google_map.js"></script>
+	<!-- Main JS (Do not remove) -->
+	<script src="/js/main.js"></script>
 </body>
 </html>
