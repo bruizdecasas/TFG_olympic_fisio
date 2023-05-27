@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.ite.fisioterapia.entities.Reserva;
 
 public interface ReservaRepository extends JpaRepository <Reserva,Integer>{
-    @Query(nativeQuery = true, value = "select * from citas where id_usuario=?")
+    @Query(nativeQuery = true, value = "select * from reservas where id_usuario=?")
 				List<Reserva> findByUsuario(int idUsuario);
 
 }

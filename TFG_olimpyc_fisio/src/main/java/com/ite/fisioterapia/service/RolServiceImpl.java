@@ -10,9 +10,7 @@ import com.ite.fisioterapia.repository.RolRepository;
 
 /**
  * Class that implements the RolService interface.
- * @author: Benjamín Ruiz
- * @author: Jesús Raboso
- * @author: Silvia Piñel
+ * @author jesus
  */
 @Service
 public class RolServiceImpl implements RolService {

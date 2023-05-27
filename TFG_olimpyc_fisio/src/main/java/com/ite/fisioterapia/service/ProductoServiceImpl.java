@@ -11,9 +11,7 @@ import com.ite.fisioterapia.repository.ProductoRepository;
 
 /**
  * Class that implements the ProductoService interface.
- * @author: Benjamín Ruiz
- * @author: Jesús Raboso
- * @author: Silvia Piñel
+ * @author jesus
  */
 @Service
 public class ProductoServiceImpl implements ProductoService{

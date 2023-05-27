@@ -64,35 +64,27 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<h1>${ producto.nombreProducto }</h1>
-		<section class="default">
-		
-		<table class="default">
-			<thead>
-				<tr class="default">
-					<th>Id Producto</th>
-					<th>Nombre</th>
-					<th>Descripcion del producto</th>
-					<th>Precio</th>
-					<th>Familia</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="default">
-					<td>${ producto.idProducto }</td> 
-					System.out.println (producto.idProducto);
-					<td>${ producto.nombreProducto }</td>
-					System.out.println (producto.nombreProducto);
-					<td>${ producto.descripcion }</td>
-					<td>${ producto.precio }&euro;</td>
-					System.out.println (producto.precio);
-					<td>${ producto.familia.nombreFamilia }</td>
-					
-			
-				</tr>
-			</tbody>
-		
-		</table>
+		<section>
+		<div class="col-sm-4">
+          			<div class="card">
+            			<div class="card-body">
+							    <h5 class="card-title">${producto.nombreProducto }</h5>
+								<p class="card-text"> ${ producto.descripcion }</p>
+								<p class="card-text"> ${ producto.precio }&euro;</p>
+								<p class="card-text"> ${ producto.familia.nombreFamilia }</p>
+								<ul class="card-actions">
+								<sec:authorize access="hasAnyAuthority('Administrador','Cliente')">
+									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Ver</a></td>
+								</sec:authorize>
+								<sec:authorize access="hasAuthority('Administrador')">
+									<td><a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
+								</sec:authorize>
+								<sec:authorize access="hasAuthority('Administrador')">
+									<td><a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
+								</sec:authorize>
+						</div>
+			        </div>
+			      </div>
 		</section>
 		<sec:authorize access="hasAuthority('ROLE_ADMIN')">
 			<a class="btn-link" href="/producto/editar/${ producto.idProducto }">Editar</a>

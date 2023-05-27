@@ -80,12 +80,14 @@
               <h5 class="card-title">${ele.nombreProducto}</h5>
               <p class="card-text">${ele.precio} €</p>
               <ul class="card-actions">
-                <li><a class="btn btn-primary" href="/producto/detalle/${ele.idProducto}">Detalle</a></li>
-                <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a href="/producto/editar/${ele.idProducto}">Editar</a></li>
+               <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
+                 <li><a class="btn btn-primary" href="/producto/detalle/${ele.idProducto}">Detalle</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a href="/producto/eliminar/${ele.idProducto}">Eliminar</a></li>
+                  <li><a class="btn btn-primary" href="/producto/editar/${ele.idProducto}">Editar</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAuthority('Administrador')">
+                  <li><a class="btn btn-primary" href="/producto/eliminar/${ele.idProducto}">Eliminar</a></li>
                 </sec:authorize>
               </ul>
             </div>
@@ -101,7 +103,7 @@
 					<sec:authorize access="hasAuthority('Administrador')">
 						<a class="btn btn-primary" href="/producto/alta">Crear Producto</a>
 					</sec:authorize>
-	</div>
+		</div>
 			<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->

@@ -12,9 +12,7 @@ import com.ite.fisioterapia.repository.UsuarioRepository;
 
 /**
  * Class that implements the UsuarioService interface.
- * @author: Benjamín Ruiz
- * @author: Jesús Raboso
- * @author: Silvia Piñel
+ * @author jesus
  */
 @Service
 public class UsuarioServiceImpl implements UsuarioService {

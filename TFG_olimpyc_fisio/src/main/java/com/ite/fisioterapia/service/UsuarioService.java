@@ -12,7 +12,8 @@ public interface UsuarioService {
 	
 	Usuario findById(int idUsuario);
 	Usuario findByEmail (String email);
-    List<Usuario> findAll();
+	
+    	List<Usuario> findAll();
 	List<Usuario> findByRol(int idRol);
   
 }

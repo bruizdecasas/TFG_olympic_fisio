@@ -10,9 +10,7 @@ import com.ite.fisioterapia.repository.FamiliaRepository;
 
 /**
  * Class that implements the FamiliaService interface.
- * @author: Benjamín Ruiz
- * @author: Jesús Raboso
- * @author: Silvia Piñel
+ * @author jesus
  */
 @Service
 public class FamiliaServiceImpl implements FamiliaService{

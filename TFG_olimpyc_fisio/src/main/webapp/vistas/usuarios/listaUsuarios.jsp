@@ -66,24 +66,72 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<table>
+		<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulo">Usuarios aplicación</h3>
+      </div>
+    </div>
+    <div class="row">
+      <c:forEach var="ele" items="${listaUsuarios}">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${ele.nombreUsuario} ${ele.apellidosUsuario}</h5>
+              <p class="card-text">${ele.emailUsuario}</p>
+              <p class="card-text">${ele.fechaNacimiento}</p>
+              <p class="card-text">${ele.telefono}</p>
+              <p class="card-text">${ele.sociedadMedica}</p>
+              <p class="card-text">${ele.rol.nombreRol}</p>
+              
+              <ul class="card-actions">
+               <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
+                 <li><a class="btn btn-primary" href="/producto/detalle/${ele.idUsuario}">Detalle</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAuthority('Administrador')">
+                  <li><a class="btn btn-primary" href="/producto/editar/${ele.idUsuario}">Editar</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAuthority('Administrador')">
+                  <li><a class="btn btn-primary" href="/producto/eliminar/${ele.idUsuario}">Eliminar</a></li>
+                </sec:authorize>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </c:forEach>
+    </div>
+  </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--<table>
 			<thead>
-				<tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>fecha de nacimiento</th>
-				<th>Teléfono</th><th>Sociedad Médica</th>
-				<th class="nav-item dropdown">
-    				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rol</a>
-    					<ul class="dropdown-menu">
-    						<li><a class="dropdown-item" href="/usuario/todos/">Todos los roles</a></li>
-        					<li><hr class="dropdown-divider"></li>
-        					<li><a class="dropdown-item" href="/usuario/rol/1">Administrador</a></li>
-        					<li><hr class="dropdown-divider"></li>
-        					<li><a class="dropdown-item" href="/usuario/rol/2">Especialistas</a></li>
-        					<li><hr class="dropdown-divider"></li>
-        					<li><a class="dropdown-item" href="/usuario/rol/3">Clientes</a></li>
-    					</ul>
-				</th>
-				<th class="buffer-cell"></th>
-				<th colspan="10">Opciones</th></tr>				
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Email</th>
+					<th>fecha de nacimiento</th>
+					<th>Teléfono</th><th>Sociedad Médica</th>
+					<th class="nav-item dropdown">
+    					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rol</a>
+    						<ul class="dropdown-menu">
+    							<li><a class="dropdown-item" href="/usuario/todos/">Todos los roles</a></li>
+        						<li><hr class="dropdown-divider"></li>
+        						<li><a class="dropdown-item" href="/usuario/rol/1">Administrador</a></li>
+        						<li><hr class="dropdown-divider"></li>
+        						<li><a class="dropdown-item" href="/usuario/rol/2">Especialistas</a></li>
+        						<li><hr class="dropdown-divider"></li>
+        						<li><a class="dropdown-item" href="/usuario/rol/3">Clientes</a></li>
+    						</ul>
+					</th>
+					<th class="buffer-cell"></th>
+					<th colspan="10">Opciones</th></tr>				
 			</thead>
 			<tbody>
 				<c:forEach var="ele" items="${ listaUsuarios }">
@@ -111,7 +159,7 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
+		</table>-->
 		<table class="default">
 					<sec:authorize access="hasAuthority('Administrador')">
 						<a class="btn btn-primary" href="/usuario/alta">Crear Usuario</a>

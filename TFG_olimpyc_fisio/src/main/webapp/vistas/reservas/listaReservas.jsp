@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
 <title>Lista de productos</title>
 	<title>OlympicFisio</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,41 +43,11 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-
-    <style>
-        #modalContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #modalContent {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        #modalContent h3 {
-            margin-top: 0;
-        }
-
-        #modalContent button {
-            margin-top: 10px;
-        }
-    </style>
-
-    <script src="<c:url value='/resources/bootstrap/js/jquery.min.js' />"></script>
+	
 </head>
-<body>
-    <jsp:include page="../menu.jsp"></jsp:include>
-    <section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
+	<body>
+		<jsp:include page="../menu.jsp"></jsp:include>
+		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
 		<p>Bienvenido <sec:authentication property="name"/></p>
 		<div class="container">
@@ -94,72 +64,49 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-    <main>
-        <section class="default">
-        <h2>Reservas</h2>
-            <table class="default">
-                <thead>
-                    <tr class="default">
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Especialista</th>
-                        <th>Observaciones del especialista</th>
-                        <th>Observaciones del Cliente</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="ele" items="${ listareservas }">
-                        <tr class="default">
-                            <td>${ ele.cita.fechaCita }</td>
-                            <td>${ ele.cita.horaCita }</td>
-                            <td>${ ele.cita.usuario.nombreUsuario }</td>
-                            <td>${ ele.cita.observaciones }</td>
-                            <td>${ ele.observacionesResevas }</td>
-                            <td>
-                                <sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-                                    <a class="btn-link" href="#" onclick="mostrarVentanaEmergente(${ ele.idReserva })">Cancelar</a>
-                                    <a class="btn-link" href="/reserva/detalle/${ ele.idReserva }">Detalle</a>
-                                </sec:authorize>
+		<h2>Reservas</h2>
+		<main>
+		<section class="default">
+		
+		<table class="default">
+			<thead>
+				<tr class="default">
+					<th>Fecha</th>
+					<th>Hora</th>					
+					<th>Especialista</th>
+					<th>Observaciones del especialista</th>
+					<th>Observaciones del Cliente</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="ele" items="${ listareservas }">
+				<tr class="default">
+					<td>${ ele.cita.fechaCita }</td> 
+					<td>${ ele.cita.horaCita }</td>
+					<td>${ ele.cita.usuario.nombreUsuario }</td>
+					<td>${ ele.cita.observaciones }</td>
+					<td>${ ele.observacionesResevas }</td>
 
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </section>
-        <p class="mensaje-exito">${ mensajeExito }</p>
-        <p class="mensaje-error">${ mensajeError }</p>
-    </main>
-
-    <div id="modalContainer">
-        <div id="modalContent">
-            <h3>¿Estás seguro de que deseas cancelar esta reserva?</h3>
-            <button id="confirmButton">Aceptar</button>
-            <button id="cancelModalButton">Cancelar</button>
-        </div>
-    </div>
-
-    <script>
-        function mostrarVentanaEmergente(idReserva) {
-            var modalContainer = document.getElementById("modalContainer");
-            var confirmButton = document.getElementById("confirmButton");
-            var cancelModalButton = document.getElementById("cancelModalButton");
-
-            modalContainer.style.display = "flex";
-
-            confirmButton.addEventListener("click", function() {
-                // Realizar la cancelación
-                window.location.href = "/reserva/cancelar/" + idReserva;
-                modalContainer.style.display = "none";
-            });
-
-            cancelModalButton.addEventListener("click", function() {
-                modalContainer.style.display = "none";
-            });
-        }
-    </script>
-    <!-- jQuery -->
+				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
+					<td><a class="btn-link" href="/reserva/cancelar/${ ele.idReserva }">Cancelar</a></td>
+					<td><a class="btn-link" href="/reserva/detalle/${ ele.idReserva }">Detalle</a></td>
+				</sec:authorize>
+				<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">	
+					<td><a class="btn-link" href="/reserva/editar/${ ele.idReserva }">Editar</a></td>
+				</sec:authorize>
+				
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		</section>
+			<p class="mensaje-exito">${ mensajeExito }</p>
+			<p class="mensaje-error">${ mensajeError }</p>
+		</main>
+			<jsp:include page="../footer.jsp"></jsp:include>
+			
+	<!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="../js/jquery.easing.1.3.js"></script>
@@ -180,5 +127,5 @@
 
 	<!-- Main JS (Do not remove) -->
 	<script src="../js/main.js"></script>
-</body>
+	</body>
 </html>

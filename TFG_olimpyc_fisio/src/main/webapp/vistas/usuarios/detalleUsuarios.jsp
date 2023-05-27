@@ -23,6 +23,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
 	data-integrity="sha512-bz/zkQ/xt3LsX+Zx1rWu/4Hh0qNrR2siZn9T2Y0CweMv2LwX5YiLw3tV5uLZdQj2NC1wx8u4Phgz+2QIn9KkDQ==" data-crossorigin="anonymous" data-referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+  
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 	
 	
 	<!-- Animate.css -->
@@ -67,35 +70,43 @@
 		<div class="slant"></div>
 	</section>
 		
-		
-		<table class="default">
-			<thead>
-				<tr class="default">
-					<th>Nombre</th>
-					<th>Apellidos</th>
-					<th>E-mail</th>
-					<th>Fecha de nacimiento</th>
-					<th>Teléfono</th>
-					<th>Sociedad Médica</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="default">
-					<td>${ usuario.nombreUsuario }</td>
-					<td>${ usuario.apellidosUsuario }</td>
-					<td>${ usuario.emailUsuario };</td>
-					<td>${ usuario.fechaNacimiento }</td>
-					<td>${ usuario.telefono }</td>
-					<td>${ usuario.sociedadMedica }</td>
-				</tr>
-			</tbody>
-		</table>
+		<section>
+  			<h3 class="titulo">Mis Datos</h3>
+  			<div class="titulo">
+  				<label class="misdatos">Nombre</label>
+ 				<input type="nombre" placeholder="Nombre" value="${ usuario.nombreUsuario }">
+  			</div>
+  			<div class="titulo">
+  				<label class="misdatos">Apellidos</label>
+ 			 	<input type="apellidos" placeholder="Apellidos" value="${ usuario.apellidosUsuario }">
+  			</div>
+  			<div class="titulo">
+  				<label class="misdatos">Email</label>
+ 			 	<input type="email" placeholder="Email" value="${ usuario.emailUsuario }">
+  			</div>
 			
+  			<div class="titulo">
+    			<label class="misdatos">Fecha Nacimiento</label>
+    			<input type="date" placeholder="Fecha Nacimiento" value="${ usuario.fechaNacimiento }">
+  			</div>
+  			<div class="titulo">
+    			<label class="misdatos">Teléfono</label>
+    			<input type="phone" placeholder="Teléfono" value="${ usuario.telefono }">
+  			</div>
+  			<div class="titulo">
+    			<label class="misdatos">Sociedad Medica</label>
+    			<input type="text" placeholder="Sociedad Médica" value="${ usuario.sociedadMedica }">
+  			</div>
+  			
+	</section>
+		<div class="titulo">
 			<a class="btn btn-primary" href="/usuario/editar/${ usuario.idUsuario }">Editar</a>
+		
 		<sec:authorize access="hasAuthority('Administrador')">
 			<a class="btn btn-primary" href="/usuario/eliminar/${ usuario.idUsuario }">Eliminar</a>
 		</sec:authorize>
-			<a class="btn btn-primary" href="/usuario/password/${ usuario.idUsuario }">Cambiar contraseña</a>
+		</div>
+			
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		<jsp:include page="../footer.jsp"></jsp:include>

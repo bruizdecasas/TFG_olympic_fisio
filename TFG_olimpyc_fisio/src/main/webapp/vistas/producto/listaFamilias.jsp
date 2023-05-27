@@ -65,40 +65,39 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<table>
-			<thead>
-				<tr>
-				<th>Nombre Familia</th>
-				<th>Descripción Familia</th>
-				<th colspan="10">Opciones</th>
-				</tr>
-				
-			</thead>
-			<tbody>
+		<div class="container">
+			<div class="row">
+      			<div class="col-md-12">
+        			<h3 class="titulo">Familias de productos</h3>
+      			</div>
+    		</div>
+    		<div class="row">
 				<c:forEach var="ele" items="${ listaFamilias }">
-					<tr>
-						
-						<td>${ ele.nombreFamilia }</td>
-						<td>${ ele.descripcionFamilia }</td>
-						
-						<sec:authorize access="hasAnyAuthority('Administrador','Cliente')">
-							<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Ver productos</a></td>
-						</sec:authorize>
-						<sec:authorize access="hasAuthority('Administrador')">
-							<td><a href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
-						</sec:authorize>
-						<sec:authorize access="hasAuthority('Administrador')">
-							<td><a href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
-						</sec:authorize>
-					</tr>
-				</c:forEach>
-			</tbody>
-			</table>
-			<table class="default">
+				<div class="col-sm-4">
+          			<div class="card">
+            			<div class="card-body">
+							    <h5 class="card-title">${ ele.nombreFamilia }</h5>
+								<p class="card-text">${ ele.descripcionFamilia }</p>
+								<ul class="card-actions">
+								<sec:authorize access="hasAnyAuthority('Administrador','Cliente')">
+									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Ver</a></td>
+								</sec:authorize>
+								<sec:authorize access="hasAuthority('Administrador')">
+									<td><a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
+								</sec:authorize>
+								<sec:authorize access="hasAuthority('Administrador')">
+									<td><a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
+								</sec:authorize>
+							
+						</div>
+			        </div>
+			      </div>
+			      </c:forEach>
+			     </div>
 					<sec:authorize access="hasAuthority('Administrador')">
 						<a class="btn btn-primary" href="/familia/alta">Crear Familia</a>
 					</sec:authorize>
-			</table>
+			<jsp:include page="../footer.jsp"></jsp:include>
 <!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
