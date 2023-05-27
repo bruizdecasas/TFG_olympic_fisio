@@ -48,7 +48,7 @@
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
 <style>
-table {
+.tabla-detalle-usuario {
   border-collapse: collapse;
   width: auto;
   margin-left: auto;
@@ -57,14 +57,14 @@ table {
   margin-bottom: 50px;
 }
 
-td{
+.td-detalle-usuario{
   text-align: left;
   width: 50%;
 }
-td:first-child {
+.td-detalle-usuario:first-child {
   font-weight: bold;
 }
-caption {
+.caption-detalle-usuario{
   text-align: center !important;
   font-size: 1.5em; 
   font-weight: bold; 
@@ -92,31 +92,31 @@ caption {
 		<div class="slant"></div>
 	</section>
 		
-		<table>
-		<caption>Mis Datos</caption>
+		<table class="tabla-detalle-usuario">
+		<caption class="caption-detalle-usuario">Mis Datos</caption>
 			<tr>
-  				<td>Nombre:</td>
+  				<td class="td-detalle-usuario">Nombre:</td>
  				<td>${usuario.nombreUsuario}</td>
   			</tr>
 
 			<tr>
-  				<td>Apellidos:</td>
+  				<td class="td-detalle-usuario">Apellidos:</td>
  			 	<td>${ usuario.apellidosUsuario }</td>
 			</tr>
 			<tr>
-  				<td>Email:</td>
+  				<td class="td-detalle-usuario">Email:</td>
  			 	<td>${ usuario.emailUsuario }</td>
   			</tr>
   			<tr>
-    			<td>Fecha Nacimiento:</td>
+    			<td class="td-detalle-usuario">Fecha Nacimiento:</td>
     			<td>${ usuario.fechaNacimiento }</td>
   			</tr>
   			<tr>
-    			<td>Teléfono:</td>
+    			<td class="td-detalle-usuario">Teléfono:</td>
     			<td>${usuario.telefono}</td>
   			</tr>
   			<tr>
-    			<td>Sociedad Medica:</td>
+    			<td class="td-detalle-usuario">Sociedad Medica:</td>
     			<td>${ usuario.sociedadMedica }</td>
   			</tr>
 		  </table>
