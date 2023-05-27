@@ -15,11 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ite.fisioterapia.entities.Rol;
@@ -98,24 +96,6 @@ public class UsuarioController {
 	        attr.addFlashAttribute("mensajeError", "Error al procesar el alta");
 	        return "redirect:/";
 	    }
-	}
-	//TO DO
-	@GetMapping ("/password/{id}")
-	public String cambiarPassword (Model model, @PathVariable(name="id") int  codigo) {
-		Usuario usuario = usuarioServ.findById(codigo);
-		model.addAttribute("usuario", usuario);
-		return "/usuarios/password";
-	}
-	//TO DO
-	@PostMapping ("/password")
-	public String cambiarPassword (@ModelAttribute("usuario") Usuario usuario,@RequestParam("nuevaPassword") String nuevaPassword, RedirectAttributes attr) {
-	    usuario.setPassword(passwordEncoder.encode(nuevaPassword));	    
-	    if (usuarioServ.editarUsuario(usuario) == 1) {
-	        attr.addFlashAttribute("mensajeExito", "Contraseña cambiada correctamente");
-	    } else {
-	        attr.addFlashAttribute("mensajeError", "Error al cambiar la contraseña");
-	    }	    
-	    return "redirect:/";
 	}
 	
 	/**

@@ -75,7 +75,8 @@
         <p>¿No tienes cuenta? <cite title="Source Title"><a href="/registro">create una.</a></cite></p>
     </blockquote>
 </div>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
+
 	
 	<!-- jQuery -->
 		<script src="/js/jquery.min.js"></script>
