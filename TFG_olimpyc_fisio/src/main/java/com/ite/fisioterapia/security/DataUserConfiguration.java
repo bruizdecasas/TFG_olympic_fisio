@@ -65,11 +65,9 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter{
 			// Todas las demás URLs de la Aplicación requieren autenticación
 			.anyRequest().authenticated()
 			// El formulario de Login no requiere autenticacion
-			.and().formLogin().permitAll().successHandler(loginHandler)
+			.and().formLogin().loginPage("/login").permitAll().successHandler(loginHandler)
 			// El formulario de logout no requiere autenticacion
-	//		.and().logout().permitAll()
-			;
-			
+			.and().logout().permitAll();
 	}
 	
 	@Bean

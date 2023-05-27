@@ -38,7 +38,10 @@ public class HomeController {
 		return "/index";		 		
 	}
 	
-	
-	
+	@GetMapping("/login")
+	public String logout(Model model) {			
+		
+		return "/login";		 		
+	}
 	
 }

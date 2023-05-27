@@ -47,7 +47,29 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-	
+<style>
+table {
+  border-collapse: collapse;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+td{
+  text-align: left;
+  width: 50%;
+}
+td:first-child {
+  font-weight: bold;
+}
+caption {
+  text-align: center !important;
+  font-size: 1.5em; 
+  font-weight: bold; 
+}
+</style>	
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -70,35 +92,35 @@
 		<div class="slant"></div>
 	</section>
 		
-		<section>
-  			<h3 class="titulo">Mis Datos</h3>
-  			<div class="titulo">
-  				<label class="misdatos">Nombre</label>
- 				<input type="nombre" placeholder="Nombre" value="${ usuario.nombreUsuario }">
-  			</div>
-  			<div class="titulo">
-  				<label class="misdatos">Apellidos</label>
- 			 	<input type="apellidos" placeholder="Apellidos" value="${ usuario.apellidosUsuario }">
-  			</div>
-  			<div class="titulo">
-  				<label class="misdatos">Email</label>
- 			 	<input type="email" placeholder="Email" value="${ usuario.emailUsuario }">
-  			</div>
-			
-  			<div class="titulo">
-    			<label class="misdatos">Fecha Nacimiento</label>
-    			<input type="date" placeholder="Fecha Nacimiento" value="${ usuario.fechaNacimiento }">
-  			</div>
-  			<div class="titulo">
-    			<label class="misdatos">Teléfono</label>
-    			<input type="phone" placeholder="Teléfono" value="${ usuario.telefono }">
-  			</div>
-  			<div class="titulo">
-    			<label class="misdatos">Sociedad Medica</label>
-    			<input type="text" placeholder="Sociedad Médica" value="${ usuario.sociedadMedica }">
-  			</div>
-  			
-	</section>
+		<table>
+		<caption>Mis Datos</caption>
+			<tr>
+  				<td>Nombre:</td>
+ 				<td>${usuario.nombreUsuario}</td>
+  			</tr>
+
+			<tr>
+  				<td>Apellidos:</td>
+ 			 	<td>${ usuario.apellidosUsuario }</td>
+			</tr>
+			<tr>
+  				<td>Email:</td>
+ 			 	<td>${ usuario.emailUsuario }</td>
+  			</tr>
+  			<tr>
+    			<td>Fecha Nacimiento:</td>
+    			<td>${ usuario.fechaNacimiento }</td>
+  			</tr>
+  			<tr>
+    			<td>Teléfono:</td>
+    			<td>${usuario.telefono}</td>
+  			</tr>
+  			<tr>
+    			<td>Sociedad Medica:</td>
+    			<td>${ usuario.sociedadMedica }</td>
+  			</tr>
+		  </table>
+  		
 		<div class="titulo">
 			<a class="btn btn-primary" href="/usuario/editar/${ usuario.idUsuario }">Editar</a>
 		
