@@ -115,7 +115,7 @@ public class ReservaController {
 	    } else { 
 	        model.addAttribute("mensajeError", "Error al dar de alta la reserva");
 	    }   
-	    return "redirect:/";
+	    return "redirect:/reserva/misResevas";
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class ReservaController {
 		cita.setDisponible(1);
 		reserserv.eliminarReserva(codigo);
 		attr.addFlashAttribute("mensajeExito", "Has cancelado la reserva");
-		return "redirect:/";
+		return "redirect:/cita/todas";
 	}
 	
 	/**
@@ -142,14 +142,15 @@ public class ReservaController {
 	 * @param attr Object that contains attributes for the redirect page.
 	 * @return A String representing the redirect page URL.
 	 */
-	@GetMapping("/eliminar/{id}")
+	/* este método lo he comentado porque no lo utilizamos, se podría eliminar
+	 * @GetMapping("/eliminar/{id}")
 	public String eliminarReserva (Model model, @PathVariable(name="id") int  codigo, RedirectAttributes attr) {
 		if (reserserv.eliminarReserva(codigo) == 1)
 			attr.addFlashAttribute("mensajeExito", "Reserva eliminada");
 		else
 			attr.addFlashAttribute("mensajeError", "Reserva no eliminado");
 		return "forward:/";	 
-	}
+	}*/
 	
 	/**
 	 * This custom editor will parse incoming date strings into Date objects and format Date objects into strings in the specified format..

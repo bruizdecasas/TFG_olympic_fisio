@@ -15,9 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ite.fisioterapia.entities.Rol;
@@ -97,6 +99,24 @@ public class UsuarioController {
 	        return "redirect:/";
 	    }
 	}
+	//TO DO
+	@GetMapping ("/password/{id}")
+	public String cambiarPassword (Model model, @PathVariable(name="id") int  codigo) {
+		Usuario usuario = usuarioServ.findById(codigo);
+		model.addAttribute("usuario", usuario);
+		return "/usuarios/password";
+	}
+	//TO DO
+	@PostMapping ("/password")
+	public String cambiarPassword (@ModelAttribute("usuario") Usuario usuario,@RequestParam("nuevaPassword") String nuevaPassword, RedirectAttributes attr) {
+	    usuario.setPassword(passwordEncoder.encode(nuevaPassword));	    
+	    if (usuarioServ.editarUsuario(usuario) == 1) {
+	        attr.addFlashAttribute("mensajeExito", "Contraseña cambiada correctamente");
+	    } else {
+	        attr.addFlashAttribute("mensajeError", "Error al cambiar la contraseña");
+	    }	    
+	    return "redirect:/";
+	}
 	
 	/**
 	 * Retrieves the Usuario data to be edited and the list of available Roles to be displayed in the form.
@@ -122,9 +142,14 @@ public class UsuarioController {
 	 * @return A String representing the redirect page URL.
 	 */
 	@PostMapping("/editar")
-	public String editarUsuario(Usuario usuario, RedirectAttributes attr, Model model, int idRol) {
-		Rol rol = roleServe.findById(idRol);
-		usuario.setRol(rol);
+	public String editarUsuario(Usuario usuario, RedirectAttributes attr, Model model, Integer idRol) {
+	    if (idRol != null) {
+	        Rol rol = roleServe.findById(idRol);
+	        usuario.setRol(rol);
+	    } else {
+	    	usuario.setRol(roleServe.findById(2));
+	    }
+	    usuario.setEnabled(1);
 		if (usuarioServ.editarUsuario(usuario) == 1) 
 			attr.addFlashAttribute("mensajeExito", "Usuario editado correctamente");
 		else 
