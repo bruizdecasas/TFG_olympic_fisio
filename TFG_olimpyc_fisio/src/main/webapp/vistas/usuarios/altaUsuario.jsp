@@ -44,7 +44,34 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
+
+<style>
+
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .form {
+      max-width: 30%;
+    }
+
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+
+</style>	
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -56,8 +83,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Alta Usuario</h1>
-							<h2 class="to-animate">En este apartado podemos dar de alta nuevos usuarios </h2>
+							<h1 class="to-animate">Regístrate en nuestra plataforma</h1>
+							<h2 class="to-animate">Podrás ver y pedir citas con nuestros mejores especialistas</h2>
 						</div>
 					</div>
 				</div>
@@ -65,51 +92,54 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<main>
+
+	<main class="main">
 		<sec:csrfInput />
-		<h1>Alta de nuevo usuario</h1>
-		<a class="btn btn-primary" href="/usuario/todos">Volver</a>
-<form action="/usuario/alta" method="post">
-    <fieldset class="full-form">
-        <legend>Introduzca sus datos</legend>
-        <fieldset class="default">
-            <label for="emailUsuario">Email</label>
-            <input type="text" name="emailUsuario" id="emailUsuario" required />
-            <label for="password">Contraseña</label>
-            <input type="text" name="password" id="password" required />
-        </fieldset>
-        <fieldset class="default">
-            <label for="nombreUsuario">Nombre</label>
-            <input type="text" name="nombreUsuario" id="nombreUsuario" required />
-            <label for="apellidosUsuario">Apellido</label>
-            <input type="text" name="apellidosUsuario" id="apellidosUsuario" required />
-            <label for="fechaNacimiento">Fecha Nacimiento</label>
-            <input type="date" name="fechaNacimiento" id="fechaNacimiento" required />
-        </fieldset>
-        <fieldset>
-            <label for="telefono">Teléfono</label>
-            <input type="text" name="telefono" id="telefono" required />
-            <label for="sociedadMedica">Sociedad Médica</label>
-            <input type="text" name="sociedadMedica" id="sociedadMedica" />
-        </fieldset>
-        <sec:authorize access="hasAuthority('Administrador')">
-            <fieldset>
-                <label for="idRol">Rol</label>
-                <select name="idRol" id="idRol">
-                    <option value="">Seleccionar rol</option>
-                    <c:forEach var="ele" items="${listaRol}">
-                        <option value="${ele.idRol}">${ele.nombreRol}</option>
-                    </c:forEach>
-                </select>
-            </fieldset>
-        </sec:authorize>
-        <button type="submit" ref="/usuario/todos" class="btn btn-primary">Alta de usuario</button>
-    </fieldset>
-</form>
+			<form action="/usuario/alta" method="post" class="form">
+			    <fieldset class="full-form">
+			        <legend>Introduzca sus datos</legend>
+			        <fieldset class="default">
+			            <label for="emailUsuario">Email</label>
+			            <input class= "campos" type="text" name="emailUsuario" id="emailUsuario" required />
+			            <label for="password">Contraseña</label>
+			            <input class= "campos" type="text" name="password" id="password" required />
+			        </fieldset>
+			        <fieldset class="default">
+			            <label for="nombreUsuario">Nombre</label>
+			            <input class= "campos" type="text" name="nombreUsuario" id="nombreUsuario" required />
+			            <label for="apellidosUsuario">Apellido</label>
+			            <input class= "campos" type="text" name="apellidosUsuario" id="apellidosUsuario" required />
+			            <label for="fechaNacimiento">Fecha Nacimiento</label>
+			            <input class= "campos" type="date" name="fechaNacimiento" id="fechaNacimiento" required />
+			        </fieldset>
+			        <fieldset>
+			            <label for="telefono">Teléfono</label>
+			            <input class= "campos" type="text" name="telefono" id="telefono" required />
+			            <label for="sociedadMedica">Sociedad Médica</label>
+			            <input class= "campos" type="text" name="sociedadMedica" id="sociedadMedica" />
+			        </fieldset>
+			        <sec:authorize access="hasAuthority('Administrador')">
+			            <fieldset>
+			                <label for="idRol">Rol</label>
+			                <select class= "campos" name="idRol" id="idRol">
+			                    <option value="">Seleccionar rol</option>
+			                    <c:forEach var="ele" items="${listaRol}">
+			                        <option value="${ele.idRol}">${ele.nombreRol}</option>
+			                    </c:forEach>
+			                </select>
+			            </fieldset>
+			        </sec:authorize>
+			        <div class="botones">
+			        <button type="submit" ref="/usuario/todos" class="btn btn-primary">Alta de usuario</button>
+			        <a class="btn btn-primary" href="/usuario/todos">Volver</a>
+			        </div>
+			    </fieldset>
+			</form>
 		
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
-		</main>
+	</main>
+
 		<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->

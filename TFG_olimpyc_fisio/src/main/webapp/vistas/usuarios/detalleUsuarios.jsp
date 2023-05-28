@@ -44,6 +44,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style3.css">
 	
 	<link rel="stylesheet" type="text/css" href="../css/_precios.css">
+	<link rel="stylesheet" type="text/css" href="../css/detalleUsuario.css">
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>

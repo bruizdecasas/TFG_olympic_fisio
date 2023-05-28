@@ -44,7 +44,33 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
+<style>
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .form {
+      max-width: 30%;
+    }
+
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+
+</style>
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -67,52 +93,56 @@
 		<div class="slant"></div>
 	</section>
 		<sec:csrfInput />
-		<h1>Editar al usuario ${usuario.nombreUsuario } ${usuario.apellidosUsuario }</h1>
-		<a class="btn-link" href="/">Volver</a>
-		<form action="/usuario/editar" method="post">
+
+	<div class="contenedor">
+		<form class="form" action="/usuario/editar" method="post">
 			<fieldset class="full-form">
-				<legend>Introduzca los nuevos datos</legend>
+				<legend>Introduce los nuevos datos ${usuario.nombreUsuario } ${usuario.apellidosUsuario }</legend>
 			<fieldset class="default">
 			<input type="hidden" name="idUsuario" id="idUsuario" required value="${ usuario.idUsuario }"/>	
 				<fieldset class="default">
 					<label for="emailUsuario">Email</label>
-					<input type="text" name="emailUsuario" id="emailUsuario" required placeholder="${usuario.emailUsuario }" />
-					<input type="hidden" name="password" id="password" required value="${usuario.password} }"/>		
+					<input type="text" name="emailUsuario" id="emailUsuario" required placeholder="${usuario.emailUsuario }" class="campos"/>
+					<input type="hidden" name="password" id="password" required value="${usuario.password} }" class="campos"/>		
 				</fieldset>		
 				<fieldset class="default">
 					<label for="nombre_usuario">Nombre</label>
-					<input type="text" name="nombreUsuario" id="nombreUsuario" required placeholder="${usuario.nombreUsuario }"/>
+					<input type="text" name="nombreUsuario" id="nombreUsuario" required placeholder="${usuario.nombreUsuario }" class="campos"/>
 					<label for="apellido_usuario">Apellido</label>
-					<input type="text" name="apellidosUsuario" id="apellidosUsuario" required placeholder="${usuario.apellidosUsuario }"/>
+					<input type="text" name="apellidosUsuario" id="apellidosUsuario" required placeholder="${usuario.apellidosUsuario }" class="campos"/>
 					<label for="fecha_nacimiento">Fecha Nacimiento</label>
-					<input type="date" name="fechaNacimiento" id="fechaNacimiento" required/>
+					<input type="date" name="fechaNacimiento" id="fechaNacimiento" required class="campos"/>
 				</fieldset>	
 				<fieldset>
 					<label for="telefono">Teléfono</label>
-					<input type="text" name="telefono" id="telefono" required placeholder="${usuario.telefono }"/>
+					<input type="text" name="telefono" id="telefono" required placeholder="${usuario.telefono }" class="campos"/>
 					<label for="sociedadMedica">Sociedad Médica</label>
-					<input type="text" name="sociedadMedica" id="sociedadMedica" />
+					<input type="text" name="sociedadMedica" id="sociedadMedica" placeholder="${usuario.sociedadMedica }" class="campos" />
 				</fieldset>
 				<fieldset>
 					<sec:authorize access="hasAuthority('Administrador')">
 						<label for="enabled">Activo/inactivo</label>
-						<select name="enabled" id="enabled" required>
+						<select name="enabled" id="enabled" required class="campos">
 							<option value="1" selected>Activo</option>
 							<option value="0">Inactivo</option>
 						</select>
 						<label for ="rol">Rol</label>
-						<select name="idRol" id="idRol" required>
-						<option value="3" selected>Seleccionar rol</option>
+						<select name="idRol" id="idRol" required class="campos">
+						<option value="3" selected class="campos">Seleccionar rol</option>
 						<c:forEach var="ele" items="${ listaRol }">
 							<option value="${ ele.idRol }">${ ele.nombreRol }</option>
 						</c:forEach>
 					</select>	
 					</sec:authorize>
 				</fieldset>
-				<button type="submit" class="btn-link">Editar usuario</button>
+				<div class="botones">
+				<button type="submit" class="btn btn-primary">Editar usuario</button>
+				<a class="btn btn-primary" href="/">Volver</a>
+				</div>
 			</fieldset>
 		</fieldset>
 		</form>
+	</div>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		</main>

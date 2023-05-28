@@ -53,7 +53,22 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
 	
+	.item1 { grid-area: item1; }
+	.item2 { grid-area: item2; }
+	
+	.info{
+	display: grid;
+  	grid-template-areas:
+	    'item1'
+	    'item2';
+	justify-content: center;
+	}
+	
+	
+	
+	</style>
 	</head>
 	<body>
 
@@ -232,46 +247,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="row row-bottom-padded-md">
-				<div class="col-md-6 to-animate">
-					<h3>Información de contacto</h3>
-					<ul class="fh5co-contact-info">
-						<li class="fh5co-contact-address ">
-							<i class="fas fa-home"></i>
-							Calle Mayor 8 <br>Madrid
-						</li>
-						<li><i class="fas fa-phone"></i> 916354598</li>
-						<li><i class="fas fa-envelope"></i> info@olympicfisio.com</li>
-						
-					</ul>
-				</div>
-
-				<div class="col-md-6 to-animate">
-					<h3>Formulario de contacto</h3>
-					<div class="form-group ">
-						<label for="nombre" class="sr-only">Nombre</label>
-						<input id="nombre" class="form-control" placeholder="Nombre" type="text">
-					</div>
-					<div class="form-group ">
-						<label for="email" class="sr-only">Email</label>
-						<input id="email" class="form-control" placeholder="Email" type="email">
-					</div>
-					<div class="form-group ">
-						<label for="telefono" class="sr-only">Telefono</label>
-						<input id="telefono" class="form-control" placeholder="Telefono" type="text">
-					</div>
-					<div class="form-group ">
-						<label for="mensaje" class="sr-only">Mensaje</label>
-						<textarea name="" id="mensaje" cols="30" rows="5" class="form-control" placeholder="Mensaje"></textarea>
-					</div>
-					<div class="form-group ">
-						<input class="btn btn-primary btn-lg" value="Enviar Mensaje" type="submit">
-					</div>
-					</div>
-				</div>
-
-			</div>
-		
+		</div>
+		<div class= "info">
+			<h3 class="item1">Información de contacto</h3>
+			<ul class="item2">
+				<li class="fh5co-contact-address ">
+					<i class="fas fa-home"></i>
+					Calle Mayor 8, Madrid
+				</li>
+				<li><i class="fas fa-phone"></i> 916354598</li>
+				<li><i class="fas fa-envelope"></i> info@olympicfisio.com</li>
+				
+			</ul>
+		</div>
 	</section>
 
 	<jsp:include page="footer.jsp"></jsp:include>

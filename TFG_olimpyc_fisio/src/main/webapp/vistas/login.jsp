@@ -37,6 +37,19 @@
 	<!-- Modernizr JS -->
 		<script src="/js/modernizr-2.6.2.min.js"></script>		
 	
+	  <style>
+
+	.d-flex.justify-content-center {
+	 	display: flex;
+		justify-content: center;
+	    }
+	    
+	.mb-3{
+		display: grid;
+		justify-content: center;
+	}
+  </style>
+	
 	</head>	
 <body>
 <!-- Formulario -->
@@ -72,7 +85,7 @@
 <!-- Registro -->
 <div class="d-flex justify-content-center">
     <blockquote class="blockquote">
-        <p>¿No tienes cuenta? <cite title="Source Title"><a href="/registro">create una.</a></cite></p>
+        <p>¿No tienes cuenta? <cite title="Source Title"><a href="/usuario/alta">créate una.</a></cite></p>
     </blockquote>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
