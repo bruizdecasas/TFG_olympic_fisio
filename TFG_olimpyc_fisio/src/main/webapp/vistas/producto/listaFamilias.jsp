@@ -45,19 +45,27 @@
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
 	
+<style>
+	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: center;
+	}
+
+</style>
 </head>
 	<body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Lista de familias de productos</h1>
-							<h2 class="to-animate">Información sobre los tipos de tratamientos</h2>
+							<h1 class="to-animate">Técnicas</h1>
+							<h2 class="to-animate">Estas son las distintas técnicas que encontraras en nuestra clinica</h2>
 						</div>
 					</div>
 				</div>
@@ -68,24 +76,24 @@
 		<div class="container">
 			<div class="row">
       			<div class="col-md-12">
-        			<h3 class="titulo">Familias de productos</h3>
+        			<h3 class="titulo"></h3>
       			</div>
     		</div>
     		<div class="row">
-				<c:forEach var="ele" items="${ listaFamilias }">
+    			<c:forEach var="ele" items="${ listaFamilias }">
 				<div class="col-sm-4">
           			<div class="card">
-            			<div class="card-body">
+          					<div class="card-body">
+            					<img src="${ele.img}" alt="Imagen de la familia" style="max-width: 100%; height: auto">
 							    <h5 class="card-title">${ ele.nombreFamilia }</h5>
 								<p class="card-text">${ ele.descripcionFamilia }</p>
 								<ul class="card-actions">
-								<sec:authorize access="hasAnyAuthority('Administrador','Cliente')">
+								<sec:authorize access="hasAnyAuthority('Cliente')">
+									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Tratamientos</a></td>
+								</sec:authorize>
+								<sec:authorize access="hasAuthority('Administrador')">
 									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Ver</a></td>
-								</sec:authorize>
-								<sec:authorize access="hasAuthority('Administrador')">
 									<td><a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
-								</sec:authorize>
-								<sec:authorize access="hasAuthority('Administrador')">
 									<td><a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
 								</sec:authorize>
 							
@@ -95,7 +103,9 @@
 			      </c:forEach>
 			     </div>
 					<sec:authorize access="hasAuthority('Administrador')">
+						<div class="botones">
 						<a class="btn btn-primary" href="/familia/alta">Crear Familia</a>
+						</div>
 					</sec:authorize>
 			<jsp:include page="../footer.jsp"></jsp:include>
 <!-- jQuery -->
@@ -114,7 +124,7 @@
 	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<script src="../js/magnific-popup-options.js"></script>
 	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	
 	<script src="../js/google_map.js"></script>
 
 	<!-- Main JS (Do not remove) -->

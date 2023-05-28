@@ -26,17 +26,24 @@ public class Familia implements Serializable {
 
 	@Column(name="nombre_familia")
 	private String nombreFamilia;
+	
+	@Column(name="img")
+	private String img;
 
 	public Familia() {
 	}
 
-	public Familia(int idFamilia, String descripcionFamilia, String nombreFamilia) {
+	
+	public Familia(int idFamilia, String descripcionFamilia, String nombreFamilia, String imagen) {
 		super();
 		this.idFamilia = idFamilia;
 		this.descripcionFamilia = descripcionFamilia;
 		this.nombreFamilia = nombreFamilia;
+		this.img = imagen;
 	}
 
+
+	
 	public int getIdFamilia() {
 		return this.idFamilia;
 	}
@@ -61,6 +68,17 @@ public class Familia implements Serializable {
 		this.nombreFamilia = nombreFamilia;
 	}
 
+		
+	public String getimg() {
+		return img;
+	}
+
+
+	public void setimg(String imagen) {
+		this.img = imagen;
+	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idFamilia);
@@ -76,10 +94,12 @@ public class Familia implements Serializable {
 		return idFamilia == other.idFamilia;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Familia [idFamilia=" + idFamilia + ", descripcionFamilia=" + descripcionFamilia + ", nombreFamilia="
-				+ nombreFamilia + "]";
+				+ nombreFamilia + ", Img=" + img + "]";
 	}
 
 }

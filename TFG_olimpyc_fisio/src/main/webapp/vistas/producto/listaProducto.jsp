@@ -44,7 +44,14 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-	
+<style>
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: center;
+	}
+
+</style>	
 </head>
 	<body>
 	<jsp:include page="../menu.jsp"></jsp:include>
@@ -101,7 +108,9 @@
 		
 		<div class="boton_productos">
 					<sec:authorize access="hasAuthority('Administrador')">
+					<div class="botones">
 						<a class="btn btn-primary" href="/producto/alta">Crear Producto</a>
+					</div>
 					</sec:authorize>
 		</div>
 			<jsp:include page="../footer.jsp"></jsp:include>

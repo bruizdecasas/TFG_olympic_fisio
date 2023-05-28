@@ -5,17 +5,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Footer</title>
+
+<style>
+	.container{
+	display:grid;
+	justify-content: center;
+	}
+	.volverArriba{
+	display: grid;
+	justify-content: center;
+	font-size: 30px;
+	margin-bottom:30%;
+	}
+	.olympic{
+	display: grid;
+	justify-content: center;
+	font-size: 20px;
+	margin:auto;
+	margin-bottom:10%;	
+	}
+</style>
 </head>
 <body>
 <footer id="footer" role="contentinfo">
-		<a href="#" class="gotop js-gotop">Volver</a>
-		<div class="container">
-			<div class="">
-				<div class="col-md-12 text-center">
-					<p>&copy; OlympicFisio </p>
-					
-				</div>
+		<div class="container">	
+			<div>
+				<a class="volverArriba" href="#">Volver Arriba</a>
 			</div>
+			<div>
+				<p class="olympic">&copy; OlympicFisio </p>
+			</div>
+
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<ul class="social social-circle">
