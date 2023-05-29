@@ -17,9 +17,7 @@
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
+	
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
 	data-integrity="sha512-bz/zkQ/xt3LsX+Zx1rWu/4Hh0qNrR2siZn9T2Y0CweMv2LwX5YiLw3tV5uLZdQj2NC1wx8u4Phgz+2QIn9KkDQ==" data-crossorigin="anonymous" data-referrerpolicy="no-referrer" />
@@ -44,13 +42,47 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
+<style>
+  table {
+    width: 80%;
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #ffffff;
+  
+  }
+  
+   td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+   
+  
+  }
+
+  th {
+    background-color: #c24d67;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+</style>
 	
 </head>
 	<body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
+		
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
@@ -66,9 +98,10 @@
 		<div class="slant"></div>
 	</section>
 	<h2>Todas las citas</h2>
-		<table>
+		
+		<table style="margin-left:40px">
 			<thead>
-				<tr><th>Fecha</th>
+				<th>Fecha</th>
 				<th>hora</th>
 				<th class="nav-item dropdown">
     				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Especialista</a>
@@ -82,22 +115,29 @@
     					</ul>
 				</th>
 				<th>Disponibilidad</th>
+				<th>Observaciones</th>
 				<th class="buffer-cell"></th>
 				<th colspan="10">Opciones</th></tr>
 				
 			</thead>
 			<tbody>
+			<c:choose>
+  				<c:when test="${empty listacitas}">
+    				<tr>
+      				<td colspan="5" class="vacias">No hay citas en este momento,consultenos</td>
+    			</tr>
+  				</c:when>
+  			<c:otherwise>
 				<c:forEach var="ele" items="${ listacitas }">
 					<tr>
-						
 						<td>${ ele.fechaCita }</td>
 						<td>${ ele.horaCita }</td>
-						<td>${ ele.usuario.nombreUsuario }</td>	
+						<td>${ ele.usuario.nombreUsuario }</td>
 						<td>
       						<c:if test="${ele.disponible == 1}"> Disponible </c:if>
       						<c:if test="${ele.disponible == 0}"> Reservada </c:if>
     					</td>
-								
+						<td>${ ele.observaciones }</td>		
 						<td class="buffer-cell"></td>		
 								
 						<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
@@ -105,7 +145,6 @@
         						<td><a href="/reserva/alta/${ ele.idCita }">Reservar</a></td>        						
       						</c:if>
       						<c:if test="${ele.disponible == 0}"><td></td></c:if>
-							<td><a chref="/cita/detalle/${ ele.idCita }">Detalle</a></td>
 						</sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
 							<td><a href="/cita/editar/${ ele.idCita }">Editar</a></td>
@@ -115,14 +154,16 @@
 						</sec:authorize>
 					</tr>
 				</c:forEach>
+				</c:otherwise>
+				</c:choose>
 			</tbody>
 		</table>
 		<table class="default">
-					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-						<a class="btn-link" href="/cita/alta">Crear Cita</a>
+					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')"> 
+						<a class="btn btn-primary" style="margin-left:40px; margin-top:10px"  href="/cita/alta">Crear Cita</a>
 					</sec:authorize>
 					<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-						<a class="btn btn-primary" href="/cita/disponible">Ver citas disponibles</a>
+						<a class="btn btn-primary" style="margin-left:10px; margin-top:10px" href="/cita/disponible">Ver citas disponibles</a>
 					</sec:authorize>
 			</table>
 		<!--<footer>
