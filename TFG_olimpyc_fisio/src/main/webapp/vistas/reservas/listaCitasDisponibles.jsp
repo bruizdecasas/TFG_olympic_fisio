@@ -50,7 +50,7 @@
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
+		
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
@@ -71,24 +71,33 @@
 				<tr><th>Fecha</th>
 				<th>hora</th>
 				<th>Especialista</th>
+				<th>Observaciones</th>
 				<th class="buffer-cell"></th>
 				<th colspan="10">Opciones</th></tr>
 				
 			</thead>
 			<tbody>
+			<c:choose>
+  				<c:when test="${empty listacitas}">
+    				<tr>
+      				<td colspan="5">No hay citas disponibles</td>
+    				</tr>
+  				</c:when>
+  				<c:otherwise>
 				<c:forEach var="ele" items="${ listacitas }">
 					<tr>
 						
 						<td>${ ele.fechaCita }</td>
 						<td>${ ele.horaCita }</td>
 						<td>${ ele.usuario.nombreUsuario }</td>	
+						<td>${ ele.observaciones }</td>	
 
 								
 						<td class="buffer-cell"></td>		
 								
 						<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-							<!-- <td><a href="/cita/reserva/${ ele.idCita }">Reservar</a></td> -->
-							<td><a href="/cita/detalle/${ ele.idCita }">Detalle</a></td>
+							<td><a href="/cita/reserva/${ ele.idCita }">Reservar</a></td>
+						
 						</sec:authorize>
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
 							<td><a href="/cita/editar/${ ele.idCita }">Editar</a></td>
@@ -96,17 +105,16 @@
 						</sec:authorize>
 					</tr>
 				</c:forEach>
+				</c:otherwise>
+				</c:choose>
 			</tbody>
 		</table>
 		<table class="default">
-					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
-						<a class="btn-link" href="/cita/alta">Crear Cita</a>
-					</sec:authorize>
 					<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
 						<a class="btn btn-primary" href="/cita/todas">Ver todas las citas</a>
 					</sec:authorize>
 			</table>
-		<!--<footer>
+		<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
 				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>
 		</footer>-->
