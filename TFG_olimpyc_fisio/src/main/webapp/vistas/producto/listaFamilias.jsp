@@ -88,11 +88,10 @@
 							    <h5 class="card-title">${ ele.nombreFamilia }</h5>
 								<p class="card-text">${ ele.descripcionFamilia }</p>
 								<ul class="card-actions">
-								<sec:authorize access="hasAnyAuthority('Cliente')">
+								<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
 									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Tratamientos</a></td>
 								</sec:authorize>
 								<sec:authorize access="hasAuthority('Administrador')">
-									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Ver</a></td>
 									<td><a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
 									<td><a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
 								</sec:authorize>
