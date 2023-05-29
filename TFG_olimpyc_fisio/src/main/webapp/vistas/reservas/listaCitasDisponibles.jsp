@@ -44,7 +44,36 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-	
+
+<style>
+		
+		.section2 {
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			margin-top: 5%;
+		}
+		
+		.table th,
+		.table td {
+			border: 2px solid #ccc;
+			padding: 8px;
+		}
+
+		.table th {
+			background-color: #f2f2f2;
+		}
+		
+		.default{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin-top: 2%;
+			margin-left: 40%;
+			margin-right: 40%;
+		}
+
+</style>	
 </head>
 	<body>
 	<jsp:include page="../menu.jsp"></jsp:include>
@@ -55,7 +84,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Gestion de citas</h1>
 							<h2 class="to-animate">Desde aquí puedes ver todas las citas disponibles </h2>
 						</div>
@@ -65,8 +94,8 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<h2>Citas disponibles</h2>
-		<table>
+	<section class="section2">
+		<table class="table">
 			<thead>
 				<tr><th>Fecha</th>
 				<th>hora</th>
@@ -109,11 +138,12 @@
 				</c:choose>
 			</tbody>
 		</table>
-		<table class="default">
+		</section>
+		<div class="default">
 					<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
 						<a class="btn btn-primary" href="/cita/todas">Ver todas las citas</a>
 					</sec:authorize>
-			</table>
+			</div>
 		<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
 				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>

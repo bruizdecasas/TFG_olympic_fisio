@@ -103,7 +103,6 @@
 				<fieldset class="default">
 					<label for="emailUsuario">Email</label>
 					<input type="text" name="emailUsuario" id="emailUsuario" required placeholder="${usuario.emailUsuario }" class="campos"/>
-					<input type="hidden" name="password" id="password" required value="${usuario.password} }" class="campos"/>		
 				</fieldset>		
 				<fieldset class="default">
 					<label for="nombre_usuario">Nombre</label>

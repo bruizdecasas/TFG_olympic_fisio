@@ -63,7 +63,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Listado de Usuarios</h1>
 							<h2 class="to-animate">Administración de los usuarios</h2>
 						</div>
@@ -91,9 +91,7 @@
               <p class="card-text">${ele.sociedadMedica}</p>
               <p class="card-text">${ele.rol.nombreRol}</p>
            
-                <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
-                 <td><a class="btn btn-primary" href="/producto/detalle/${ele.idUsuario}">Detalle</a></td>
-                </sec:authorize>
+
                 <sec:authorize access="hasAuthority('Administrador')">
                   <td><a class="btn btn-primary" href="/producto/editar/${ele.idUsuario}">Editar</a></td>
                 </sec:authorize>

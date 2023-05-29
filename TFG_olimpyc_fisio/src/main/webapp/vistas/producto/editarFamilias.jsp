@@ -42,7 +42,33 @@
 	
 	<link rel="stylesheet" type="text/css" href="../css/style3.css">
 
+	<style>
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .form {
+      max-width: 30%;
+    }
+
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+
+</style>
 </head>
 	<body>
 	<jsp:include page="../menu.jsp"></jsp:include>
@@ -53,7 +79,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Editar Familias</h1>
 							<h2 class="to-animate">Administración de las familias</h2>
 						</div>
@@ -64,31 +90,35 @@
 		<div class="slant"></div>
 	</section>
 		<sec:csrfInput />
-		<h1>Editar la Familia: ${ familia.idFamilia } - ${ familia.nombreFamilia }</h1>
-		<a class="btn btn-primary" href="/familia/todas">Volver</a>
-		<form action="/familia/editar" method="post">	
+
+	<div class="contenedor">
+		<form class="form" action="/familia/editar" method="post">	
 			<fieldset class="full-form">
-				<legend>Introduce los datos para editar la familia con id: ${ familia.idFamilia }</legend>
+				<legend>Introduce los datos para editar la familia: ${ familia.nombreFamilia }</legend>
 			<fieldset class="default">
 				<fieldset class="default">
 					<input type="hidden" name="idFamilia" id="id_familia" required value="${ familia.idFamilia }"/>		
 				</fieldset>
 				<fieldset class="default">
 						<label for="nombre_familia">Nombre de la Familia</label>
-					<input type="text" name="nombreFamilia" id="nombre_familia" required placeholder="${ familia.nombreFamilia }"/>		
+					<input type="text" name="nombreFamilia" id="nombre_familia" required placeholder="${ familia.nombreFamilia }" class="campos"/>		
 				</fieldset>	
 					<fieldset class="default">
 						<label for="descripcion_familia">Descripción de la Familia</label>
-					<input type="text" name="descripcionFamilia" id="descripcion_familia" required placeholder="${ familia.descripcionFamilia }"/>		
+					<input type="text" name="descripcionFamilia" id="descripcion_familia" required placeholder="${ familia.descripcionFamilia }" class="campos"/>		
 				</fieldset>		
+				<div class="botones">
 				<button type="submit" class="btn btn-primary">Editar</button>
+				<a class="btn btn-primary" href="/familia/todas">Volver</a>
+				</div>
 			</fieldset>
 		</fieldset>
 		</form>
+	</div>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 	
-
+	<jsp:include page="../footer.jsp"></jsp:include>
 <!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
