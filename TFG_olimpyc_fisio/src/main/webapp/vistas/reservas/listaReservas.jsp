@@ -64,7 +64,12 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<h2>Reservas</h2>
+	<div class="container">
+    	<div class="row">
+      		<div class="col-md-12">
+        		<h3 class="titulo">Reservas</h3>
+      		</div>
+    
 		<section class="default">
 				
 			<c:choose>
