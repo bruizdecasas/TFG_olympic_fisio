@@ -49,14 +49,14 @@
 		<jsp:include page="../menu.jsp"></jsp:include>
 		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
+		
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Tratamientos</h1>
-							<h2 class="to-animate">Fisioterapia, suelo pélvico, columna vertebral,acunpuntura y osteopatía </h2>
+							<h1 class="to-animate">Mis reservas</h1>
+							<h2 class="to-animate">En este apartado puedes gestionar tus reservas </h2>
 						</div>
 					</div>
 				</div>
@@ -65,45 +65,40 @@
 		<div class="slant"></div>
 	</section>
 		<h2>Reservas</h2>
-		<main>
 		<section class="default">
-		
-		<table class="default">
-			<thead>
-				<tr class="default">
-					<th>Fecha</th>
-					<th>Hora</th>					
-					<th>Especialista</th>
-					<th>Observaciones del especialista</th>
-					<th>Observaciones del Cliente</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:forEach var="ele" items="${ listareservas }">
-				<tr class="default">
-					<td>${ ele.cita.fechaCita }</td> 
-					<td>${ ele.cita.horaCita }</td>
-					<td>${ ele.cita.usuario.nombreUsuario }</td>
-					<td>${ ele.cita.observaciones }</td>
-					<td>${ ele.observacionesResevas }</td>
-
-				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/cancelar/${ ele.idReserva }">Cancelar</a></td>
-					<td><a class="btn-link" href="/reserva/detalle/${ ele.idReserva }">Detalle</a></td>
-				</sec:authorize>
-				<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/editar/${ ele.idReserva }">Editar</a></td>
-				</sec:authorize>
 				
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
+			<c:choose>
+  				<c:when test="${empty listareservas}">
+    				<tr>
+      				<td colspan="5" class="vacias">No tienes realizada ninguna reserva</td>
+    			</tr>
+  				</c:when>
+  			<c:otherwise>
+  			<div class="row">
+			<c:forEach var="ele" items="${ listareservas }">
+				<div class="col-sm-4">
+          			<div class="card">
+            			<div class="card-body">
+							    <h5 class="card-title">${ele.cita.fechaCita }</h5>
+								<p class="card-text"> ${ele.cita.horaCita }</p>
+								<p class="card-text"> ${ ele.cita.usuario.nombreUsuario }</p>
+								<p class="card-text"> ${ele.cita.observaciones }</p>
+								<p class="card-text"> ${ele.observacionesResevas }</p>
+								<ul class="card-actions">
+								<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
+									<td><a class="btn btn-primary" href="/reserva/cancelar/${ ele.idReserva }">Cancelar</a></td>
+								</sec:authorize>
+						</div>
+			        </div>
+			         </div>
+			    </c:forEach>
+				</c:otherwise>
+				</c:choose>
+			      </div>
 		</section>
 			<p class="mensaje-exito">${ mensajeExito }</p>
 			<p class="mensaje-error">${ mensajeError }</p>
-		</main>
+		
 			<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->
