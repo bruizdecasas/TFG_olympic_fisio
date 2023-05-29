@@ -102,22 +102,21 @@
 			<input type="hidden" name="idUsuario" id="idUsuario" required value="${ usuario.idUsuario }"/>	
 				<fieldset class="default">
 					<label for="emailUsuario">Email</label>
-					<input type="text" name="emailUsuario" id="emailUsuario" required placeholder="${usuario.emailUsuario }" class="campos"/>
-					<input type="hidden" name="password" id="password" required value="${usuario.password} }" class="campos"/>		
+					<input type="text" name="emailUsuario" id="emailUsuario" required placeholder="${usuario.emailUsuario }" class="campos"/>	
 				</fieldset>		
 				<fieldset class="default">
 					<label for="nombre_usuario">Nombre</label>
-					<input type="text" name="nombreUsuario" id="nombreUsuario" required placeholder="${usuario.nombreUsuario }" class="campos"/>
+					<input type="text" name="nombreUsuario" id="nombreUsuario" required value="${usuario.nombreUsuario }" class="campos"/>
 					<label for="apellido_usuario">Apellido</label>
-					<input type="text" name="apellidosUsuario" id="apellidosUsuario" required placeholder="${usuario.apellidosUsuario }" class="campos"/>
+					<input type="text" name="apellidosUsuario" id="apellidosUsuario" required value="${usuario.apellidosUsuario }" class="campos"/>
 					<label for="fecha_nacimiento">Fecha Nacimiento</label>
-					<input type="date" name="fechaNacimiento" id="fechaNacimiento" required class="campos"/>
+					<input type="date" name="fechaNacimiento" id="fechaNacimiento" required value="${usuario.fechaNacimiento }" class="campos"/>
 				</fieldset>	
 				<fieldset>
 					<label for="telefono">Teléfono</label>
-					<input type="text" name="telefono" id="telefono" required placeholder="${usuario.telefono }" class="campos"/>
-					<label for="sociedadMedica">Sociedad Médica</label>
-					<input type="text" name="sociedadMedica" id="sociedadMedica" placeholder="${usuario.sociedadMedica }" class="campos" />
+					<input type="text" name="telefono" id="telefono" required value="${usuario.telefono }" class="campos"/>
+					<label for="sociedadMedica">Sociedad Médica </label> (opcional)
+					<input type="text" name="sociedadMedica" id="sociedadMedica" value="${usuario.sociedadMedica }" class="campos" />
 				</fieldset>
 				<fieldset>
 					<sec:authorize access="hasAuthority('Administrador')">
