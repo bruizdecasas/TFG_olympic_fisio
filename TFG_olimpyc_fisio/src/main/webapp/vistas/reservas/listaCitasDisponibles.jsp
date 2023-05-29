@@ -117,7 +117,7 @@
 		<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
 				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>
-		</footer>-->
+		</footer>
 				<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->
