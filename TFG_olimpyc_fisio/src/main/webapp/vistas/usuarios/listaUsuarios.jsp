@@ -90,29 +90,26 @@
               <p class="card-text">${ele.telefono}</p>
               <p class="card-text">${ele.sociedadMedica}</p>
               <p class="card-text">${ele.rol.nombreRol}</p>
-              
-              <ul class="card-actions">
-               <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
-                 <li><a class="btn btn-primary" href="/producto/detalle/${ele.idUsuario}">Detalle</a></li>
+           
+                <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
+                 <td><a class="btn btn-primary" href="/producto/detalle/${ele.idUsuario}">Detalle</a></td>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a class="btn btn-primary" href="/producto/editar/${ele.idUsuario}">Editar</a></li>
+                  <td><a class="btn btn-primary" href="/producto/editar/${ele.idUsuario}">Editar</a></td>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a class="btn btn-primary" href="/producto/eliminar/${ele.idUsuario}">Eliminar</a></li>
+                  <td><a class="btn btn-primary" href="/producto/eliminar/${ele.idUsuario}">Eliminar</a></td>
                 </sec:authorize>
-              </ul>
+            
             </div>
           </div>
         </div>
       </c:forEach>
     </div>
-  </div>
-
-					<sec:authorize access="hasAuthority('Administrador')">
-						<div class="botones">
+				<sec:authorize access="hasAuthority('Administrador')">
+					<div class="botones">
 						<a class="btn btn-primary" href="/usuario/alta">Crear Usuario</a>
-						</div>
+					</div>
 					</sec:authorize>
 
 		<jsp:include page="../footer.jsp"></jsp:include>
