@@ -29,7 +29,16 @@ Follow these steps to set up the project in your development environment:
 
 ./mvnw spring-boot:run
 
-7. The application will be available at http://localhost:8088. Open your browser and access that address to see it in action. </br>
+7. Troubleshooting Project Download Issues
+If you encounter an error when downloading the project for the first time, you may need to follow these steps to resolve it:
+
+  a. Open the `application.properties` configuration file.</br>
+  b. Look for the `spring.jpa.generate-ddl` property and temporarily set it to `true`.</br>
+  c. Run the project and allow Spring to automatically generate the database schema.</br>
+  d. Once the database is properly configured, remember to revert the `spring.jpa.generate-ddl` property back to `false` or its original value.
+
+
+8. The application will be available at http://localhost:8088. Open your browser and access that address to see it in action. </br>
 
 <h2>Contribution</h2>
 If you wish to contribute to this project, you are welcome to do so! You can make improvements, bug fixes, or add new features. Follow these steps:</br>
