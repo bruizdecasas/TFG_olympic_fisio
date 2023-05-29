@@ -43,38 +43,33 @@
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
 <style>
-  table {
-    width: 80%;
-    border-collapse: collapse;
-  }
+		
+		.section2 {
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			margin-top: 5%;
+		}
+		
+		.table th,
+		.table td {
+			border: 2px solid #ccc;
+			padding: 8px;
+		}
 
-  th {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-    color: #ffffff;
-  
-  }
-  
-   td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-   
-  
-  }
+		.table th {
+			background-color: #f2f2f2;
+		}
+		
+		.default{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin-top: 2%;
+			margin-left: 40%;
+			margin-right: 40%;
+		}
 
-  th {
-    background-color: #c24d67;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  tr:hover {
-    background-color: #f5f5f5;
-  }
 </style>
 	
 </head>
@@ -87,7 +82,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Gestion de citas</h1>
 							<h2 class="to-animate">Listado de todas las citas </h2>
 						</div>
@@ -97,9 +92,10 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-	<h2>Todas las citas</h2>
+	<section class="section2">
+
 		
-		<table style="margin-left:40px">
+		<table class="table">
 			<thead>
 				<th>Fecha</th>
 				<th>hora</th>
@@ -158,14 +154,17 @@
 				</c:choose>
 			</tbody>
 		</table>
-		<table class="default">
+		</section>
+		
+		<div class="default">
 					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')"> 
-						<a class="btn btn-primary" style="margin-left:40px; margin-top:10px"  href="/cita/alta">Crear Cita</a>
+						<a class="btn btn-primary" href="/cita/alta">Crear Cita</a>
 					</sec:authorize>
 					<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-						<a class="btn btn-primary" style="margin-left:10px; margin-top:10px" href="/cita/disponible">Ver citas disponibles</a>
+						<a class="btn btn-primary" href="/cita/disponible">Ver citas disponibles</a>
 					</sec:authorize>
-			</table>
+			</div>
+		
 		<!--<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>
 				<p class="mensaje-error" style="color:red;">${ mensajeError }</p>

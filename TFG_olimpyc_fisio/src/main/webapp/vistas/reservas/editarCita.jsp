@@ -43,7 +43,33 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
+<style>
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .form {
+      max-width: 30%;
+    }
+
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: center;
+	}
+
+</style>	
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -54,7 +80,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Gestion de Citas</h1>
 							<h2 class="to-animate">En este espacio puedes modificar tus citas </h2>
 						</div>
@@ -65,33 +91,46 @@
 		<div class="slant"></div>
 	</section>
 		<main>
-		<section class="default">
+		<section class="contenedor">
+		<form class="form" action="/cita/editar" method="post">
+			
+			<fieldset class="full-form">
+				<legend>Introduce los datos de la cita</legend>
+			<fieldset class="default">
+				<fieldset class="default">
+					<input type="hidden" name="idCita" id="idCita" required value="${ cita.idCita }" class="campos"/>	
+					<label for="fechaCita">Fecha</label>
+					<input type="date" name="fechaCita" id="fechaCita" required class="campos"/>
+					<label for="hora">Hora</label>
+					<select name="horaCita" id="horaCita" required class="campos">
+						<option value="">Selecciona una hora</option>
+						<option value="09.00">09.00</option>
+						<option value="10.00">10.00</option>
+						<option value="11.00">11.00</option>
+						<option value="12.00">12.00</option>
+						<option value="13.00">13.00</option>
+						<option value="14.00">14.00</option>
+						<option value="15.00">15.00</option>
+						<option value="16.00">16.00</option>
+						<option value="17.00">17.00</option>
+						<option value="18.00">18.00</option>
+						<option value="19.00">19.00</option>
+						<option value="20.00">20.00</option>											
+					</select>	
+				</fieldset>		
+				<fieldset class="default">
+					<label for="observaciones">Observaciones (opcional)</label>
+					<input type="text" name="observaciones" id="observaciones" class="campos"/>
+				</fieldset>	
+				<fieldset class="default">
+				</fieldset>
+				<div class="botones">
+				<button type="submit" class="btn btn-primary">Editar Cita</button>
+				</div>
+			</fieldset>
+		</fieldset>
+		</form>
 		
-		<table class="default">
-			<thead>
-				<tr class="default">
-					<th>Fecha</th>
-					<th>Hora</th>					
-					<th>Especialista</th>
-					<th>Observaciones del especialista</th>
-					<th>Observaciones del Cliente</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="default">
-					<td>${ reserva.cita.fechaCita }</td> 
-					<td>${ reserva.cita.horaCita }</td>
-					<td>${ reserva.cita.usuario.nombreUsuario }</td>
-					<td>${ reserva.cita.observaciones }</td>
-					<td>${ reserva.observacionesResevas }</td>
-
-				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/cancelar/${ cita.idCita }">Cancelar</a></td>
-				</sec:authorize>
-				<h3>Si deseas modificar los datos de tu reserva, contacta con </h3>
-				</tr>
-			</tbody>
-		</table>
 		</section>
 			<p class="mensaje-exito">${ mensajeExito }</p>
 			<p class="mensaje-error">${ mensajeError }</p>

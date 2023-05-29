@@ -55,9 +55,9 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-2 col-md-offset-2">
-							<h1 class="to-animate">Reservas</h1>
-							<h2 class="to-animate">Aqui puedes reservar tu cita </h2>
+						<div class="">
+							<h1 class="to-animate">Citas</h1>
+							<h2 class="to-animate">Aqui puedes registrar tu disponibilidad de citas como especialista </h2>
 						</div>
 					</div>
 				</div>
