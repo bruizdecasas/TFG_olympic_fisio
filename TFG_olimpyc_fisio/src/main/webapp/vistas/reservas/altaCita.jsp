@@ -44,7 +44,33 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
+<style>
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .form {
+      max-width: 30%;
+    }
+
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+
+</style>	
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -54,9 +80,9 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-2 col-md-offset-2">
-							<h1 class="to-animate">Reservas</h1>
-							<h2 class="to-animate">Aqui puedes reservar tu cita </h2>
+						<div class="">
+							<h1 class="to-animate">Citas</h1>
+							<h2 class="to-animate">Aqui puedes crear nuevas citas disponibles para los clientes </h2>
 						</div>
 					</div>
 				</div>
@@ -66,18 +92,17 @@
 	</section>
 		<main>
 		<sec:csrfInput />
-		<h1>Dar de alta una nueva Cita</h1>
-		
-		<form action="/cita/alta" method="post">
+		<div class="contenedor">
+		<form class="form" action="/cita/alta" method="post">
 			
 			<fieldset class="full-form">
 				<legend>Introduce los datos de la cita</legend>
 			<fieldset class="default">
 				<fieldset class="default">
-					<label for="fechaCita" style="margin-left:10px">Fecha</label>
-					<input type="date" name="fechaCita" id="fechaCita" required /></br>
-					<label for="horaCita" style="margin-left:10px">Hora</label>
-					<select name="horaCita" id="horaCita" required style="margin-top:20px">
+					<label for="fechaCita">Fecha</label>
+					<input type="date" name="fechaCita" id="fechaCita" required class="campos"/></br>
+					<label for="horaCita">Hora</label>
+					<select name="horaCita" id="horaCita" required class="campos">
 						<option value="">Selecciona una hora</option>
 						<option value="09.00">09.00</option>
 						<option value="10.00">10.00</option>
@@ -94,14 +119,17 @@
 					</select>		
 				</fieldset>		
 				<fieldset class="default">
-					<label for="observaciones" style="margin-top:20px;margin-left:10px" >Observaciones</label>
-					<input type="text" name="observaciones" id="observaciones" required/>
-				</fieldset>	
-				<button type="submit" class="btn btn-primary" style="margin-top:10px;margin-left:10px">Alta Cita</button><a class="btn btn-primary" style="margin-left:10px; margin-top:10px" href="/cita/todas">Volver</a>
+					<label for="observaciones">Observaciones</label>
+					<input type="text" name="observaciones" id="observaciones" required class="campos"/>
+				</fieldset>
+				<div class="botones">	
+					<button type="submit" class="btn btn-primary" style="margin-top:10px;margin-left:10px">Alta Cita</button>
+					<a class="btn btn-primary" style="margin-left:10px; margin-top:10px" href="/cita/todas">Volver</a>
+				</div>
 			</fieldset>
 		</fieldset>
 		</form>
-		
+		</div>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		</main>

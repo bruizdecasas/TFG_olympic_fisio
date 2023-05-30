@@ -54,7 +54,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Mis reservas</h1>
 							<h2 class="to-animate">En este apartado puedes gestionar tus reservas </h2>
 						</div>
