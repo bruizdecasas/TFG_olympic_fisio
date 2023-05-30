@@ -60,7 +60,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "Producto dado de alta correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido realizar el alta del producto");	
-		return "redirect:/";
+		return "redirect:/producto/todos";
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "Producto editado correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "No se ha podido editar el producto");		
-		return "redirect:/";
+		return "redirect:/producto/todos";
 	}
 	
 	/**
@@ -111,20 +111,7 @@ public class ProductoController {
 			attr.addFlashAttribute("mensajeExito", "producto eliminado");
 		else
 			attr.addFlashAttribute("mensajeError", "producto no eliminado");
-		return "redirect:/";
-	}
-	
-	/**
-	 * Retrieves the details of a specific Producto using a GET request.
-	 * @param model the Model object to which the Producto attribute will be added.
-	 * @param codigo the ID of the Producto to retrieve.
-	 * @return the name of the view that displays the Producto details.
-	 */	
-	@GetMapping("/detalle/{id}")
-	public String verUno(Model model, @PathVariable(name="id") int  codigo) {
-		Producto producto = productoServ.findById(codigo);
-		model.addAttribute("producto", producto);		
-		return "/producto/detalleProducto";	 		
+		return "redirect:/producto/todos";
 	}
 	
 	/**
