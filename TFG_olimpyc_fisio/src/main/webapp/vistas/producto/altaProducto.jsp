@@ -40,7 +40,28 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-	
+<style>
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .form {
+      max-width: 30%;
+    }
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+</style>		
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -51,9 +72,9 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Alta Productos</h1>
-							<h2 class="to-animate">Administración de los productos</h2>
+						<div>
+							<h1 class="to-animate">Alta Tratamientos</h1>
+							<h2 class="to-animate">Aquí puedes dar de alta nuevos tratamientos</h2>
 						</div>
 					</div>
 				</div>
@@ -62,32 +83,36 @@
 		<div class="slant"></div>
 	</section>
 		<sec:csrfInput />
-		<h1>Dar de alta un nuevo tratamiento</h1>
-		<a class="btn-link" href="/">Volver</a>
-		<form action="/producto/alta/" method="post">
+		<div class="contenedor">
+		<form action="/producto/alta/" method="post" class="form">
 			
 			<fieldset class="full-form">
 				<legend>Introduce los datos del nuevo tratamiento</legend>
 			<fieldset class="default">
 				<fieldset class="default">
 					<label for="nombreProducto">Nombre</label>
-					<input type="text" name="nombreProducto" id="nombreProducto" required />
+					<input type="text" name="nombreProducto" id="nombreProducto" required class="campos"/>
 					<label for="descripcion">Descripción</label>
-					<input type="text" name="descripcion" id="descripcion" required />		
+					<input type="text" name="descripcion" id="descripcion" required class="campos"/>		
 				</fieldset>		
 				<fieldset class="default">
 					<label for="precio">Precio</label>
-					<input type="number" step="0.5" min="0" name="precio" id="precio" required />
-					<select name="idFamilia" id="id_familia" required>
+					<input type="number" step="0.5" min="0" name="precio" id="precio" required class="campos"/>
+					<label for="idFamilia">Familia del producto</label>
+					<select name="idFamilia" id="id_familia" required class="campos">
 						<c:forEach var="ele" items="${ listaFamilia }">
 							<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
 						</c:forEach>
 					</select>
 				</fieldset>	
+				<div class="botones">				
+				<a class="btn btn-primary" href="/producto/todos">Volver</a>
 				<button type="submit" class="btn btn-primary">Alta Tratamiento</button>
+				</div>
 			</fieldset>
 		</fieldset>
 		</form>
+		</div>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		

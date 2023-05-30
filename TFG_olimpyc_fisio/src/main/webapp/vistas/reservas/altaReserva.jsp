@@ -44,7 +44,54 @@
 
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
-	
+<style>
+
+	.section2 {
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		margin-top: 5%;
+	}
+
+    .table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .table th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+     .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-top:2%;
+    }
+    .form {
+      max-width: 30%;
+    }
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+</style>	
 </head>
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -55,9 +102,9 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Alta Reservas</h1>
-							<h2 class="to-animate">En este espacio se pueden reservar las citas </h2>
+						<div class="">
+							<h1 class="to-animate"> Confirmar Reserva</h1>
+							<h2 class="to-animate">A continuación se muestran los detalles de la reserva que quieres confirmar </h2>
 						</div>
 					</div>
 				</div>
@@ -65,11 +112,11 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<main>
+
 		<sec:csrfInput />
-		<h1>Reservar</h1>
-		<a class="btn-link" href="/">Volver</a>	</br>	
-		<thead>
+	<section class="section2">
+		<table class="table">
+			<thead>
 				<tr class="default">
 					<th>Fecha</th>
 					<th>Hora</th>					
@@ -87,24 +134,29 @@
 					<td>${ observacionesResevas }</td>
 
 				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/cancelar/${ cita.idCita }">Cancelar</a></td>
 				</sec:authorize>
 				<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">	
-					<td><a class="btn-link" href="/reserva/editar/${ ele.idReserva }">Editar</a></td>
 				</sec:authorize>
 				</tr>
 			</tbody>
-		<form action="/reserva/alta" method="post">
+		</table>
+	</section>
+	<div class="contenedor">		
+		<form action="/reserva/alta" method="post" class="form">
 				<fieldset class="default">
 				<input type="hidden" name="idCita" value="${cita.idCita}">
 					<label for="observacionesResevas">Observaciones</label>
-					<input type="text" name="observacionesResevas" id="observacionesResevas"/>
-				</fieldset>	
-			<button type="submit" class="btn-link">Confirmar reserva</button>
+					<input type="text" name="observacionesResevas" id="observacionesResevas" class="campos"/>
+				</fieldset>
+			<div class="botones">	
+			<button type="submit" class="btn btn-primary">Confirmar reserva</button>
+			<a class="btn btn-primary" href="/cita/todas">Volver</a>
+			</div>
 		</form>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
-		</main>
+	</div>
+		
 		<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->

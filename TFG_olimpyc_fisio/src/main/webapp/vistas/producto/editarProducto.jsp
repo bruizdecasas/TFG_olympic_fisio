@@ -40,7 +40,28 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 
 	<link rel="stylesheet" type="text/css" href="../css/style3.css">
-
+<style>
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .form {
+      max-width: 30%;
+    }
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+</style>
 	
 </head>
 	<body>
@@ -53,7 +74,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Editar Producto</h1>
 							<h2 class="to-animate">Administración de productos</h2>
 						</div>
@@ -63,40 +84,47 @@
 		</div>
 		<div class="slant"></div>
 	</section>
-		<main>
+
 		<sec:csrfInput />
-		<h1>Editar el producto: ${ producto.idProducto } - ${ producto.nombreProducto } </h1>
-		<a class="btn-link" href="/">Volver</a>
-		<form action="/producto/editar" method="post">
+		<div class="contenedor">
+		<form action="/producto/editar" method="post" class="form">
 			
 			<fieldset class="full-form">
-				<legend>Introduce los datos del nuevo producto</legend>
+				<legend>Introduce los datos que quieres modificar del producto: ${ producto.nombreProducto }</legend>
 			<fieldset class="default">
 					<fieldset class="default">
 						<input type="hidden" name="idProducto" id="id_producto" required value="${ producto.idProducto }"/>		
 				</fieldset>
 				<fieldset class="default">
 					<label for="nombreProducto">Nombre</label>
-					<input type="text" name="nombreProducto" id="nombre_producto" required placeholder="${ producto.nombreProducto}"/>
+					<input type="text" name="nombreProducto" id="nombre_producto" class="campos" required placeholder="${ producto.nombreProducto}"/>
 					<label for="descripcion">Descripción</label>
-					<input type="text" name="descripcion" id="descripcion" required placeholder="${ producto.descripcion}"/>		
+					<input type="text" name="descripcion" id="descripcion" class="campos" required placeholder="${ producto.descripcion}"/>		
 				</fieldset>		
 				<fieldset class="default">
 					<label for="precio">Precio</label>
-					<input type="number" step="0.5" min="0" name="precio" id="precio" required placeholder="${ producto.precio}"/>
-					<select name="idFamilia" id="id_familia" required>
+					<input type="number" step="0.5" min="0" name="precio" id="precio" class="campos" required placeholder="${ producto.precio}"/>
+					<label for="id_familia">Familia</label>
+					<select name="idFamilia" id="id_familia" required class="campos">
 						<c:forEach var="ele" items="${ listaFamilia }">
 							<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
 						</c:forEach>
 					</select>
-				</fieldset>	
-				<button type="submit" class="btn-link">Editar</button>
+				</fieldset>
+				<div class="botones">
+				<button type="submit" class="btn btn-primary">Editar</button>
+				<a class="btn btn-primary" href="/">Volver</a>	
+				</div>
 			</fieldset>
 		</fieldset>
 		</form>
+		</div>
+		
+						<jsp:include page="../footer.jsp"></jsp:include>
+						
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
-		</main>
+		
 <!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->

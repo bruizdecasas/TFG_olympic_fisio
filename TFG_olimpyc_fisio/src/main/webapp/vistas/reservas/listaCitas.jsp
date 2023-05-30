@@ -92,13 +92,12 @@
 		</div>
 		<div class="slant"></div>
 	</section>
+	
 	<section class="section2">
-
-		
 		<table class="table">
 			<thead>
 				<th>Fecha</th>
-				<th>hora</th>
+				<th>Hora</th>
 				<th class="nav-item dropdown">
     				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Especialista</a>
     					<ul class="dropdown-menu">
@@ -157,13 +156,13 @@
 		</section>
 		
 		<div class="default">
-					<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')"> 
-						<a class="btn btn-primary" href="/cita/alta">Crear Cita</a>
-					</sec:authorize>
-					<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-						<a class="btn btn-primary" href="/cita/disponible">Ver citas disponibles</a>
-					</sec:authorize>
-			</div>
+			<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')"> 
+				<a class="btn btn-primary" href="/cita/alta">Crear Cita</a>
+			</sec:authorize>
+			<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
+				<a class="btn btn-primary" href="/cita/disponible">Ver citas disponibles</a>
+			</sec:authorize>
+		</div>
 		
 		<!--<footer>
 				<p class="mensaje-exito" style="color:green;">${ mensajeExito }</p>

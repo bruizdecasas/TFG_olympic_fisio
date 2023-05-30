@@ -45,12 +45,61 @@
 	<!-- Modernizr JS -->
 	<script src="../js/modernizr-2.6.2.min.js"></script>
 <style>
+	.titulo{
+	text-align:center;
+	}
+
 	.botones{
 	margin-top: 5%;
 	display:flex;
 	justify-content: center;
 	}
+	.row {
+    margin-left: -15px;
+    margin-right: -15px;
+    }
+    
+    .col-sm-4 {
+    width: 33.3333333333%;
+	}
 	
+	.card {
+    border-color: rgb(167, 162, 154);
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    }
+    
+    .card-body {
+    box-sizing: border-box;
+    
+    }
+    
+    .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+	}
+	.card-text {
+    margin-bottom: 8px;
+    text-align: center;
+	}
+	.card-actions {
+    list-style-image: initial;
+    list-style: none;
+    padding: 0;
+	}
+
+	.btn.btn-primary {
+    background-image: initial;
+    background-color: rgb(195, 60, 90);
+    color: rgb(220, 218, 215);
+    border-color: transparent !important;
+	}
+
 </style>	
 </head>
 	<body>
@@ -64,7 +113,7 @@
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
 							<h1 class="to-animate">Tratamientos</h1>
-							<h2 class="to-animate">Fisioterapia, suelo pélvico, columna vertebral,acunpuntura y osteopatía </h2>
+							<h2 class="to-animate">Fisioterapia, suelo pélvico, columna vertebral, acunpuntura y osteopatía </h2>
 						</div>
 					</div>
 				</div>
@@ -86,17 +135,17 @@
             <div class="card-body">
               <h5 class="card-title">${ele.nombreProducto}</h5>
               <p class="card-text">${ele.precio} €</p>
-              <ul class="card-actions">
+              <div class="card-actions">
                <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
-                 <li><a class="btn btn-primary" href="/producto/detalle/${ele.idProducto}">Detalle</a></li>
+                 <a class="btn btn-primary" href="/producto/detalle/${ele.idProducto}">Detalle</a>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a class="btn btn-primary" href="/producto/editar/${ele.idProducto}">Editar</a></li>
+                  <a class="btn btn-primary" href="/producto/editar/${ele.idProducto}">Editar</a>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <li><a class="btn btn-primary" href="/producto/eliminar/${ele.idProducto}">Eliminar</a></li>
+                  <a class="btn btn-primary" href="/producto/eliminar/${ele.idProducto}">Eliminar</a>
                 </sec:authorize>
-              </ul>
+              </div>
             </div>
           </div>
         </div>

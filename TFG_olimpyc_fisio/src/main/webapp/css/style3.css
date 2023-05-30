@@ -1272,7 +1272,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #c24d67;
 }
 .btn:hover, .btn:active, .btn:focus {
-  background: #393e46 !important;
+  background: #4DC2A8 !important;
   color: #fff;
   outline: none !important;
 }
