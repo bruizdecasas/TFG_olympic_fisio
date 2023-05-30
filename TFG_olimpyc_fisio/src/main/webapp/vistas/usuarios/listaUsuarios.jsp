@@ -93,10 +93,10 @@
            
 
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <td><a class="btn btn-primary" href="/producto/editar/${ele.idUsuario}">Editar</a></td>
+                  <td><a class="btn btn-primary" href="/usuario/editar/${ele.idUsuario}">Editar</a></td>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
-                  <td><a class="btn btn-primary" href="/producto/eliminar/${ele.idUsuario}">Eliminar</a></td>
+                  <td><a class="btn btn-primary" href="/usuario/eliminar/${ele.idUsuario}">Eliminar</a></td>
                 </sec:authorize>
             
             </div>
