@@ -50,7 +50,7 @@ public class FamiliaController {
 			attr.addFlashAttribute("mensajeExito", "Familia dada de alta correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "Error al dar de alta la familia");
-		return "redirect:/";
+		return "redirect:/familia/todas";
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public class FamiliaController {
 			attr.addFlashAttribute("mensajeError", "familia no encontrada");
 		else
 			attr.addFlashAttribute("mensajeError", "error al eliminar la familia");
-		return "redirect:/";
+		return "redirect:/familia/todas";
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class FamiliaController {
 			attr.addFlashAttribute("mensajeError", "Familia no encontrada");
 		else 
 			attr.addFlashAttribute("mensajeError", "Error al eliminar la familia");		
-		return "redirect:/";
+		return "redirect:/familia/todas";
 	}
 	
 	/**
