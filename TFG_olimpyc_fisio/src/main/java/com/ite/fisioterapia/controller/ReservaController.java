@@ -66,20 +66,7 @@ public class ReservaController {
 		model.addAttribute("listareservas", reserva);
 		return "/reservas/listaReservas";
 	}
-	
-	/**
-	 * Retrieves the details of a specific Reserva using a GET request.
-	 * @param model the Model object to which the Reserva attribute will be added.
-	 * @param codigo the ID of the Reserva to retrieve.
-	 * @return the name of the view that displays the Reserva details.
-	 */	
-	@GetMapping("/detalle/{id}")
-	public String detalleReserva(Model model, @PathVariable(name="id") int codigo) {
-		Reserva reserva = reserserv.findById(codigo);
-		model.addAttribute("reserva", reserva);
-		return "/reservas/detalleReserva";
-	}	
-	
+
 	/**
 	 * Displays the registration form for a new Reserva 
 	 * @param model the Model object to which the Reserva attribute will be added.
@@ -135,27 +122,6 @@ public class ReservaController {
 		return "redirect:/cita/todas";
 	}
 	
-	/**
-	 * Handles a GET requests to delete a Reserva with the given ID.
-	 * @param codigo the ID of the Reserva to be deleted.
-	 * @param model Object that holds the attributes to be used in the view.
-	 * @param attr Object that contains attributes for the redirect page.
-	 * @return A String representing the redirect page URL.
-	 */
-	/* este método lo he comentado porque no lo utilizamos, se podría eliminar
-	 * @GetMapping("/eliminar/{id}")
-	public String eliminarReserva (Model model, @PathVariable(name="id") int  codigo, RedirectAttributes attr) {
-		if (reserserv.eliminarReserva(codigo) == 1)
-			attr.addFlashAttribute("mensajeExito", "Reserva eliminada");
-		else
-			attr.addFlashAttribute("mensajeError", "Reserva no eliminado");
-		return "forward:/";	 
-	}*/
-	
-	/**
-	 * This custom editor will parse incoming date strings into Date objects and format Date objects into strings in the specified format..
-	 * @param webDataBinder the WebDataBinder allow binding of dates in the specified format.
-	 */	
 	@InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
