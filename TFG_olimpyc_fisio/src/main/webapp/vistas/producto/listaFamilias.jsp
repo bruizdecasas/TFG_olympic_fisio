@@ -52,7 +52,18 @@
 	display:flex;
 	justify-content: center;
 	}
+	.card-actions{
+	display: grid;
+	margin-left:20%;
+	margin-right:20%;
+	}
+	
+	.btn.btn-primary{
+	margin-top: 10px;
 
+	}
+	
+	
 </style>
 </head>
 	<body>
@@ -83,19 +94,19 @@
     			<c:forEach var="ele" items="${ listaFamilias }">
 				<div class="col-sm-4">
           			<div class="card">
-          					<div class="card-body">
+          				<div class="card-body">
             					<img src="${ele.img}" alt="Imagen de la familia" style="max-width: 100%; height: auto">
 							    <h5 class="card-title">${ ele.nombreFamilia }</h5>
 								<p class="card-text">${ ele.descripcionFamilia }</p>
-								<ul class="card-actions">
+							<div class="card-actions">
 								<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-									<td><a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Tratamientos</a></td>
+									<a class="btn btn-primary" href="/producto/productosFamilia/${ ele.idFamilia }">Tratamientos</a>
 								</sec:authorize>
 								<sec:authorize access="hasAuthority('Administrador')">
-									<td><a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a></td>
-									<td><a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a></td>
+									<a class="btn btn-primary" href="/familia/editar/${ ele.idFamilia }">Editar</a>
+									<a class="btn btn-primary" href="/familia/eliminar/${ ele.idFamilia }">Eliminar</a>
 								</sec:authorize>
-							
+							</div>							
 						</div>
 			        </div>
 			      </div>

@@ -63,11 +63,11 @@
 		
 		.default{
 			display: flex;
-			justify-content: space-around;
+			justify-content: space-between;
 			align-items: center;
 			margin-top: 2%;
-			margin-left: 40%;
-			margin-right: 40%;
+			margin-left: 35%;
+			margin-right: 35%;
 		}
 
 </style>

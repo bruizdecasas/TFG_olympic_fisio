@@ -50,14 +50,13 @@
 		<jsp:include page="../menu.jsp"></jsp:include>
 		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="">
-							<h1 class="to-animate">Citas</h1>
-							<h2 class="to-animate">Aqui puedes registrar tu disponibilidad de citas como especialista </h2>
+						<div class="col-md-2 col-md-offset-2">
+							<h1 class="to-animate">Reservas</h1>
+							<h2 class="to-animate">Aqui puedes reservar tu cita </h2>
 						</div>
 					</div>
 				</div>
@@ -68,17 +67,17 @@
 		<main>
 		<sec:csrfInput />
 		<h1>Dar de alta una nueva Cita</h1>
-		<a class="btn-link" href="/">Volver</a>
+		
 		<form action="/cita/alta" method="post">
 			
 			<fieldset class="full-form">
 				<legend>Introduce los datos de la cita</legend>
 			<fieldset class="default">
 				<fieldset class="default">
-					<label for="fechaCita">Fecha</label>
-					<input type="date" name="fechaCita" id="fechaCita" required />
-					<label for="horaCita">Hora</label>
-					<select name="horaCita" id="horaCita" required>
+					<label for="fechaCita" style="margin-left:10px">Fecha</label>
+					<input type="date" name="fechaCita" id="fechaCita" required /></br>
+					<label for="horaCita" style="margin-left:10px">Hora</label>
+					<select name="horaCita" id="horaCita" required style="margin-top:20px">
 						<option value="">Selecciona una hora</option>
 						<option value="09.00">09.00</option>
 						<option value="10.00">10.00</option>
@@ -95,13 +94,14 @@
 					</select>		
 				</fieldset>		
 				<fieldset class="default">
-					<label for="observaciones">Observaciones</label>
-					<input type="text" name="observaciones" id="observaciones"/>
+					<label for="observaciones" style="margin-top:20px;margin-left:10px" >Observaciones</label>
+					<input type="text" name="observaciones" id="observaciones" required/>
 				</fieldset>	
-				<button type="submit" class="btn-link">Alta Cita</button>
+				<button type="submit" class="btn btn-primary" style="margin-top:10px;margin-left:10px">Alta Cita</button><a class="btn btn-primary" style="margin-left:10px; margin-top:10px" href="/cita/todas">Volver</a>
 			</fieldset>
 		</fieldset>
 		</form>
+		
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		</main>
