@@ -64,8 +64,6 @@ public class CitaController {
 		return "/reservas/listaCitas";
 	}
 	
-	
-	
 	/**
 	 * Returns a list of all available Citas in the database.
 	 * @param model the Model object to be populated with the list of available Citas 
@@ -77,19 +75,6 @@ public class CitaController {
 		model.addAttribute("listacitas", cita);
 		return "/reservas/listaCitasDisponibles";
 	}
-	
-	/**
-	 * Retrieves the details of a specific Cita using a GET request.
-	 * @param model the Model object to which the Cita attribute will be added.
-	 * @param codigo the ID of the Cita to retrieve.
-	 * @return the name of the view that displays the Cita details.
-	 */	
-	@GetMapping("/detalle/{id}")
-	public String detalleCita(Model model, @PathVariable(name="id") int codigo) {
-		Cita cita = citaserv.findById(codigo);
-		model.addAttribute("cita", cita);
-		return "/reservas/detalleCita";
-	}	
 	
 	/**
 	 * Retrieves the Cita data to be edited in the form.
@@ -124,7 +109,7 @@ public class CitaController {
 			attr.addFlashAttribute("mensajeError", "Cita no encontrada");
 		else
 			attr.addFlashAttribute("mensajeError", "error al editar la cita");
-		return "redirect:/";
+		return "redirect:/cita/todas";
 	}
 	
 	/**
@@ -159,62 +144,7 @@ public class CitaController {
 			attr.addFlashAttribute("mensajeExito", "Cita dada de alta correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "Error al dar de alta la cita");
-		return "redirect:/";
-	}
-	
-
-	/**
-	 * Handles a GET request to reserve a specific Cita identified by the given "id" parameter.
-	 * If the Cita does not exist or has already been reserved, a message is added to the redirect
-	 * attributes and the user is redirected to the main page. Otherwise, the Cita is marked as reserved
-	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
-	 * @param cita the Cita object representing the new Cita to be reserved
-	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
-	 * @param model the Model object used to add attributes to the view
-	 * @return a String representing the URL to be redirected
-	 */	
-	@GetMapping("/reserva/{id}")
-	public String reservarCita(@PathVariable(name="id") int codigo, RedirectAttributes attr) {
-	    Cita cita = citaserv.findById(codigo);
-	    if (cita == null) {
-	        attr.addFlashAttribute("mensajeError", "La cita no existe");
-	        return "redirect:/";
-	    } else if (cita.getDisponible() == 0) {
-	        attr.addFlashAttribute("mensajeError", "La cita ya ha sido reservada");
-	        return "redirect:/";
-	    } else {
-	        cita.setDisponible(0);
-	        citaserv.editarCita(cita);
-	        attr.addFlashAttribute("mensajeExito", "Cita reservada con éxito");
-	        return "redirect:/";
-	    }
-	}
-	
-	/**
-	 * Handles a GET request to reserve a specific Cita identified by the given "id" parameter.
-	 * If the Cita does not exist or has already been reserved, a message is added to the redirect
-	 * attributes and the user is redirected to the main page. Otherwise, the Cita is marked as reserved
-	 * and a success message is added to the redirect attributes. Finally, the user is redirected to the main page.
-	 * @param cita the Cita object representing the new Cita to be reserved
-	 * @param attr a RedirectAttributes object used to send flash attributes to the redirected page
-	 * @param model the Model object used to add attributes to the view
-	 * @return a String representing the URL to be redirected
-	 */	
-	@GetMapping("/cancela/{id}")
-	public String cancelarCita(@PathVariable(name="id") int codigo, RedirectAttributes attr) {
-	    Cita cita = citaserv.findById(codigo);
-	    if (cita == null) {
-	        attr.addFlashAttribute("mensajeError", "La cita no existe");
-	        return "redirect:/";
-	    } else if (cita.getDisponible() == 1) {
-	        attr.addFlashAttribute("mensajeError", "La cita no está reservada");
-	        return "redirect:/";
-	    } else {
-	        cita.setDisponible(1);
-	        citaserv.editarCita(cita);
-	        attr.addFlashAttribute("mensajeExito", "La cita está disponible");
-	        return "redirect:/";
-	    }
+		return "redirect:/cita/todas";
 	}
 	
 	/**
@@ -230,7 +160,7 @@ public class CitaController {
 			attr.addFlashAttribute("mensajeExito", "Cita eliminada");
 		else
 			attr.addFlashAttribute("mensajeError", "Cita no eliminada");
-		return "redirect:/";	 
+		return "redirect:/cita/todas";	 
 	}
 	
 	/**
