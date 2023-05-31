@@ -39,7 +39,31 @@
 		<link rel="stylesheet" type="text/css" href="../css/style3.css">
 	<!-- Modernizr JS -->
 		<script src="../js/modernizr-2.6.2.min.js"></script>		
-	
+<style>
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .form {
+      max-width: 30%;
+    }
+    .campos {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }	
+	.botones{
+	margin-top: 5%;
+	display:flex;
+	justify-content: space-between;
+	}
+
+</style>	
+
 	</head>	
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -50,7 +74,7 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="">
 							<h1 class="to-animate">Alta Familia</h1>
 							<h2 class="to-animate">Administración de las familias</h2>
 						</div>
@@ -61,29 +85,33 @@
 		<div class="slant"></div>
 	</section>
 		<sec:csrfInput />
-		<h1>Crear una nueva familia</h1>
-		<a class="btn btn-primary" href="/familia/todas">Volver</a>
-		<form action="/familia/alta" method="post">
+
+		<div class="contenedor">		
+		<form action="/familia/alta" method="post" class="form">
 			
 			<fieldset class="full-form">
 				<legend>Introduce los datos para la nueva familia</legend>
 			<fieldset class="default">
 				<fieldset class="default">
 						<label for="nombre_familia">Nombre de la Familia</label>
-					<input type="text" name="nombreFamilia" id="nombre_familia" required />		
+					<input type="text" name="nombreFamilia" id="nombre_familia" required class="campos"/>		
 				</fieldset>	
 					<fieldset class="default">
 						<label for="descripcion_familia">Descripción de la Familia</label>
-					<input type="text" name="descripcionFamilia" id="descripcion_familia" required />		
-				</fieldset>		
+					<input type="text" name="descripcionFamilia" id="descripcion_familia" required class="campos"/>		
+				</fieldset>	
+				<div class=botones>
 				<a href="/familia/todas"><button type="submit" class="btn btn-primary">Dar de alta</button></a>
+				<a class="btn btn-primary" href="/familia/todas">Volver</a>
+				</div>	
 			</fieldset>
 		</fieldset>
 		</form>
+		</div>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		
-
+<jsp:include page="../footer.jsp"></jsp:include>
 <!-- jQuery -->
 		<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
