@@ -1,3 +1,5 @@
+<img width=100% alt="portadagit" src="https://github.com/bruizdecasas/TFG_olympic_fisio/assets/99440874/12348bfe-78a1-434d-8c5a-06e7b4ef601f">
+
 <h1>Olimpyc Fisio - Physiotherapy Clinic Appointment Booking System</h1>
 
 <h2>Welcome to the Olimpyc Fisio repository!</h2> This project is a Spring Boot application designed to facilitate appointment booking in a physiotherapy clinic called Olimpyc Fisio. With this application, patients can easily and quickly book appointments, while physiotherapists can efficiently manage scheduled appointments.
