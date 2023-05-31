@@ -247,7 +247,7 @@
 				</div>
 			</div>
 		</div>
-		<div class= "info">
+		<div class= "info" id="fh5co-contact">
 			<h3 class="item1">Información de contacto</h3>
 			<ul class="item2">
 				<li class="fh5co-contact-address ">
