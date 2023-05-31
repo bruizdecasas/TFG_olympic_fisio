@@ -77,7 +77,6 @@
 		
 		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
-		<p>Bienvenido <sec:authentication property="name"/></p>
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
