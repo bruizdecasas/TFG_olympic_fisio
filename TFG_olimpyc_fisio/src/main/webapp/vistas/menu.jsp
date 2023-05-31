@@ -61,12 +61,12 @@
 					  <ul class="nav navbar-nav navbar-right">
 						<li><a  href="/">Inicio</a></li>
 						<sec:authorize access="!isAuthenticated()">
-						 <li><a  href="#">Tratamientos</a></li>
-						 <li><a  href="#">Nuestros Especialistas</a></li>
-						 <li><a  href="#">Opiniones</a></li>
+						 <li><a  href="#fh5co-intro">Tratamientos</a></li>
+						 <li><a  href="#fh5co-work">Nuestros Especialistas</a></li>
+						 <li><a  href="#fh5co-testimonials">Opiniones</a></li>
 						  <li><a href="/entrar" class="nav-link">Entrar</a></li>	
 						  <li><a href="/usuario/alta" class="nav-link">Registro</a></li>		
-					    <li><a  href="#">Contacto</a>
+					    <li><a  href="#fh5co-contact">Contacto</a>
 					    </sec:authorize>
 					    
 						<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">
