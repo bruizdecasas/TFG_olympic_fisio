@@ -154,7 +154,7 @@ public class UsuarioController {
 			attr.addFlashAttribute("mensajeExito", "Usuario editado correctamente");
 		else 
 			attr.addFlashAttribute("mensajeError", "Error al editar el usuario");;
-		return "redirect:/";
+		return "redirect:/usuario/misDatos";
 	}
 
 	/**

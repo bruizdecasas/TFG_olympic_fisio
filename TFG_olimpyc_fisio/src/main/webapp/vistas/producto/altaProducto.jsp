@@ -116,7 +116,7 @@
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 		
-				<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 			
 	<!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>

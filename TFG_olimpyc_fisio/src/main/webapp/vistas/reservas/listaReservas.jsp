@@ -45,6 +45,7 @@
 	<script src="../js/modernizr-2.6.2.min.js"></script>
 	
 </head>
+
 	<body>
 		<jsp:include page="../menu.jsp"></jsp:include>
 		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">

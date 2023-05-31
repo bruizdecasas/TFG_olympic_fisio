@@ -81,9 +81,9 @@
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Gestion de usuarios</h1>
-							<h2 class="to-animate">Editar los datos de los usuarios </h2>
+						<div class="">
+							<h1 class="to-animate">Gestión de usuario</h1>
+							<h2 class="to-animate">Aquí puedes modificar tus datos </h2>
 						</div>
 					</div>
 				</div>
@@ -98,7 +98,8 @@
 			<fieldset class="full-form">
 				<legend>Introduce los nuevos datos ${usuario.nombreUsuario } ${usuario.apellidosUsuario }</legend>
 			<fieldset class="default">
-			<input type="hidden" name="idUsuario" id="idUsuario" required value="${ usuario.idUsuario }"/>	
+			<input type="hidden" name="idUsuario" id="idUsuario" required value="${ usuario.idUsuario }"/>
+			<input type="hidden" name="password" id="password" required value="${ usuario.password }"/>	
 				<fieldset class="default">
 					<label for="emailUsuario">Email</label>
 					<input type="text" name="emailUsuario" id="emailUsuario" required value="${usuario.emailUsuario }" class="campos"/>

@@ -135,9 +135,6 @@
               <h5 class="card-title">${ele.nombreProducto}</h5>
               <p class="card-text">${ele.precio} €</p>
               <div class="card-actions">
-               <sec:authorize access="hasAnyAuthority('Cliente', 'Especialista')">
-                 <a class="btn btn-primary" href="/producto/detalle/${ele.idProducto}">Detalle</a>
-                </sec:authorize>
                 <sec:authorize access="hasAuthority('Administrador')">
                   <a class="btn btn-primary" href="/producto/editar/${ele.idProducto}">Editar</a>
                 </sec:authorize>
