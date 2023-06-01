@@ -95,7 +95,7 @@
 				<div class="col-sm-4">
           			<div class="card">
           				<div class="card-body">
-            					<img src="${ele.img}" alt="Imagen de la familia" style="max-width: 100%; height: auto">
+            					<img src="${ele.img}" alt="${ele.nombreFamilia }" style="max-width: 100%; height: auto">
 							    <h5 class="card-title">${ ele.nombreFamilia }</h5>
 								<p class="card-text">${ ele.descripcionFamilia }</p>
 							<div class="card-actions">
