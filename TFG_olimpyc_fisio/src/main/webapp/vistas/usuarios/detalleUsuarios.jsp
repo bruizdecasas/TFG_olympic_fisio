@@ -67,7 +67,7 @@
 
 .td-detalle-usuario {
 	text-align: left;
-	width: 60%;
+	width: 50%;
 }
 
 .td-detalle-usuario:first-child {
@@ -75,7 +75,7 @@
 }
 
 .caption-detalle-usuario {
-	text-align: center !important;
+	text-align: center;
 	font-size: 1.5em;
 	font-weight: bold;
 }
