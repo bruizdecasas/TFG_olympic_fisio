@@ -1,109 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Lista de productos</title>
-	<title>OlympicFisio</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Facebook and Twitter integration -->
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+<title>OlympicFisio</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Facebook and Twitter integration -->
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" href="favicon.ico">
 
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-	data-integrity="sha512-bz/zkQ/xt3LsX+Zx1rWu/4Hh0qNrR2siZn9T2Y0CweMv2LwX5YiLw3tV5uLZdQj2NC1wx8u4Phgz+2QIn9KkDQ==" data-crossorigin="anonymous" data-referrerpolicy="no-referrer" />
-	
-	
-	<!-- Animate.css -->
-	
-	<link rel="stylesheet" type="text/css" href="../css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" type="text/css" href="../css/icomoon.css">
-	<!-- Simple Line Icons -->
-	<link rel="stylesheet" type="text/css" href="../css/simple-line-icons.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" type="text/css" href="../css/magnific-popup.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+	data-integrity="sha512-bz/zkQ/xt3LsX+Zx1rWu/4Hh0qNrR2siZn9T2Y0CweMv2LwX5YiLw3tV5uLZdQj2NC1wx8u4Phgz+2QIn9KkDQ=="
+	data-crossorigin="anonymous" data-referrerpolicy="no-referrer" />
 
-	
-	<link rel="stylesheet" type="text/css" href="../css/style3.css">
-	
-	<link rel="stylesheet" type="text/css" href="../css/_precios.css">
 
-	<!-- Modernizr JS -->
-	<script src="../js/modernizr-2.6.2.min.js"></script>
+<!-- Animate.css -->
+
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" type="text/css" href="../css/icomoon.css">
+<!-- Simple Line Icons -->
+<link rel="stylesheet" type="text/css"
+	href="../css/simple-line-icons.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" type="text/css" href="../css/magnific-popup.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+
+<link rel="stylesheet" type="text/css" href="../css/style3.css">
+
+<link rel="stylesheet" type="text/css" href="../css/_precios.css">
+
+<!-- Modernizr JS -->
+<script src="../js/modernizr-2.6.2.min.js"></script>
 <style>
-
-	.section2 {
-		display: grid;
-		justify-content: center;
-		align-items: center;
-		margin-top: 5%;
-	}
-
-    .table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .table th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .table th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-     .contenedor {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      margin-top:2%;
-    }
-    .form {
-      max-width: 30%;
-    }
-    .campos {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }	
-	.botones{
+.section2 {
+	display: grid;
+	justify-content: center;
+	align-items: center;
 	margin-top: 5%;
-	display:flex;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.table th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.table th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+}
+
+.contenedor {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	margin-top: 2%;
+}
+
+.form {
+	max-width: 30%;
+}
+
+.campos {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.botones {
+	margin-top: 5%;
+	display: flex;
 	justify-content: space-between;
-	}
-</style>	
+}
+</style>
 </head>
-	<body>
-		<jsp:include page="../menu.jsp"></jsp:include>
-		<section id="fh5co-home" data-section="home" style="background-image: url(../images/Portada.jpg);" data-stellar-background-ratio="0.5">
+<body>
+	<jsp:include page="../menu.jsp"></jsp:include>
+	<section id="fh5co-home" data-section="home"
+		style="background-image: url(../images/Portada.jpg);"
+		data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
 		<div class="container">
 			<div class="text-wrap">
 				<div class="text-inner">
 					<div class="row">
 						<div class="">
-							<h1 class="to-animate"> Confirmar Reserva</h1>
-							<h2 class="to-animate">A continuación se muestran los detalles de la reserva que quieres confirmar </h2>
+							<h1 class="to-animate">Confirmar Reserva</h1>
+							<h2 class="to-animate">A continuación se muestran los
+								detalles de la reserva que quieres confirmar</h2>
 						</div>
 					</div>
 				</div>
@@ -112,13 +124,13 @@
 		<div class="slant"></div>
 	</section>
 
-		<sec:csrfInput />
+	<sec:csrfInput />
 	<section class="section2">
 		<table class="table">
 			<thead>
 				<tr class="default">
 					<th>Fecha</th>
-					<th>Hora</th>					
+					<th>Hora</th>
 					<th>Especialista</th>
 					<th>Observaciones del especialista</th>
 					<th>Observaciones del Cliente</th>
@@ -126,38 +138,42 @@
 			</thead>
 			<tbody>
 				<tr class="default">
-					<td>${ cita.fechaCita }</td> 
+					<td>${ cita.fechaCita }</td>
 					<td>${ cita.horaCita }</td>
 					<td>${ cita.usuario.nombreUsuario }</td>
 					<td>${ cita.observaciones }</td>
 					<td>${ observacionesResevas }</td>
 
-				<sec:authorize access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">	
-				</sec:authorize>
-				<sec:authorize access="hasAnyAuthority('Administrador', 'Especialista')">	
-				</sec:authorize>
+					<sec:authorize
+						access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
+					</sec:authorize>
+					<sec:authorize
+						access="hasAnyAuthority('Administrador', 'Especialista')">
+					</sec:authorize>
 				</tr>
 			</tbody>
 		</table>
 	</section>
-	<div class="contenedor">		
+	<div class="contenedor">
 		<form action="/reserva/alta" method="post" class="form">
-				<fieldset class="default">
-				<input type="hidden" name="idCita" value="${cita.idCita}">
-					<label for="observacionesResevas">Observaciones</label>
-					<input type="text" name="observacionesResevas" id="observacionesResevas" class="campos"/>
-				</fieldset>
-			<div class="botones">	
-			<button type="submit" class="btn btn-primary">Confirmar reserva</button>
-			<a class="btn btn-primary" href="/cita/todas">Volver</a>
+			<fieldset class="default">
+				<input type="hidden" name="idCita" value="${cita.idCita}"> <label
+					for="observacionesResevas">Observaciones</label> <input type="text"
+					name="observacionesResevas" id="observacionesResevas"
+					class="campos" />
+			</fieldset>
+			<div class="botones">
+				<button type="submit" class="btn btn-primary">Confirmar
+					reserva</button>
+				<a class="btn btn-primary" href="/cita/todas">Volver</a>
 			</div>
 		</form>
 		<p class="mensaje-exito">${ mensajeExito }</p>
 		<p class="mensaje-error">${ mensajeError }</p>
 	</div>
-		
-		<jsp:include page="../footer.jsp"></jsp:include>
-			
+
+	<jsp:include page="../footer.jsp"></jsp:include>
+
 	<!-- jQuery -->
 	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -174,10 +190,11 @@
 	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<script src="../js/magnific-popup-options.js"></script>
 	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="../js/google_map.js"></script>
 
 	<!-- Main JS (Do not remove) -->
 	<script src="../js/main.js"></script>
-	</body>
+</body>
 </html>
