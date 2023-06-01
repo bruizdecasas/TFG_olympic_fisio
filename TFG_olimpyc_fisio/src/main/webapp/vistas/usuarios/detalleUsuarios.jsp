@@ -54,13 +54,13 @@
   width: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .td-detalle-usuario{
   text-align: left;
-  width: 50%;
+  width: 60%;
 }
 .td-detalle-usuario:first-child {
   font-weight: bold;
