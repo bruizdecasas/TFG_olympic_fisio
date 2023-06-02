@@ -83,8 +83,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="">
-							<h1 class="to-animate">Alta Familia</h1>
-							<h2 class="to-animate">Administración de las familias</h2>
+							<h1 class="to-animate">Alta técnica</h1>
+							<h2 class="to-animate">Administración de las técnicas</h2>
 						</div>
 					</div>
 				</div>
@@ -98,15 +98,15 @@
 		<form action="/familia/alta" method="post" class="form">
 
 			<fieldset class="full-form">
-				<legend>Introduce los datos para la nueva familia</legend>
+				<legend>Introduce los datos para la nueva técnica</legend>
 				<fieldset class="default">
 					<fieldset class="default">
-						<label for="nombre_familia">Nombre de la Familia</label> <input
+						<label for="nombre_familia">Nombre de la técnica</label> <input
 							type="text" name="nombreFamilia" id="nombre_familia" required
 							class="campos" />
 					</fieldset>
 					<fieldset class="default">
-						<label for="descripcion_familia">Descripción de la Familia</label>
+						<label for="descripcion_familia">Descripción de la técnica</label>
 						<input type="text" name="descripcionFamilia"
 							id="descripcion_familia" required class="campos" />
 					</fieldset>
