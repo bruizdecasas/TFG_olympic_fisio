@@ -22,7 +22,7 @@ HTML/CSS/JavaScript</br>
 <h2>Documentation</h1>
 The documentation that you can find in this repository:</br>
 Memorandum</br>
-Manual</br>
+<a href="https://github.com/bruizdecasas/TFG_olympic_fisio/blob/main/Manual%20de%20usuario.pptx">Manual</a></br>
 <a href="https://github.com/bruizdecasas/TFG_olympic_fisio/blob/main/demoOlympicFisio.mp4"> Instructional video</a></br>
 <a href="https://github.com/bruizdecasas/TFG_olympic_fisio/blob/main/OlympicFisioBBDD.sql">BBDD Script</a></br>
 
