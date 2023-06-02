@@ -134,7 +134,7 @@
 
 								<sec:authorize
 									access="hasAnyAuthority('Cliente', 'Administrador', 'Especialista')">
-									<td><a href="/cita/reserva/${ ele.idCita }">Reservar</a></td>
+									<td><a href="/reserva/alta/${ ele.idCita }">Reservar</a></td>
 
 								</sec:authorize>
 								<sec:authorize
