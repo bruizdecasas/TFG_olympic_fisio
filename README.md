@@ -19,6 +19,13 @@ Spring Data JPA</br>
 MySQL (database)</br>
 HTML/CSS/JavaScript</br>
 
+<h2>Documentation</h1>
+The documentation that you can find in this repository:
+Memorandum
+Manual
+<a href="https://github.com/bruizdecasas/TFG_olympic_fisio/blob/main/demoOlympicFisio.mp4"> Instructional video</a>
+<a href="https://github.com/bruizdecasas/TFG_olympic_fisio/blob/main/OlympicFisioBBDD.sql">BBDD Script</a>
+
 <h2>Project Setup</h2>
 
 Follow these steps to set up the project in your development environment:
