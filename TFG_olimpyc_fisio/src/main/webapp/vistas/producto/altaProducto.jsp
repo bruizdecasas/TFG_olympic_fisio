@@ -113,7 +113,7 @@
 					<fieldset class="default">
 						<label for="precio">Precio</label> <input type="number" step="0.5"
 							min="0" name="precio" id="precio" required class="campos" /> <label
-							for="idFamilia">Familia del producto</label> <select
+							for="idFamilia">Técnica del tratamiento</label> <select
 							name="idFamilia" id="id_familia" required class="campos">
 							<c:forEach var="ele" items="${ listaFamilia }">
 								<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
