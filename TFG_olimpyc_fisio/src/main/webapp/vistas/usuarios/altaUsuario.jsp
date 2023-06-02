@@ -108,7 +108,7 @@
 					<label for="emailUsuario">Email</label> <input class="campos"
 						type="text" name="emailUsuario" id="emailUsuario" required /> <label
 						for="password">Contraseña</label> <input class="campos"
-						type="text" name="password" id="password" required />
+						type="password" name="password" id="password" required />
 				</fieldset>
 				<fieldset class="default">
 					<label for="nombreUsuario">Nombre</label> <input class="campos"
