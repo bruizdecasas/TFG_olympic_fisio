@@ -125,7 +125,7 @@
 		</div>
 		<sec:authorize access="hasAuthority('Administrador')">
 			<div class="botones">
-				<a class="btn btn-primary" href="/familia/alta">Crear Familia</a>
+				<a class="btn btn-primary" href="/familia/alta">Crear técnica</a>
 			</div>
 		</sec:authorize>
 		<jsp:include page="../footer.jsp"></jsp:include>
