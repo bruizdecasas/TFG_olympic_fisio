@@ -89,8 +89,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="">
-							<h1 class="to-animate">Editar Familias</h1>
-							<h2 class="to-animate">Administración de las familias</h2>
+							<h1 class="to-animate">Editar técnica</h1>
+							<h2 class="to-animate">Administración de las técnicas</h2>
 						</div>
 					</div>
 				</div>
@@ -103,19 +103,19 @@
 	<div class="contenedor">
 		<form class="form" action="/familia/editar" method="post">
 			<fieldset class="full-form">
-				<legend>Introduce los datos para editar la familia: ${ familia.nombreFamilia }</legend>
+				<legend>Introduce los datos para editar la técnica: ${ familia.nombreFamilia }</legend>
 				<fieldset class="default">
 					<fieldset class="default">
 						<input type="hidden" name="idFamilia" id="id_familia" required
 							value="${ familia.idFamilia }" />
 					</fieldset>
 					<fieldset class="default">
-						<label for="nombre_familia">Nombre de la Familia</label> <input
+						<label for="nombre_familia">Nombre de la técnica</label> <input
 							type="text" name="nombreFamilia" id="nombre_familia" required
 							placeholder="${ familia.nombreFamilia }" class="campos" />
 					</fieldset>
 					<fieldset class="default">
-						<label for="descripcion_familia">Descripción de la Familia</label>
+						<label for="descripcion_familia">Descripción de la técnica</label>
 						<input type="text" name="descripcionFamilia"
 							id="descripcion_familia" required
 							placeholder="${ familia.descripcionFamilia }" class="campos" />
