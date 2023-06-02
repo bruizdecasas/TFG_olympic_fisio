@@ -85,8 +85,8 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="">
-							<h1 class="to-animate">Editar Producto</h1>
-							<h2 class="to-animate">Administración de productos</h2>
+							<h1 class="to-animate">Editar tratamiento</h1>
+							<h2 class="to-animate">Administración de tratamientos</h2>
 						</div>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 
 			<fieldset class="full-form">
 				<legend>Introduce los datos que quieres modificar del
-					producto: ${ producto.nombreProducto }</legend>
+					tratamiento: ${ producto.nombreProducto }</legend>
 				<fieldset class="default">
 					<fieldset class="default">
 						<input type="hidden" name="idProducto" id="id_producto" required
@@ -118,7 +118,7 @@
 					<fieldset class="default">
 						<label for="precio">Precio</label> <input type="number" step="0.5"
 							min="0" name="precio" id="precio" class="campos" required
-							placeholder="${ producto.precio}" /> <label for="id_familia">Familia</label>
+							placeholder="${ producto.precio}" /> <label for="id_familia">Técnica</label>
 						<select name="idFamilia" id="id_familia" required class="campos">
 							<c:forEach var="ele" items="${ listaFamilia }">
 								<option value="${ ele.idFamilia }">${ ele.nombreFamilia }</option>
