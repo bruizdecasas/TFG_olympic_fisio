@@ -165,7 +165,7 @@
 	<div class="boton_productos">
 		<sec:authorize access="hasAuthority('Administrador')">
 			<div class="botones">
-				<a class="btn btn-primary" href="/producto/alta">Crear Producto</a>
+				<a class="btn btn-primary" href="/producto/alta">Crear tratamiento</a>
 			</div>
 		</sec:authorize>
 	</div>
